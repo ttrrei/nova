@@ -40,7 +40,7 @@ Adopts **Medallion Architecture** combined with DuckDB local vectorized queries:
 
 | Tier | Description | Storage Format |
 |------|-------------|----------------|
-| **Bronze** | Raw 1-minute OHLCV from OANDA API (partitioned by year/month/instrument) | Parquet (OCI Object Storage) |
+| **Bronze** | Raw 1-minute OHLCV pulled from OCI Object Storage (partitioned by year/month/instrument) | Parquet (OCI Object Storage) |
 | **Silver** | Cleaned, aligned, and resampled (1min → 5min / 1h), session-isolated | Parquet (local) |
 | **Gold** | Wide-table feature library (trend / volatility / momentum), sparse parameterization `[12,24,48,72]` | Parquet (local) |
 
@@ -118,7 +118,7 @@ Gemma Generated YAML
 | Mechanism | Description |
 |-----------|-------------|
 | **R-Multiple Normalization** | Strip position sizing, normalize by initial stop-loss distance to 1R, evaluate pure Alpha |
-| **Pessimistic Collision Detection** | When TP/SL are hit simultaneously on a single 5min candle, force判定为优先触及止损 |
+| **Pessimistic Collision Detection** | When TP/SL are hit simultaneously on a single 5min candle, force stop-loss as the prioritized outcome |
 | **Single-Position State Machine** | Ignore subsequent entry signals for the same instrument before position is closed; no stacking |
 | **Zero Debounce Design** | No time cooldown; treat choppy market wear as a hard test of strategy Alpha coverage capability |
 | **Instrument Attribute Table** | 21 instruments with dedicated pip sizes, dynamic/percentage spreads; no hardcoding |

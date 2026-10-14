@@ -40,7 +40,7 @@
 
 | 层级 | 说明 | 存储格式 |
 |------|------|----------|
-| **Bronze** | OANDA API 原始 1min OHLCV（按年/月/标的分区） | Parquet (OCI Object Storage) |
+| **Bronze** | 从 OCI Object Storage 拉取的 1min OHLCV 原始数据（按年/月/标的分区） | Parquet (OCI Object Storage) |
 | **Silver** | 清洗对齐 + 重采样 (1min → 5min / 1h)，Session 隔离 | Parquet (本地) |
 | **Gold** | 宽表特征库 (趋势 / 波动率 / 动量)，参数稀疏化 `[12,24,48,72]` | Parquet (本地) |
 
@@ -162,7 +162,7 @@ unsupported_ideas.json  ──►  Gemini 定期审查  ──►  yaml_parser.p
 ```
 nova/
 ├── data_pipeline/
-│   ├── sync_oci.py              # OCI 增量同步
+│   ├── sync_oci.py              # 从 OCI Object Storage 增量拉取 Parquet 数据
 │   ├── build_silver.py          # 1min → 5min / 1h 聚合与 Session 隔离
 │   └── build_gold_features.py   # 稀疏参数宽表生成 (12, 24, 48, 72)
 ├── ai_engine/
@@ -193,7 +193,7 @@ nova/
 | 语言 | Python 3.12+ |
 | 数据引擎 | DuckDB + Apache Parquet |
 | 对象存储 | OCI Object Storage |
-| 数据源 | OANDA API |
+| 数据源 | OCI Object Storage（上游：OANDA API） |
 | AI 模型 | Gemini 3.5 Flash Lite · Gemma 4 26B · Gemma 4 31B |
 | 策略描述 | YAML (自包含 spec + evaluation_results) |
 
