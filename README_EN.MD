@@ -166,7 +166,7 @@ Strategy logic not supported by the current YAML Schema automatically precipitat
 ```
 nova/
 ├── data_pipeline/
-│   ├── sync_oci.py              # OCI incremental sync
+│   ├── sync_oci.py              # Incrementally pull Parquet data from OCI Object Storage
 │   ├── build_silver.py          # 1min → 5min / 1h aggregation & session isolation
 │   └── build_gold_features.py   # Sparse parameter wide-table generation (12, 24, 48, 72)
 ├── ai_engine/
@@ -197,7 +197,7 @@ nova/
 | Language | Python 3.12+ |
 | Data Engine | DuckDB + Apache Parquet |
 | Object Storage | OCI Object Storage |
-| Data Source | OANDA API |
+| Data Source | OCI Object Storage (upstream: OANDA API) |
 | AI Models | Gemini 3.5 Flash Lite · Gemma 4 26B · Gemma 4 31B |
 | Strategy Description | YAML (self-contained spec + evaluation_results) |
 
