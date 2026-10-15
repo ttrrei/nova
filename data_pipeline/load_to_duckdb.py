@@ -66,10 +66,10 @@ def load_csvs_to_duckdb(
         try:
             print(f"[{idx}/{total_files}] Processing: {rel_path} -> table '{table_name}' ...")
 
-            # Quick load using DuckDB optimized CSV reader directly into individual parquet
+            # Quick load using DuckDB optimized CSV reader directly into individual parquet, explicitly in main schema
             conn.execute(
                 f"""
-                CREATE OR REPLACE TABLE {table_name} AS 
+                CREATE OR REPLACE TABLE main.{table_name} AS 
                 SELECT * 
                 FROM read_csv(
                     '{csv_path.as_posix()}',
@@ -80,10 +80,10 @@ def load_csvs_to_duckdb(
                 """
             )
 
-            row_count = conn.execute(f"SELECT COUNT(*) FROM {table_name};").fetchone()[0]
+            row_count = conn.execute(f"SELECT COUNT(*) FROM main.{table_name};").fetchone()[0]
 
             # Export to individual Parquet file
-            conn.execute(f"COPY {table_name} TO '{parquet_file_path.as_posix()}' (FORMAT PARQUET);")
+            conn.execute(f"COPY main.{table_name} TO '{parquet_file_path.as_posix()}' (FORMAT PARQUET);")
 
             # Record metadata
             conn.execute(
