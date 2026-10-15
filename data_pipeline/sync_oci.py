@@ -1,5 +1,6 @@
 from pathlib import Path
 from urllib.parse import urljoin
+import zipfile
 
 import requests
 import yaml
@@ -19,6 +20,57 @@ def ensure_raw_zips_dir(dir_path: str | Path = "data/raw_zips") -> Path:
     return path
 
 
+def ensure_raw_csv_dir(dir_path: str | Path = "data/raw_csv") -> Path:
+    """Ensure the target directory for storing extracted raw CSV files exists.
+
+    Args:
+        dir_path: Path to the target directory.
+
+    Returns:
+        Path object pointing to the directory.
+    """
+    path = Path(dir_path)
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def extract_zips_to_raw_csv(zips_dir: str | Path = "data/raw_zips", csv_dir: str | Path = "data/raw_csv") -> list[Path]:
+    """Recursively find all zip files in zips_dir and extract their contents into csv_dir.
+
+    Args:
+        zips_dir: Directory containing downloaded zip files.
+        csv_dir: Destination directory for extracted CSV files.
+
+    Returns:
+        List of Path objects pointing to extracted files.
+    """
+    source_dir = ensure_raw_zips_dir(zips_dir)
+    target_dir = ensure_raw_csv_dir(csv_dir)
+    extracted_files: list[Path] = []
+
+    zip_files = list(source_dir.rglob("*.zip"))
+    if not zip_files:
+        print(f"No zip files found in {source_dir.resolve()}")
+        return extracted_files
+
+    for zip_path in zip_files:
+        print(f"Extracting {zip_path.name} to {target_dir.resolve()}")
+        try:
+            with zipfile.ZipFile(zip_path, "r") as zf:
+                for member in zf.namelist():
+                    # Extract only files (skip directories)
+                    if member.endswith("/"):
+                        continue
+                    
+                    extracted_path = zf.extract(member, target_dir)
+                    extracted_files.append(Path(extracted_path))
+        except Exception as e:
+            print(f"Error extracting {zip_path}: {e}")
+
+    print(f"Successfully extracted {len(extracted_files)} files into {target_dir.resolve()}")
+    return extracted_files
+
+
 def sync_oci_par_recursive(par_url: str, target_dir: str | Path = "data/raw_zips") -> list[Path]:
     """Recursively list and download all objects from an OCI Pre-Authenticated Request (PAR) prefix URL.
 
@@ -36,8 +88,6 @@ def sync_oci_par_recursive(par_url: str, target_dir: str | Path = "data/raw_zips
     base_url = par_url if par_url.endswith("/") else f"{par_url}/"
     
     # OCI Object Storage PAR prefix listing endpoint query parameters
-    # When using a bucket/prefix PAR, appending ?prefix= or querying the listing API returns objects.
-    # Alternatively, if it's an object listing request:
     listing_url = f"{base_url}?fields=name"
 
     print(f"Fetching object list from OCI PAR: {listing_url}")
@@ -62,7 +112,6 @@ def sync_oci_par_recursive(par_url: str, target_dir: str | Path = "data/raw_zips
             continue  # Skip folder placeholder markers
 
         # Construct download URL for the specific object
-        # OCI PAR object download URL format appends the object name to the PAR base
         obj_url = urljoin(base_url, object_name)
         local_file_path = save_dir / object_name
 
@@ -81,6 +130,10 @@ def sync_oci_par_recursive(par_url: str, target_dir: str | Path = "data/raw_zips
         downloaded_files.append(local_file_path)
 
     print(f"Successfully downloaded {len(downloaded_files)} objects to {save_dir.resolve()}")
+    
+    # Automatically trigger extraction to raw_csv after download
+    extract_zips_to_raw_csv()
+
     return downloaded_files
 
 
