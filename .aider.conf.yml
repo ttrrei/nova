@@ -1,0 +1,7 @@
+model: gemini/gemini-flash-lite-latest
+auto-commits: true
+git: true
+read: [CONVENTIONS.md]
+lint-cmd: ["python: ruff check --fix"]
+test-cmd: pytest -q
+dark-mode: true

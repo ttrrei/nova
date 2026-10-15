@@ -68,3 +68,8 @@ logs/
 tmp/
 scratch/
 
+.aider*
+!.aider.conf.yml
+!.aiderignore
+.pytest_cache/
+.ruff_cache/
