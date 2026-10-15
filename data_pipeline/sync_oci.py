@@ -1,6 +1,6 @@
+import zipfile
 from pathlib import Path
 from urllib.parse import urljoin
-import zipfile
 
 import requests
 import yaml
