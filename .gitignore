@@ -1,0 +1,70 @@
+# Environment & Secrets
+config/.env
+.env
+.env.*
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# DuckDB / SQLite / Database files
+*.duckdb
+*.duckdb.tmp*
+*.db
+*.sqlite
+*.sqlite3
+
+# Data files & cache (Parquet cache/temporary local downloads)
+# Keep directory structures if needed, ignore large local cache files
+data/bronze/*
+data/silver/*
+data/gold/*
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+*.parquet
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs & Temporary files
+*.log
+logs/
+tmp/
+scratch/
+
