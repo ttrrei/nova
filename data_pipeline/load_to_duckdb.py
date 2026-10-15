@@ -12,30 +12,30 @@ def ensure_data_dirs() -> None:
 def load_csvs_to_duckdb(
     csv_dir: str | Path = "data/raw_csv",
     db_path: str | Path = "data/metadata.duckdb",
-    parquet_output_dir: str | Path = "data/parquet",
+    parquet_output_path: str | Path = "data/parquet/all_data.parquet",
 ) -> None:
-    """Read each raw CSV file individually using DuckDB's fastest parallel reader,
+    """Load all raw CSV files combined into one and only one unified table
 
-    register them in metadata.duckdb, and export each to its own Parquet file
-    with real-time progress logging.
+    in DuckDB, and export the combined dataset to a single Parquet file.
 
     Args:
         csv_dir: Directory containing raw CSV files.
         db_path: Path to the DuckDB metadata/database file.
-        parquet_output_dir: Directory to store individual Parquet files.
+        parquet_output_path: Path to the single output Parquet file.
     """
     ensure_data_dirs()
     source_csv_dir = Path(csv_dir)
-    target_parquet_dir = Path(parquet_output_dir)
+    target_parquet = Path(parquet_output_path)
+    target_parquet.parent.mkdir(parents=True, exist_ok=True)
 
-    csv_files = sorted(source_csv_dir.rglob("*.csv"))
-    total_files = len(csv_files)
+    csv_glob = (source_csv_dir / "**" / "*.csv").as_posix()
+    csv_files = list(source_csv_dir.rglob("*.csv"))
 
-    if total_files == 0:
+    if not csv_files:
         print(f"No CSV files found in {source_csv_dir.resolve()}")
         return
 
-    print(f"Found {total_files} CSV files to process.")
+    print(f"Found {len(csv_files)} CSV files to combine into a single table.")
 
     # Connect to DuckDB metadata database
     conn = duckdb.connect(str(db_path))
@@ -53,54 +53,46 @@ def load_csvs_to_duckdb(
         """
     )
 
-    for idx, csv_path in enumerate(csv_files, start=1):
-        # Generate clean table name based on relative path
-        rel_path = csv_path.relative_to(source_csv_dir)
-        table_base_name = f"raw_{'_'.join(rel_path.with_suffix('').parts)}".lower()
-        # Sanitize table name
-        table_name = "".join(c if c.isalnum() else "_" for c in table_base_name)
+    try:
+        table_name = "main.all_data"
+        print(f"Loading and uniting all CSV files into table '{table_name}' ...")
 
-        parquet_file_path = target_parquet_dir / rel_path.with_suffix(".parquet")
-        parquet_file_path.parent.mkdir(parents=True, exist_ok=True)
+        # Create or replace single unified table using glob pattern and union_by_name
+        conn.execute(
+            f"""
+            CREATE OR REPLACE TABLE {table_name} AS 
+            SELECT * 
+            FROM read_csv(
+                '{csv_glob}',
+                header=true,
+                auto_detect=true,
+                union_by_name=true
+            );
+            """
+        )
 
-        try:
-            print(f"[{idx}/{total_files}] Processing: {rel_path} -> table '{table_name}' ...")
+        row_count = conn.execute(f"SELECT COUNT(*) FROM {table_name};").fetchone()[0]
 
-            # Quick load using DuckDB optimized CSV reader directly into individual parquet, explicitly in main schema
-            conn.execute(
-                f"""
-                CREATE OR REPLACE TABLE main.{table_name} AS 
-                SELECT * 
-                FROM read_csv(
-                    '{csv_path.as_posix()}',
-                    header=true,
-                    auto_detect=true,
-                    union_by_name=true
-                );
-                """
-            )
+        # Export the unified table to a single Parquet file
+        print(f"Exporting unified table to Parquet: {target_parquet}")
+        conn.execute(f"COPY {table_name} TO '{target_parquet.as_posix()}' (FORMAT PARQUET);")
 
-            row_count = conn.execute(f"SELECT COUNT(*) FROM main.{table_name};").fetchone()[0]
+        # Record metadata
+        conn.execute(
+            """
+            INSERT INTO loaded_tables (table_name, csv_path, parquet_path, row_count)
+            VALUES (?, ?, ?, ?);
+            """,
+            (table_name, str(source_csv_dir), str(target_parquet), row_count),
+        )
 
-            # Export to individual Parquet file
-            conn.execute(f"COPY main.{table_name} TO '{parquet_file_path.as_posix()}' (FORMAT PARQUET);")
+        print(f"-> Done! Successfully loaded {row_count} total rows into '{table_name}' and saved to {target_parquet}")
 
-            # Record metadata
-            conn.execute(
-                """
-                INSERT INTO loaded_tables (table_name, csv_path, parquet_path, row_count)
-                VALUES (?, ?, ?, ?);
-                """,
-                (table_name, str(csv_path), str(parquet_file_path), row_count),
-            )
-
-            print(f"  -> Done! Loaded {row_count} rows. Saved to {parquet_file_path}")
-
-        except (duckdb.Error, OSError) as e:
-            print(f"  -> Error processing {csv_path}: {e}")
+    except (duckdb.Error, OSError) as e:
+        print(f"-> Error processing CSV files: {e}")
 
     conn.close()
-    print("All CSV files have been processed and exported to individual Parquet files successfully.")
+    print("Unified CSV loading and Parquet export process completed.")
 
 
 if __name__ == "__main__":
