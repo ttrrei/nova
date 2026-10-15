@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import yaml
 import requests
 
 
@@ -31,6 +31,7 @@ def download_oci_par_zip(par_url: str, output_filename: str, target_dir: str | P
     save_dir = ensure_raw_zips_dir(target_dir)
     file_path = save_dir / output_filename
 
+    print(f"Downloading from PAR: {par_url} -> {file_path}")
     response = requests.get(par_url, stream=True, timeout=300)
     response.raise_for_status()
 
@@ -39,10 +40,35 @@ def download_oci_par_zip(par_url: str, output_filename: str, target_dir: str | P
             if chunk:
                 f.write(chunk)
 
+    print(f"Successfully downloaded: {file_path}")
     return file_path
 
 
+def load_config(config_path: str | Path = "config/config.yml") -> dict:
+    """Load configuration from YAML file.
+
+    Args:
+        config_path: Path to the YAML configuration file.
+
+    Returns:
+        Dictionary containing configuration parameters.
+    """
+    path = Path(config_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Configuration file not found at: {path.resolve()}")
+    
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
+
+
 if __name__ == "__main__":
-    # Example standalone execution or test setup
-    dest = ensure_raw_zips_dir()
-    print(f"Source folder ready at: {dest.resolve()}")
+    config = load_config()
+    
+    oci_config = config.get("oci", {})
+    par_url = oci_config.get("par_url")
+    output_filename = oci_config.get("output_filename", "raw_data.zip")
+
+    if not par_url:
+        raise ValueError("OCI PAR URL ('par_url') not found under 'oci' section in config/config.yml")
+
+    download_oci_par_zip(par_url=par_url, output_filename=output_filename)
