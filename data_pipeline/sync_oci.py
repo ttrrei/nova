@@ -1,6 +1,7 @@
 from pathlib import Path
-import yaml
+
 import requests
+import yaml
 
 
 def ensure_raw_zips_dir(dir_path: str | Path = "data/raw_zips") -> Path:
