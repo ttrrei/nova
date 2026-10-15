@@ -1,5 +1,6 @@
 from pathlib import Path
 from urllib.parse import urlparse
+
 import requests
 import yaml
 
