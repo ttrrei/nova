@@ -1,6 +1,7 @@
-import os
 from pathlib import Path
+
 import requests
+
 
 def ensure_raw_zips_dir(dir_path: str | Path = "data/raw_zips") -> Path:
     """Ensure the source directory for storing downloaded OCI PAR zip files exists.
