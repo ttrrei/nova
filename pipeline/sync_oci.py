@@ -64,7 +64,7 @@ def extract_zips_to_raw_csv(zips_dir: str | Path = "data/raw_zips", csv_dir: str
                     
                     extracted_path = zf.extract(member, target_dir)
                     extracted_files.append(Path(extracted_path))
-        except Exception as e:
+        except (zipfile.BadZipFile, OSError) as e:
             print(f"Error extracting {zip_path}: {e}")
 
     print(f"Successfully extracted {len(extracted_files)} files into {target_dir.resolve()}")
