@@ -43,14 +43,23 @@ venv.bak/
 *.sqlite
 *.sqlite3
 
-# Data files & cache (Parquet cache/temporary local downloads)
-# Keep directory structures if needed, ignore large local cache files
+# Data files & cache (Parquet cache/temporary local downloads, raw zips, raw csvs)
+data/*
+!data/bronze/
+!data/silver/
+!data/gold/
+!data/raw_zips/
+!data/raw_csv/
 data/bronze/*
 data/silver/*
 data/gold/*
+data/raw_zips/*
+data/raw_csv/*
 !data/bronze/.gitkeep
 !data/silver/.gitkeep
 !data/gold/.gitkeep
+!data/raw_zips/.gitkeep
+!data/raw_csv/.gitkeep
 *.parquet
 
 # IDE / Editor
