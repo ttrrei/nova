@@ -28,7 +28,7 @@ def load_csvs_to_duckdb(
     source_csv_dir = Path(csv_dir)
     target_parquet_dir = Path(parquet_output_dir)
 
-    csv_files = sorted(list(source_csv_dir.rglob("*.csv")))
+    csv_files = sorted(source_csv_dir.rglob("*.csv"))
     total_files = len(csv_files)
 
     if total_files == 0:
