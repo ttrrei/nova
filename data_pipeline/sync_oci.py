@@ -1,5 +1,5 @@
 from pathlib import Path
-
+from urllib.parse import urlparse
 import requests
 import yaml
 
@@ -18,18 +18,27 @@ def ensure_raw_zips_dir(dir_path: str | Path = "data/raw_zips") -> Path:
     return path
 
 
-def download_oci_par_zip(par_url: str, output_filename: str, target_dir: str | Path = "data/raw_zips") -> Path:
-    """Download a zip file from an OCI Pre-Authenticated Request (PAR) URL into the source folder.
+def download_oci_par_zip(par_url: str, target_dir: str | Path = "data/raw_zips") -> Path:
+    """Download a zip file from an OCI Pre-Authenticated Request (PAR) URL into the source folder,
+    extracting the filename directly from the URL or headers.
 
     Args:
         par_url: The OCI PAR URL pointing to the zip file.
-        output_filename: The local filename to save the downloaded zip as.
         target_dir: The directory where the zip file will be stored.
 
     Returns:
         Path object pointing to the downloaded zip file.
     """
     save_dir = ensure_raw_zips_dir(target_dir)
+
+    # Derive filename from the URL path or fallback to a default name
+    parsed_url = urlparse(par_url)
+    path_name = Path(parsed_url.path).name
+    if not path_name or not path_name.endswith(".zip"):
+        output_filename = "downloaded_data.zip"
+    else:
+        output_filename = path_name
+
     file_path = save_dir / output_filename
 
     print(f"Downloading from PAR: {par_url} -> {file_path}")
@@ -67,9 +76,8 @@ if __name__ == "__main__":
     
     oci_config = config.get("oci", {})
     par_url = oci_config.get("par_url")
-    output_filename = oci_config.get("output_filename", "raw_data.zip")
 
     if not par_url:
         raise ValueError("OCI PAR URL ('par_url') not found under 'oci' section in config/config.yml")
 
-    download_oci_par_zip(par_url=par_url, output_filename=output_filename)
+    download_oci_par_zip(par_url=par_url)
