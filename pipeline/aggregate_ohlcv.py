@@ -67,7 +67,7 @@ def aggregate_ohlcv_data(
             SELECT 
                 {inst_col} AS instrument,
                 time_bucket(INTERVAL '5 minutes', CAST({time_col} AS TIMESTAMP)) AS time,
-                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS open,
+                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS "open",
                 MAX(CAST({high_col} AS DOUBLE)) AS high,
                 MIN(CAST({low_col} AS DOUBLE)) AS low,
                 arg_max(CAST({close_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS close,
@@ -92,7 +92,7 @@ def aggregate_ohlcv_data(
             SELECT 
                 {inst_col} AS instrument,
                 time_bucket(INTERVAL '1 hour', CAST({time_col} AS TIMESTAMP)) AS time,
-                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS open,
+                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS "open",
                 MAX(CAST({high_col} AS DOUBLE)) AS high,
                 MIN(CAST({low_col} AS DOUBLE)) AS low,
                 arg_max(CAST({close_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS close,
