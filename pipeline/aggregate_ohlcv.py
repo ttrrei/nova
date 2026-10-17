@@ -35,23 +35,46 @@ def aggregate_ohlcv_data(
         conn.close()
         return
 
+    # Dynamically find the exact column names (case-insensitive search)
+    cols = conn.execute(
+        "SELECT column_name FROM information_schema.columns WHERE table_schema = 'main' AND table_name = 'all_data';"
+    .fetchall()
+    col_names_lower = {col[0].lower(): col[0] for col in cols}
+
+    required = ["instrument", "time", "open", "high", "low", "close", "volume"]
+    resolved_cols = {}
+    for req in required:
+        if req not in col_names_lower:
+            print(f"-> Error: Required column '{req}' not found in main.all_data columns: {list(col_names_lower.values())}")
+            conn.close()
+            return
+        resolved_cols[req] = col_names_lower[req]
+
+    inst_col = f'"{resolved_cols["instrument"]}"'
+    time_col = f'"{resolved_cols["time"]}"'
+    open_col = f'"{resolved_cols["open"]}"'
+    high_col = f'"{resolved_cols["high"]}"'
+    low_col = f'"{resolved_cols["low"]}"'
+    close_col = f'"{resolved_cols["close"]}"'
+    volume_col = f'"{resolved_cols["volume"]}"'
+
     try:
         # 1. Aggregate to 5-minute OHLCV table
         print("Aggregating 1-minute data into 5-minute OHLCV table (main.ohlcv_5m)...")
         conn.execute(
-            """
+            f"""
             CREATE OR REPLACE TABLE main.ohlcv_5m AS 
             SELECT 
-                instrument,
-                time_bucket(INTERVAL '5 minutes', CAST(time AS TIMESTAMP)) AS time,
-                arg_min(CAST(open AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
-                MAX(CAST(high AS DOUBLE)) AS high,
-                MIN(CAST(low AS DOUBLE)) AS low,
-                arg_max(CAST(close AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
-                SUM(CAST(volume AS DOUBLE)) AS volume
+                {inst_col} AS instrument,
+                time_bucket(INTERVAL '5 minutes', CAST({time_col} AS TIMESTAMP)) AS time,
+                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS open,
+                MAX(CAST({high_col} AS DOUBLE)) AS high,
+                MIN(CAST({low_col} AS DOUBLE)) AS low,
+                arg_max(CAST({close_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS close,
+                SUM(CAST({volume_col} AS DOUBLE)) AS volume
             FROM main.all_data
-            GROUP BY instrument, time_bucket(INTERVAL '5 minutes', CAST(time AS TIMESTAMP))
-            ORDER BY instrument, time;
+            GROUP BY {inst_col}, time_bucket(INTERVAL '5 minutes', CAST({time_col} AS TIMESTAMP))
+            ORDER BY {inst_col}, time;
             """
         )
         count_5m = conn.execute("SELECT COUNT(*) FROM main.ohlcv_5m;").fetchone()[0]
@@ -64,19 +87,19 @@ def aggregate_ohlcv_data(
         # 2. Aggregate to 1-hour OHLCV table
         print("Aggregating 1-minute data into 1-hour OHLCV table (main.ohlcv_1h)...")
         conn.execute(
-            """
+            f"""
             CREATE OR REPLACE TABLE main.ohlcv_1h AS 
             SELECT 
-                instrument,
-                time_bucket(INTERVAL '1 hour', CAST(time AS TIMESTAMP)) AS time,
-                arg_min(CAST(open AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
-                MAX(CAST(high AS DOUBLE)) AS high,
-                MIN(CAST(low AS DOUBLE)) AS low,
-                arg_max(CAST(close AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
-                SUM(CAST(volume AS DOUBLE)) AS volume
+                {inst_col} AS instrument,
+                time_bucket(INTERVAL '1 hour', CAST({time_col} AS TIMESTAMP)) AS time,
+                arg_min(CAST({open_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS open,
+                MAX(CAST({high_col} AS DOUBLE)) AS high,
+                MIN(CAST({low_col} AS DOUBLE)) AS low,
+                arg_max(CAST({close_col} AS DOUBLE), CAST({time_col} AS TIMESTAMP)) AS close,
+                SUM(CAST({volume_col} AS DOUBLE)) AS volume
             FROM main.all_data
-            GROUP BY instrument, time_bucket(INTERVAL '1 hour', CAST(time AS TIMESTAMP))
-            ORDER BY instrument, time;
+            GROUP BY {inst_col}, time_bucket(INTERVAL '1 hour', CAST({time_col} AS TIMESTAMP))
+            ORDER BY {inst_col}, time;
             """
         )
         count_1h = conn.execute("SELECT COUNT(*) FROM main.ohlcv_1h;").fetchone()[0]
