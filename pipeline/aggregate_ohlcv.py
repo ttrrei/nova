@@ -41,7 +41,7 @@ def aggregate_ohlcv_data(
     ).fetchall()
     col_names_lower = {col[0].lower(): col[0] for col in cols}
 
-    required = ["instrument", "time", "open", "high", "low", "close", "volume"]
+    required = ["instrument", "time", "mid_o", "mid_h", "mid_l", "mid_c", "volume"]
     resolved_cols = {}
     for req in required:
         if req not in col_names_lower:
@@ -52,10 +52,10 @@ def aggregate_ohlcv_data(
 
     inst_col = f'"{resolved_cols["instrument"]}"'
     time_col = f'"{resolved_cols["time"]}"'
-    open_col = f'"{resolved_cols["open"]}"'
-    high_col = f'"{resolved_cols["high"]}"'
-    low_col = f'"{resolved_cols["low"]}"'
-    close_col = f'"{resolved_cols["close"]}"'
+    open_col = f'"{resolved_cols["mid_o"]}"'
+    high_col = f'"{resolved_cols["mid_h"]}"'
+    low_col = f'"{resolved_cols["mid_l"]}"'
+    close_col = f'"{resolved_cols["mid_c"]}"'
     volume_col = f'"{resolved_cols["volume"]}"'
 
     try:
