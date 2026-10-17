@@ -44,11 +44,11 @@ def aggregate_ohlcv_data(
             SELECT 
                 instrument,
                 time_bucket(INTERVAL '5 minutes', CAST(time AS TIMESTAMP)) AS time,
-                arg_min(CAST("Open" AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
-                MAX(CAST("High" AS DOUBLE)) AS high,
-                MIN(CAST("Low" AS DOUBLE)) AS low,
-                arg_max(CAST("Close" AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
-                SUM(CAST("Volume" AS DOUBLE)) AS volume
+                arg_min(CAST(open AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
+                MAX(CAST(high AS DOUBLE)) AS high,
+                MIN(CAST(low AS DOUBLE)) AS low,
+                arg_max(CAST(close AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
+                SUM(CAST(volume AS DOUBLE)) AS volume
             FROM main.all_data
             GROUP BY instrument, time_bucket(INTERVAL '5 minutes', CAST(time AS TIMESTAMP))
             ORDER BY instrument, time;
@@ -69,11 +69,11 @@ def aggregate_ohlcv_data(
             SELECT 
                 instrument,
                 time_bucket(INTERVAL '1 hour', CAST(time AS TIMESTAMP)) AS time,
-                arg_min(CAST("Open" AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
-                MAX(CAST("High" AS DOUBLE)) AS high,
-                MIN(CAST("Low" AS DOUBLE)) AS low,
-                arg_max(CAST("Close" AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
-                SUM(CAST("Volume" AS DOUBLE)) AS volume
+                arg_min(CAST(open AS DOUBLE), CAST(time AS TIMESTAMP)) AS open,
+                MAX(CAST(high AS DOUBLE)) AS high,
+                MIN(CAST(low AS DOUBLE)) AS low,
+                arg_max(CAST(close AS DOUBLE), CAST(time AS TIMESTAMP)) AS close,
+                SUM(CAST(volume AS DOUBLE)) AS volume
             FROM main.all_data
             GROUP BY instrument, time_bucket(INTERVAL '1 hour', CAST(time AS TIMESTAMP))
             ORDER BY instrument, time;
