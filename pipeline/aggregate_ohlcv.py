@@ -38,7 +38,7 @@ def aggregate_ohlcv_data(
     # Dynamically find the exact column names (case-insensitive search)
     cols = conn.execute(
         "SELECT column_name FROM information_schema.columns WHERE table_schema = 'main' AND table_name = 'all_data';"
-    .fetchall()
+    ).fetchall()
     col_names_lower = {col[0].lower(): col[0] for col in cols}
 
     required = ["instrument", "time", "open", "high", "low", "close", "volume"]
