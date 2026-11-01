@@ -1,0 +1,117 @@
+{
+  "checks": [
+    {
+      "bars": 31105,
+      "different_market_bars": 0,
+      "instrument": "AUD_USD"
+    },
+    {
+      "bars": 29303,
+      "different_market_bars": 0,
+      "instrument": "BCO_USD"
+    },
+    {
+      "bars": 39579,
+      "different_market_bars": 0,
+      "instrument": "BTC_USD"
+    },
+    {
+      "bars": 19637,
+      "different_market_bars": 0,
+      "instrument": "CN50_USD"
+    },
+    {
+      "bars": 27591,
+      "different_market_bars": 0,
+      "instrument": "DE30_EUR"
+    },
+    {
+      "bars": 38609,
+      "different_market_bars": 0,
+      "instrument": "ETH_USD"
+    },
+    {
+      "bars": 36698,
+      "different_market_bars": 0,
+      "instrument": "EUR_USD"
+    },
+    {
+      "bars": 35192,
+      "different_market_bars": 0,
+      "instrument": "GBP_USD"
+    },
+    {
+      "bars": 22933,
+      "different_market_bars": 0,
+      "instrument": "HK33_HKD"
+    },
+    {
+      "bars": 24906,
+      "different_market_bars": 0,
+      "instrument": "JP225_USD"
+    },
+    {
+      "bars": 36344,
+      "different_market_bars": 0,
+      "instrument": "NAS100_USD"
+    },
+    {
+      "bars": 30271,
+      "different_market_bars": 0,
+      "instrument": "NZD_USD"
+    },
+    {
+      "bars": 28363,
+      "different_market_bars": 0,
+      "instrument": "SPX500_USD"
+    },
+    {
+      "bars": 23122,
+      "different_market_bars": 0,
+      "instrument": "UK100_GBP"
+    },
+    {
+      "bars": 34130,
+      "different_market_bars": 0,
+      "instrument": "US30_USD"
+    },
+    {
+      "bars": 34429,
+      "different_market_bars": 0,
+      "instrument": "USD_CAD"
+    },
+    {
+      "bars": 28265,
+      "different_market_bars": 0,
+      "instrument": "USD_CHF"
+    },
+    {
+      "bars": 37416,
+      "different_market_bars": 0,
+      "instrument": "USD_JPY"
+    },
+    {
+      "bars": 30909,
+      "different_market_bars": 0,
+      "instrument": "WTICO_USD"
+    },
+    {
+      "bars": 29143,
+      "different_market_bars": 0,
+      "instrument": "XAG_USD"
+    },
+    {
+      "bars": 36418,
+      "different_market_bars": 0,
+      "instrument": "XAU_USD"
+    }
+  ],
+  "imported_complete_bars": 654363,
+  "input_rows": 833913,
+  "instruments": 21,
+  "matches_raw_rebuild_market_fields": true,
+  "partial_rows_dropped": 179550,
+  "quote_provenance": "old aggregate has no observed quotes; imported values remain NULL and use configured spread at execution",
+  "source": "legacy/moneta/data/ohlcv_1h/ohlcv_1h.parquet",
+  "status": "passed"
+}

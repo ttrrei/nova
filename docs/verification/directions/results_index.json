@@ -1,0 +1,265 @@
+{
+  "quote_fill_samples_checked": 137,
+  "results": [
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/0c412ca08cc6db487206",
+      "family": "failed_breakout",
+      "hypothesis": "An intrabar sweep beyond the prior 24 observed bars followed by a close back inside may revert toward the rolling range midpoint.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "UK100_GBP"
+      ],
+      "positive_score_instruments": [
+        "UK100_GBP"
+      ],
+      "run_id": "0c412ca08cc6db487206",
+      "strategy": "strategies/directions/failed_breakout.yaml",
+      "trades": 30587
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/ad43e5dc5dc6508e56f2",
+      "family": "market_structure",
+      "hypothesis": "A prior-24-bar range break followed by two closes in the directional outer quarter of the rolling range may confirm continuation without future-confirmed pivots.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "DE30_EUR",
+        "SPX500_USD",
+        "US30_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "SPX500_USD",
+        "US30_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "run_id": "ad43e5dc5dc6508e56f2",
+      "strategy": "strategies/directions/market_structure.yaml",
+      "trades": 17385
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/7ec82bd9f73a2cf243df",
+      "family": "mean_reversion",
+      "hypothesis": "A close more than two simple-ATR units from its 24-bar mean may revert toward that mean.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [],
+      "positive_score_instruments": [],
+      "run_id": "7ec82bd9f73a2cf243df",
+      "strategy": "strategies/directions/mean_reversion.yaml",
+      "trades": 34182
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/c5685f7ff9a4c471d3cb",
+      "family": "momentum_exhaustion",
+      "hypothesis": "A confirmed RSI retreat from a recent extreme, accompanied by an opposing six-bar price change, may mark momentum exhaustion.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [],
+      "positive_score_instruments": [
+        "AUD_USD",
+        "CN50_USD",
+        "DE30_EUR",
+        "HK33_HKD",
+        "JP225_USD",
+        "NAS100_USD",
+        "NZD_USD",
+        "SPX500_USD",
+        "UK100_GBP"
+      ],
+      "run_id": "c5685f7ff9a4c471d3cb",
+      "strategy": "strategies/directions/momentum_exhaustion.yaml",
+      "trades": 2804
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/ecfa531422962229650e",
+      "family": "pullback_reentry",
+      "hypothesis": "RSI recovery after a recent pullback may identify renewed continuation within an established EMA trend.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "DE30_EUR",
+        "NAS100_USD",
+        "USD_JPY"
+      ],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "JP225_USD",
+        "NAS100_USD",
+        "USD_JPY"
+      ],
+      "run_id": "ecfa531422962229650e",
+      "strategy": "strategies/directions/pullback_reentry.yaml",
+      "trades": 14329
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/40f6b127940afaa030a5",
+      "family": "range_trading",
+      "hypothesis": "In a low-efficiency path, closes inside the outer 15 percent of the prior 24-bar range may revert toward its moving midpoint.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [],
+      "positive_score_instruments": [],
+      "run_id": "40f6b127940afaa030a5",
+      "strategy": "strategies/directions/range_trading.yaml",
+      "trades": 23766
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/510d7c60f0db5d2ea62c",
+      "family": "regime_transition",
+      "hypothesis": "A transition from low to high 24-bar path efficiency may initiate a directional move aligned with EMA and recent price change.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "GBP_USD",
+        "NAS100_USD",
+        "US30_USD",
+        "USD_CAD",
+        "USD_JPY",
+        "WTICO_USD",
+        "XAG_USD",
+        "XAU_USD"
+      ],
+      "run_id": "510d7c60f0db5d2ea62c",
+      "strategy": "strategies/directions/regime_transition.yaml",
+      "trades": 3400
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/13f72f2f26953e2a3059",
+      "family": "relative_strength",
+      "hypothesis": "Within-instrument strength of a six-bar price change above one Wilder ATR14, with two closes in the directional outer range quarter, may persist; this is normalized time-series strength, not cross-asset ranking.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "DE30_EUR",
+        "NAS100_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "NAS100_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "run_id": "13f72f2f26953e2a3059",
+      "strategy": "strategies/directions/relative_strength.yaml",
+      "trades": 39206
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/afdc58217070bb8b1b81",
+      "family": "session_temporal",
+      "hypothesis": "Trend-aligned RSI momentum confirmed during a fixed 13-through-16 UTC bar-open window may produce short-horizon continuation; the same UTC rule applies to every instrument.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "DE30_EUR",
+        "NAS100_USD"
+      ],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "NAS100_USD"
+      ],
+      "run_id": "afdc58217070bb8b1b81",
+      "strategy": "strategies/directions/session_temporal.yaml",
+      "trades": 33606
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/b35be95db0680fccd045",
+      "family": "trend_continuation",
+      "hypothesis": "A PSAR flip confirmed for three observed bars may continue when Supertrend agrees.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "DE30_EUR",
+        "HK33_HKD",
+        "JP225_USD",
+        "NAS100_USD",
+        "SPX500_USD",
+        "US30_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "positive_score_instruments": [
+        "DE30_EUR",
+        "HK33_HKD",
+        "JP225_USD",
+        "NAS100_USD",
+        "SPX500_USD",
+        "US30_USD",
+        "USD_JPY",
+        "XAU_USD"
+      ],
+      "run_id": "b35be95db0680fccd045",
+      "strategy": "strategies/directions/trend_continuation.yaml",
+      "trades": 25604
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/690e1949abf36bb5468d",
+      "family": "volatility_expansion",
+      "hypothesis": "A close beyond the prior 24 observed bars during a range expansion above 1.5 Wilder ATR14 may precede continuation.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "BCO_USD",
+        "BTC_USD",
+        "NAS100_USD",
+        "USD_JPY",
+        "WTICO_USD",
+        "XAG_USD",
+        "XAU_USD"
+      ],
+      "positive_score_instruments": [
+        "BCO_USD",
+        "BTC_USD",
+        "NAS100_USD",
+        "USD_JPY",
+        "WTICO_USD",
+        "XAG_USD",
+        "XAU_USD"
+      ],
+      "run_id": "690e1949abf36bb5468d",
+      "strategy": "strategies/directions/volatility_expansion.yaml",
+      "trades": 15020
+    },
+    {
+      "directory": "/home/ubuntu/work/nova/runs/directions/b836af8c35ce6b697c2b",
+      "family": "volume_activity",
+      "hypothesis": "A prior-24-bar closing breakout accompanied by quote activity above 1.5 times its prior-24-bar mean may precede continuation; activity is a volume proxy.",
+      "instruments": 21,
+      "no_trade_instruments": [],
+      "passing_instruments": [
+        "BCO_USD",
+        "DE30_EUR",
+        "NAS100_USD",
+        "USD_JPY",
+        "WTICO_USD",
+        "XAU_USD"
+      ],
+      "positive_score_instruments": [
+        "BCO_USD",
+        "BTC_USD",
+        "DE30_EUR",
+        "JP225_USD",
+        "NAS100_USD",
+        "USD_CHF",
+        "USD_JPY",
+        "WTICO_USD",
+        "XAU_USD"
+      ],
+      "run_id": "b836af8c35ce6b697c2b",
+      "strategy": "strategies/directions/volume_activity.yaml",
+      "trades": 12859
+    }
+  ],
+  "selection": "One fixed hypothesis per family; no tuning after observing results",
+  "status": "passed",
+  "timeframe_minutes": 60,
+  "trades_checked": 252748
+}

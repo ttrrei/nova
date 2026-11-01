@@ -1,0 +1,62 @@
+--- legacy/library/supertrend.py
++++ src/nova/indicators.py
+@@ -1,4 +1,6 @@
+-"""Supertrend indicator — causal, path-dependent, no TA-Lib available.
++"""Supertrend — adapted from Moneta v1 library/supertrend.py (Apache-2.0).
++
++Causal, path-dependent, no TA-Lib implementation available.
+ 
+ TA-Lib ships no Supertrend, so this is the project's own implementation.
+ It follows the canonical construction (as used by TradingView and
+@@ -16,16 +18,13 @@
+ 
+ Causality: bar ``T`` uses only bars ``<= T`` (the recursion reads the
+ previous close, which is closed by then). The recursion is
+-**path-dependent** — starting later gives a different state — so the
+-pipeline drops the leading warm-up rows (``WARMUP_DROP``) before any feature
+-is used. **Note: dropping ``WARMUP_DROP`` rows reduces but does *not*
+-eliminate the start-point dependence** — a fixed-length warmup is not proof
+-the state has converged; see ``docs/indicators.md`` §8 Gate 2
+-(start-independence) for the reason.
++**path-dependent** — starting later can give a different state. Nova always
++computes from the snapshot's source head, retains NULL warm-up outputs and
++does not claim that a fixed number of bars guarantees state convergence.
+ 
+ Parameters
+ ----------
+-h, l, c : 1-D float64 arrays (high / low / close).
++h, low, c : 1-D float64 arrays (high / low / close).
+ atr     : 1-D float64 ATR series (any window ``n``); NaN where undefined.
+ mult    : ATR multiplier ``k`` — a **free** parameter (not grid-restricted),
+           must be passed explicitly, ``> 0``.
+@@ -44,14 +43,14 @@
+ 
+ 
+ def supertrend(
+-    h: np.ndarray, l: np.ndarray, c: np.ndarray, atr: np.ndarray, mult: float = 3.0
++    h: np.ndarray, low: np.ndarray, c: np.ndarray, atr: np.ndarray, mult: float = 3.0
+ ) -> tuple[np.ndarray, np.ndarray]:
+     """Supertrend line and direction (+1 uptrend / -1 downtrend), causal.
+ 
+     Bar T uses only bars <= T: bands are ratcheted against the previous bar's
+     close, and the direction flips when bar T's close crosses the active band.
+-    Bars before ``atr`` is defined are NaN. The recursion is path-dependent,
+-    so the leading warm-up rows are dropped by the caller.
++    Bars before ``atr`` is defined are NaN. The recursion is path-dependent;
++    the caller retains full source history and the unknown warm-up outputs.
+     """
+     n = len(c)
+     line = np.full(n, np.nan)
+@@ -59,10 +58,10 @@
+     if not mult > 0:
+         raise ValueError(f"Supertrend multiplier must be > 0, got {mult}")
+ 
+-    hl2 = (h + l) / 2.0
++    hl2 = (h + low) / 2.0
+     ub = hl2 + mult * atr
+     lb = hl2 - mult * atr
+-    fu = fl = np.nan          # final upper / lower band (the ratcheted ones)
++    fu = fl = np.nan  # final upper / lower band (the ratcheted ones)
+     d = 1.0
+     started = False
+     for t in range(n):

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=84"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nova-research"
+version = "0.2.1"
+description = "Causal YAML, DuckDB and Parquet trade discovery"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.12"
+dependencies = ["duckdb>=1.5,<1.6", "pyarrow>=23,<27", "numpy>=2.2,<3", "pandas>=2.2,<4", "TA-Lib>=0.6,<0.9", "PyYAML>=6,<7", "pytz>=2025"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.14,<1"]
+
+[project.scripts]
+nova = "nova.cli:main"
+nova-doctor = "nova.doctor:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

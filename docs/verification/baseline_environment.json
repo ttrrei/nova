@@ -1,0 +1,35 @@
+{
+  "engine_source_hash": "dbd61757e571ceb5931a6b0798e34dbf466d5dfc233a6b561fe93d1007e98705",
+  "feature_parameters": {
+    "atr": 14,
+    "ema": [
+      6,
+      24,
+      60
+    ],
+    "psar": {
+      "acceleration": 0.02,
+      "maximum": 0.2
+    },
+    "rsi": 14,
+    "sma": [
+      6,
+      24
+    ],
+    "supertrend": {
+      "atr": 14,
+      "multiplier": 3.0
+    }
+  },
+  "feature_version": "nova-features-v1",
+  "registered_features": 28,
+  "runtime": {
+    "PyYAML": "6.0.3",
+    "TA-Lib": "0.8.2",
+    "duckdb": "1.5.6",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0",
+    "python": "3.12.3"
+  }
+}

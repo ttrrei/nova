@@ -1,0 +1,26 @@
+{
+  "files": [
+    "src/nova/__init__.py",
+    "src/nova/__main__.py",
+    "src/nova/audit.py",
+    "src/nova/catalog.py",
+    "src/nova/cli.py",
+    "src/nova/common.py",
+    "src/nova/compiler.py",
+    "src/nova/config.py",
+    "src/nova/data.py",
+    "src/nova/features.py",
+    "src/nova/indicators.py",
+    "src/nova/metrics.py",
+    "src/nova/runner.py",
+    "src/nova/store.py",
+    "src/nova/trades.py"
+  ],
+  "isolated_import_checked": true,
+  "legacy_runtime_imports": false,
+  "packaged_source_matches_workspace": true,
+  "wheel": "nova_research-0.2.0-py3-none-any.whl",
+  "wheel_built": true,
+  "wheel_path": "dist/nova_research-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "64cde5999f262d12c0882d2011b64226b421cb902eb45b1ad5005add8899b3c6"
+}

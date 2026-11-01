@@ -1,0 +1,647 @@
+{
+  "aggregate_quote_samples_checked": 126,
+  "instruments": 21,
+  "off_grid_minutes": 0,
+  "one_minute_rows": 48588451,
+  "samples": [
+    {
+      "bar_open_time": "2020-01-01 22:20:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-08-03 21:40:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-26 15:55:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-06-19 22:10:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-03-22 07:15:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:40:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 00:15:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-18 02:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 19:55:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 05:05:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-07-04 22:55:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 22:45:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-06-20 13:50:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 22:40:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-07-13 06:25:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 01:15:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-31 07:15:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 18:55:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-08-23 02:00:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-06-08 11:15:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 22:30:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-07-24 13:55:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-17 19:20:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-07-11 16:45:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 19:55:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-30 16:40:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:50:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:55:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-07-11 14:55:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 01:25:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-10-24 07:25:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 22:10:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-06-19 22:25:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-05-12 06:15:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-08-18 08:10:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2023-06-09 10:00:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2026-10-23 20:55:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 5
+    },
+    {
+      "bar_open_time": "2020-01-02 15:00:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-11-10 18:00:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "AUD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 11:00:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-04-26 14:00:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "BCO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 02:00:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-06-22 11:00:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "BTC_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2022-12-14 06:00:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "CN50_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-05-15 18:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 06:00:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-07-19 00:00:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "ETH_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 09:00:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-07-17 05:00:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "EUR_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 05:00:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-09-26 15:00:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "GBP_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 02:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-05-31 12:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 18:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-03 02:00:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2024-02-20 04:00:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "JP225_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-08-03 09:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 06:00:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-10-18 09:00:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "NZD_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 15:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-05-04 22:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 06:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-10-11 07:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-01 23:00:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-06-28 07:00:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 19:00:00+00:00",
+      "instrument": "US30_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 13:00:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-09-25 10:00:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "USD_CAD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 14:00:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2024-02-13 06:00:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "USD_CHF",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 14:00:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-08-08 02:00:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "USD_JPY",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 08:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-04-12 15:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 13:00:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2024-02-02 08:00:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "XAG_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2020-01-02 01:00:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2023-07-21 03:00:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 60
+    },
+    {
+      "bar_open_time": "2026-10-23 20:00:00+00:00",
+      "instrument": "XAU_USD",
+      "minutes": 60
+    }
+  ],
+  "source_files": 172,
+  "source_quality": {
+    "conflicting_duplicate_keys": 0,
+    "duplicate_complete_rows_removed": 12367671,
+    "duplicate_policy": "complete first; observed bid/ask first; source filename then payload SHA256 ascending",
+    "incomplete_rows_dropped": 2576,
+    "input_rows": 60958698
+  },
+  "status": "passed"
+}

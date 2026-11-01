@@ -1,0 +1,12 @@
+{
+  "elapsed_seconds": 15.036,
+  "legacy_code_or_environment_required": false,
+  "nova_version": "0.2.1",
+  "source": "data/raw_csv",
+  "status": "passed",
+  "timeframes_minutes": [
+    1,
+    5,
+    60
+  ]
+}

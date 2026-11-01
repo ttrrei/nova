@@ -1,0 +1,82 @@
+{
+  "current_engine_hash": "9a1361da09a71dbaa7752be4e0fbfb8233d2805b2f5e903c27b49b1322bb34fe",
+  "runs": [
+    {
+      "byte_identical_artifacts": [
+        "trades.csv",
+        "signals.csv",
+        "summary.json",
+        "compiled.sql",
+        "feature_catalog.json",
+        "strategy.yaml",
+        "report.md"
+      ],
+      "current_run_id": "24b4d442e4f74830d805",
+      "minutes": 5,
+      "previous_run_id": "4faa80911ee770ae4768",
+      "strategy": "trend_hold_5m"
+    },
+    {
+      "byte_identical_artifacts": [
+        "trades.csv",
+        "signals.csv",
+        "summary.json",
+        "compiled.sql",
+        "feature_catalog.json",
+        "strategy.yaml",
+        "report.md"
+      ],
+      "current_run_id": "46777f5e674a09ea61a3",
+      "minutes": 60,
+      "previous_run_id": "f1ef5d06e2b97410434b",
+      "strategy": "ema_pullback"
+    },
+    {
+      "byte_identical_artifacts": [
+        "trades.csv",
+        "signals.csv",
+        "summary.json",
+        "compiled.sql",
+        "feature_catalog.json",
+        "strategy.yaml",
+        "report.md"
+      ],
+      "current_run_id": "60dfd5efa8f0b08157fb",
+      "minutes": 60,
+      "previous_run_id": "e99a260c6f0c4ccacac9",
+      "strategy": "trend_hold_demo"
+    },
+    {
+      "byte_identical_artifacts": [
+        "trades.csv",
+        "signals.csv",
+        "summary.json",
+        "compiled.sql",
+        "feature_catalog.json",
+        "strategy.yaml",
+        "report.md"
+      ],
+      "current_run_id": "b0905f905411e8b7fe22",
+      "minutes": 60,
+      "previous_run_id": "a5fff6dd05cc3133be8e",
+      "strategy": "mean_reversion_demo"
+    },
+    {
+      "byte_identical_artifacts": [
+        "trades.csv",
+        "signals.csv",
+        "summary.json",
+        "compiled.sql",
+        "feature_catalog.json",
+        "strategy.yaml",
+        "report.md"
+      ],
+      "current_run_id": "b5419de0b4c8b3f0c280",
+      "minutes": 60,
+      "previous_run_id": "3c4020b978fa9bb31d17",
+      "strategy": "psar_supertrend"
+    }
+  ],
+  "status": "passed",
+  "trades": 544631
+}

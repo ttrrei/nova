@@ -1,0 +1,10 @@
+{
+  "isolated_import_checked": true,
+  "legacy_runtime_imports": false,
+  "license_and_notice_bundled": true,
+  "packaged_source_matches_workspace": true,
+  "version": "0.2.1",
+  "wheel_built": true,
+  "wheel_path": "dist/nova_research-0.2.1-py3-none-any.whl",
+  "wheel_sha256": "5eba21e0b3e60d1fa93ac9ff1504f97392432235a685a32bc42237bc4b131f69"
+}

@@ -1,0 +1,82 @@
+{
+  "source_repository": "ttrrei/moneta",
+  "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564",
+  "license": "Apache-2.0",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "adapted_modules": [
+    {
+      "source": "library/supertrend.py",
+      "reference": "docs/provenance/reference/supertrend.py",
+      "git_blob_sha": "45727b5ebc3d960a12619efa463e4a5e29fd4f16",
+      "source_sha256": "f87db06cedfd65a8eb1891f98510067ab6ad8628e28cec1e4f2761efc50d4761",
+      "destination": "src/nova/indicators.py",
+      "adapted_sha256": "9f3a106f299ba6aa4608d92457a1382d99a8deb4045a5d59fc2ec3b9083196e2",
+      "patch": "docs/provenance/supertrend.patch",
+      "changes": [
+        "Apache-2.0 attribution",
+        "warm-up documentation updated for Nova",
+        "low argument renamed from l",
+        "formatting; numerical recursion unchanged"
+      ]
+    }
+  ],
+  "starter_adaptations": [
+    {
+      "source_archive": "background/moneta-next-starter-v0.1.zip",
+      "source_path": "src/moneta_next/compiler.py",
+      "sha256": "8e79f9ca16418438674cb22585473f6f36981730a48da679ad5aebb06581d773",
+      "nova_module": "src/nova/compiler.py",
+      "reuse": "adapted original v0.1 foundation; formatting, validation or streaming changes as documented in MIGRATION.md"
+    },
+    {
+      "source_archive": "background/moneta-next-starter-v0.1.zip",
+      "source_path": "src/moneta_next/config.py",
+      "sha256": "faf3917b8e13c6f98e28c2f7fe0c47370ed3ea8271301d2a4476c4ea5438697d",
+      "nova_module": "src/nova/config.py",
+      "reuse": "adapted original v0.1 foundation; formatting, validation or streaming changes as documented in MIGRATION.md"
+    },
+    {
+      "source_archive": "background/moneta-next-starter-v0.1.zip",
+      "source_path": "src/moneta_next/metrics.py",
+      "sha256": "ee1c52a28a1ac723c06ef148c679adfa689faf6f13a447fb8463f1e732e6ca8a",
+      "nova_module": "src/nova/metrics.py",
+      "reuse": "adapted original v0.1 foundation; formatting, validation or streaming changes as documented in MIGRATION.md"
+    },
+    {
+      "source_archive": "background/moneta-next-starter-v0.1.zip",
+      "source_path": "src/moneta_next/trades.py",
+      "sha256": "57509e220f997b42b040b65ebd7040212009ad00285c256403e2f2ec07ba882f",
+      "nova_module": "src/nova/trades.py",
+      "reuse": "adapted original v0.1 foundation; formatting, validation or streaming changes as documented in MIGRATION.md"
+    }
+  ],
+  "reference_review": {
+    "version": "v0.2",
+    "tests_executed": 69,
+    "skipped": 0,
+    "runtime_dependency": false
+  },
+  "research_reference_files": [
+    {
+      "source_path": "research/indicators/CATALOGUE-50-20261031/idea_progress.csv",
+      "reference": "docs/provenance/reference/research/idea_progress.csv",
+      "git_blob_sha": "7950b370c5937b3fee772c4f8fc997fce6f245d2",
+      "sha256": "4460573af2c97d288a071eef0af5f825e43601b8277bfe932ae7e28847422704",
+      "status": "historical_reported_evidence; not rerun or promoted by Nova"
+    },
+    {
+      "source_path": "docs/indicator_catalogue_results_20261031.md",
+      "reference": "docs/provenance/reference/research/indicator_catalogue_results_20261031.md",
+      "git_blob_sha": "2c76d6eaface67098b13c0e921d32456027e6afb",
+      "sha256": "ceb5eca26ce260c27d4a313cbfa24062b6c15b1c4319bea129724f5c75b7ef30",
+      "status": "historical_reported_evidence; not rerun or promoted by Nova"
+    },
+    {
+      "source_path": "strategy/docs/strategy_research_200_20261031_results.md",
+      "reference": "docs/provenance/reference/research/strategy_research_200_20261031_results.md",
+      "git_blob_sha": "c738121d341d4c242e6e754ea91378e462f1891f",
+      "sha256": "bab6f57a46aabcd181bb66fc0ccd9f84fec4b728b50c02405d63952cdad31472",
+      "status": "historical_reported_evidence; not rerun or promoted by Nova"
+    }
+  ]
+}

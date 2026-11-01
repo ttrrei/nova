@@ -1,0 +1,10 @@
+Nova incorporates and adapts code from ttrrei/moneta at commit
+67896d60bc6ecf73fc6aec42aee469a24cce3564, under Apache License 2.0.
+
+The Supertrend recursion in src/nova/indicators.py was adapted from
+library/supertrend.py. See docs/provenance/reuse.json for exact source
+hashes and changes. The full source license is preserved in LICENSE.
+
+Nova's YAML/compiler/trade-score foundation was adapted from the supplied
+Moneta Next v0.1 starter. The updated v0.2 background is a reviewed reference;
+it is not a runtime dependency. See docs/REFERENCE_REVIEW.md.

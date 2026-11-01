@@ -1,0 +1,57 @@
+[
+  {
+    "minutes": 60,
+    "passed": [
+      "DE30_EUR",
+      "HK33_HKD",
+      "JP225_USD",
+      "NAS100_USD",
+      "SPX500_USD",
+      "US30_USD",
+      "USD_JPY",
+      "XAU_USD"
+    ],
+    "run_id": "3c4020b978fa9bb31d17",
+    "strategy": "psar_supertrend",
+    "trades": 25604
+  },
+  {
+    "minutes": 5,
+    "passed": [],
+    "run_id": "4faa80911ee770ae4768",
+    "strategy": "trend_hold_5m",
+    "trades": 440385
+  },
+  {
+    "minutes": 60,
+    "passed": [],
+    "run_id": "a5fff6dd05cc3133be8e",
+    "strategy": "mean_reversion_demo",
+    "trades": 34182
+  },
+  {
+    "minutes": 60,
+    "passed": [
+      "BCO_USD",
+      "DE30_EUR",
+      "HK33_HKD",
+      "NAS100_USD",
+      "USD_JPY",
+      "XAU_USD"
+    ],
+    "run_id": "e99a260c6f0c4ccacac9",
+    "strategy": "trend_hold_demo",
+    "trades": 30131
+  },
+  {
+    "minutes": 60,
+    "passed": [
+      "DE30_EUR",
+      "NAS100_USD",
+      "USD_JPY"
+    ],
+    "run_id": "f1ef5d06e2b97410434b",
+    "strategy": "ema_pullback",
+    "trades": 14329
+  }
+]
