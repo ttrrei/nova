@@ -4,12 +4,12 @@ Recorded: 2026-11-03 (local time), commit `2e0ec22` (Stage 0).
 Read-only inventory: size and file count only. No file contents, and no
 file names from `background/`.
 
-> **Policy supersession (2026-11-03, later same day):** the user directive
-> "every folder stays visible in the code repository" supersedes this
-> folder-level ignore policy. The directory entries listed below are no
-> longer wholesale-ignored; only their heavy file contents remain excluded
-> by the root `.gitignore` file-type rules. This file remains as a
-> historical size/count record, not as the active policy.
+> **Policy update (2026-11-03, later same day):** `data/` and `runs/` are no
+> longer wholesale-ignored — their folders stay visible in the repository
+> with README.md placeholders, and only heavy file contents are excluded by
+> the root `.gitignore` file-type rules. `background/` and `legacy/` remain
+> fully excluded by user decision (local-only read-only reference material).
+> This file remains a historical size/count record.
 
 ## Ignored directories
 

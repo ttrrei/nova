@@ -1,10 +1,16 @@
 # Nova ignore policy
 #
-# Policy (user directive, 2026-11-03): every folder in the project must remain
-# visible in the code repository. No directory is ignored wholesale.
-# Files that must not be uploaded (large data, binary artifacts, build outputs,
-# caches) are excluded by file type, and each folder keeps at least one tracked
-# file (typically README.md) so its directory entry stays visible on GitHub.
+# - data/ and runs/: folders stay visible in the repository (directory entries
+#   kept with README.md placeholders); only heavy file contents are excluded
+#   by the file-type rules below.
+# - legacy/ and background/ (user decision 2026-11-03): kept OUT of the
+#   repository entirely. They exist locally so development can inherit
+#   information from the previous version (read-only reference material).
+# - Venvs are opaque: contents excluded, only the top-level README.md kept.
+
+# --- Read-only upstream reference material (stays local, not in the repo) ---
+legacy/
+background/
 
 # --- Regenerable Python / build / local-env artifacts ---
 __pycache__/
@@ -36,39 +42,19 @@ __pycache__/
 !*.yml
 !*.txt
 
-# --- Venvs are opaque: their subdirectories are ignored, then the venv's
-#     README.md placeholder is re-allowed so the folder stays visible. ---
+# --- Venvs: subdirectories ignored as a unit, root files ignored, then the
+#     venv's top-level README.md placeholder is re-allowed. ---
 .venv/bin/
-venv/pyvenv.cfg
-venv/CACHEDIR.TAG
-.venv/pyvenv.cfg
-.venv/CACHEDIR.TAG
 .venv/lib/
 .venv/include/
 .venv/share/
+.venv/pyvenv.cfg
+.venv/CACHEDIR.TAG
 venv/bin/
-venv/pyvenv.cfg
-venv/CACHEDIR.TAG
 venv/lib/
 venv/include/
 venv/share/
-legacy/moneta/.venv/bin/
-legacy/moneta/.venv/pyvenv.cfg
-legacy/moneta/.venv/CACHEDIR.TAG
 venv/pyvenv.cfg
 venv/CACHEDIR.TAG
-.venv/pyvenv.cfg
-.venv/CACHEDIR.TAG
-legacy/moneta/.venv/lib/
-legacy/moneta/.venv/include/
-legacy/moneta/venv/bin/
-legacy/moneta/venv/pyvenv.cfg
-legacy/moneta/venv/CACHEDIR.TAG
-venv/pyvenv.cfg
-venv/CACHEDIR.TAG
-legacy/moneta/venv/lib/
-legacy/moneta/venv/include/
 !/.venv/README.md
 !/venv/README.md
-!/legacy/moneta/.venv/README.md
-!/legacy/moneta/venv/README.md
