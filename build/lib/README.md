@@ -1,3 +1,3 @@
-# build/lib
+# build/lib/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy contents are excluded by the root `.gitignore` file-type policy.
+Regenerable build tree (`pip install -e .` copies sources here). Contents are regenerated on install; only the placeholder READMEs are tracked to keep the folder visible.

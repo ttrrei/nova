@@ -1,3 +1,3 @@
-# data/import-check/raw_parquet
+# data/import-check/raw_parquet/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Native Parquet input(s) of the independent import-check store (e.g. `ohlcv_1h.parquet`). Excluded from the repository by the `*.parquet` rule; the folder stays visible.

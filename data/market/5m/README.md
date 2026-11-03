@@ -1,3 +1,6 @@
-# data/market/5m
+# data/market/5m/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Five-minute market snapshot(s). Each child directory is one immutable snapshot
+(per-instrument Parquet — excluded by type — plus a tracked
+`manifest.json`). Built by `nova aggregate --minutes 5`. See
+`data/market/README.md` for bucket and manifest rules.

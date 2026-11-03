@@ -1,3 +1,3 @@
-# data/import-check/tmp
+# data/import-check/tmp/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Ephemeral scratch for the import-check store (DuckDB spill space). Empty in the repository view.

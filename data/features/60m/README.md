@@ -1,3 +1,7 @@
-# data/features/60m
+# data/features/60m/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Hourly feature snapshots (one child directory per snapshot: per-instrument
+`*_core` / `*_trend` / `*_momentum` Parquet — excluded by type — plus the
+tracked `manifest.json`). This is the timeframe the twelve direction
+hypotheses and the research campaign run on. See
+`data/features/README.md` for the domain layout and identity rules.

@@ -1,3 +1,3 @@
-# build/lib/nova
+# build/lib/nova/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy contents are excluded by the root `.gitignore` file-type policy.
+Copy of `src/nova/` made by the editable install's build step. Regenerable; edit sources in `src/nova/` instead.

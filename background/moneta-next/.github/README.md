@@ -1,3 +1,3 @@
-# background/moneta-next/.github
+# background/moneta-next/.github/
 
-Folder placeholder to keep this directory visible in the code repository; see `background/moneta-next/START_HERE.md` for the working rules.
+CI workflow of the Moneta Next v0.2 workstream (`workflows/checks.yml`). Read-only reference; not executed by Nova.

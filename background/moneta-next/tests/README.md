@@ -1,3 +1,3 @@
-# background/moneta-next/tests
+# background/moneta-next/tests/
 
-Folder placeholder to keep this directory visible in the code repository; see `background/moneta-next/START_HERE.md` for the working rules.
+Reference test suite of the Moneta Next v0.2 workstream. Read-only historical material; do not modify.

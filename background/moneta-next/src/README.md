@@ -1,3 +1,3 @@
-# background/moneta-next/src
+# background/moneta-next/src/
 
-Folder placeholder to keep this directory visible in the code repository; see `background/moneta-next/START_HERE.md` for the working rules.
+Reference source of the Moneta Next v0.2 package (`moneta_next/`): the legacy engine and vendored OANDA client that Nova's rebuild was designed against. Read-only; Nova's runtime must not import from it.

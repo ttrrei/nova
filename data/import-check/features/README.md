@@ -1,3 +1,3 @@
-# data/import-check/features
+# data/import-check/features/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Feature snapshots of the independent import-check store (see `data/import-check/README.md`). Parquet excluded by type; `manifest.json` tracked.

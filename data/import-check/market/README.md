@@ -1,3 +1,3 @@
-# data/import-check/market
+# data/import-check/market/
 
-Folder placeholder to keep this directory visible in the code repository. Heavy file contents are excluded by the root `.gitignore` file-type policy; see the top-level `README.md` for the full explanation.
+Market snapshots of the independent import-check store (see `data/import-check/README.md`). Parquet excluded by type; `manifest.json` tracked.
