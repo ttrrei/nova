@@ -1,0 +1,16 @@
+WITH s0 AS (SELECT * FROM features),
+s1 AS (SELECT *, (ema_alignment_6_24 = 1.0) AS _condition_0 FROM s0),
+s2 AS (SELECT *, (rsi_14 < 48.0) AS _condition_1 FROM s1),
+s3 AS (SELECT *, CASE WHEN count(_condition_1) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) = 12 THEN bool_or(_condition_1) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) END AS _condition_2 FROM s2),
+s4 AS (SELECT *, (rsi_14 > 50.0) AS _condition_3 FROM s3),
+s5 AS (SELECT *, CASE WHEN count(_condition_3) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 0 PRECEDING AND CURRENT ROW) = 1 THEN bool_and(_condition_3) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 0 PRECEDING AND CURRENT ROW) END AS _condition_4 FROM s4),
+s6 AS (SELECT *, (_condition_0 AND _condition_2 AND _condition_4) AS _condition_5 FROM s5),
+s7 AS (SELECT *, (ema_alignment_6_24 = -1.0) AS _condition_6 FROM s6),
+s8 AS (SELECT *, (rsi_14 > 52.0) AS _condition_7 FROM s7),
+s9 AS (SELECT *, CASE WHEN count(_condition_7) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) = 12 THEN bool_or(_condition_7) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 11 PRECEDING AND CURRENT ROW) END AS _condition_8 FROM s8),
+s10 AS (SELECT *, (rsi_14 < 50.0) AS _condition_9 FROM s9),
+s11 AS (SELECT *, CASE WHEN count(_condition_9) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 0 PRECEDING AND CURRENT ROW) = 1 THEN bool_and(_condition_9) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 0 PRECEDING AND CURRENT ROW) END AS _condition_10 FROM s10),
+s12 AS (SELECT *, (_condition_6 AND _condition_8 AND _condition_10) AS _condition_11 FROM s11),
+s13 AS (SELECT *, (ema_alignment_6_24 = -1.0) AS _condition_12 FROM s12),
+s14 AS (SELECT *, (ema_alignment_6_24 = 1.0) AS _condition_13 FROM s13)
+SELECT instrument, bar_open_time, bar_close_time, coalesce(_condition_5, FALSE) AS entry_long, coalesce(_condition_11, FALSE) AS entry_short, coalesce(_condition_12, FALSE) AS exit_long, coalesce(_condition_13, FALSE) AS exit_short FROM s14 ORDER BY instrument, bar_open_time

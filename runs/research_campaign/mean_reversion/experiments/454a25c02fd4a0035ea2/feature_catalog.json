@@ -1,0 +1,289 @@
+{
+  "atr_14": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 15
+  },
+  "atr_sma_14": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 14
+  },
+  "breakout_down_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "breakout_up_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "close": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 1
+  },
+  "close_ema60_distance_atr": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 60
+  },
+  "close_sma24_distance_atr": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "atr_sma_14",
+    "warmup_bars": 24
+  },
+  "efficiency_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "0_to_1",
+    "warmup_bars": 25
+  },
+  "ema_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 24
+  },
+  "ema_6": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 6
+  },
+  "ema_60": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 60
+  },
+  "ema_alignment_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "sign",
+    "warmup_bars": 24
+  },
+  "ema_cross_down_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "ema_cross_up_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "failed_breakout_down_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "failed_breakout_up_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "prior_high_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 25
+  },
+  "prior_low_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 25
+  },
+  "psar": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 2
+  },
+  "psar_direction": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "sign",
+    "warmup_bars": 2
+  },
+  "psar_distance_atr": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 15
+  },
+  "psar_flip_down": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 3
+  },
+  "psar_flip_up": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 3
+  },
+  "range_atr": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 15
+  },
+  "range_position_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "prior_range_fraction",
+    "warmup_bars": 25
+  },
+  "range_width_atr_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 25
+  },
+  "relative_volume_24": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "prior_activity_ratio",
+    "warmup_bars": 25
+  },
+  "return_6_atr": {
+    "available_at": "bar_close_time",
+    "domain": "momentum",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 15
+  },
+  "rsi_14": {
+    "available_at": "bar_close_time",
+    "domain": "momentum",
+    "type": "VALUE",
+    "unit": "0_to_100",
+    "warmup_bars": 15
+  },
+  "sma_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 24
+  },
+  "sma_6": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 6
+  },
+  "sma_alignment_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "sign",
+    "warmup_bars": 24
+  },
+  "sma_cross_down_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "sma_cross_up_6_24": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25
+  },
+  "supertrend": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 15
+  },
+  "supertrend_direction": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "STATE",
+    "unit": "sign",
+    "warmup_bars": 15
+  },
+  "supertrend_distance_atr": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "VALUE",
+    "unit": "atr_14",
+    "warmup_bars": 15
+  },
+  "supertrend_flip_down": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 16
+  },
+  "supertrend_flip_up": {
+    "available_at": "bar_close_time",
+    "domain": "trend",
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 16
+  },
+  "utc_hour": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "UTC_hour",
+    "warmup_bars": 1
+  },
+  "volume": {
+    "available_at": "bar_close_time",
+    "domain": "core",
+    "type": "VALUE",
+    "unit": "source_activity",
+    "warmup_bars": 1
+  }
+}

@@ -1,0 +1,26 @@
+version: 1
+id: legacy_ema_pullback
+family: pullback_reentry
+timeframe_minutes: 60
+entry:
+  long:
+    all:
+      - {feature: ema_spread_6_24, op: gt, value: 0}
+      - {feature: ema_dist_24, op: lt, value: 0.2}
+      - within:
+          bars: 3
+          condition: {feature: rsi_6, op: lt, value: 35}
+  short:
+    all:
+      - {feature: ema_spread_6_24, op: lt, value: 0}
+      - {feature: ema_dist_24, op: gt, value: -0.2}
+      - within:
+          bars: 3
+          condition: {feature: rsi_6, op: gt, value: 65}
+exit:
+  stop_loss_pct: 0.02
+  max_holding_bars: 24
+  long: {feature: ema_spread_6_24, op: lt, value: 0}
+  short: {feature: ema_spread_6_24, op: gt, value: 0}
+execution:
+  spread_bps: 2

@@ -1,0 +1,1241 @@
+{
+  "created_at": "2026-10-31T20:52:43.261277+00:00",
+  "data_version": "nova-market-v1",
+  "files": [
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/AUD_USD.parquet",
+      "quoted_bars": 2461037,
+      "rows": 2461037,
+      "sha256": "a6019199ff8c5b2a2cc40d6966f29644500242786be89dc1154912ef67507321",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/BCO_USD.parquet",
+      "quoted_bars": 2235453,
+      "rows": 2235453,
+      "sha256": "44fa0975a0be4b21fb34f182e4e1766d373ed7dfd2d3c4cd17aa9da137c15a12",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/BTC_USD.parquet",
+      "quoted_bars": 2500778,
+      "rows": 2500778,
+      "sha256": "c16ba256224f5d2cd242d484b1de9c7bb8c75643e4871e31eea380a7d42dfba4",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:45:00+00:00",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/CN50_USD.parquet",
+      "quoted_bars": 1941826,
+      "rows": 1941826,
+      "sha256": "eb7090babc13d8adbae477aa315dd430085ab32847f7c68b100918edf791e940",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/DE30_EUR.parquet",
+      "quoted_bars": 2066290,
+      "rows": 2066290,
+      "sha256": "6dac67256318659cbf5ee92b77089c500b0cacfb06155a90e660c73294502d6e",
+      "start": "2020-01-02T00:15:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/ETH_USD.parquet",
+      "quoted_bars": 2470684,
+      "rows": 2470684,
+      "sha256": "d6b765b09d2f3c1be4a01a000f04257f6c48994833cb042c523dcd1f94ae3cac",
+      "start": "2020-01-02T05:01:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/EUR_USD.parquet",
+      "quoted_bars": 2505386,
+      "rows": 2505386,
+      "sha256": "a6b2d6fae11f945a5eb2e6239bd5800c1f9c28d3f333343ff41fa62afdf39676",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/GBP_USD.parquet",
+      "quoted_bars": 2492201,
+      "rows": 2492201,
+      "sha256": "92dce8ef6922b53bbdb129fd131d1f26ae24b75967babf2b05b163fd6c1e1c2c",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T19:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/HK33_HKD.parquet",
+      "quoted_bars": 1588892,
+      "rows": 1588892,
+      "sha256": "06c3b4b3db814a33dc39556e2fddc324793e3748479685962b20ccb59e3d997d",
+      "start": "2020-01-02T01:15:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/JP225_USD.parquet",
+      "quoted_bars": 2293844,
+      "rows": 2293844,
+      "sha256": "f17c942696d27be7e2698e06e1d3c56b172dd7547a8092bfbf925ef9f94108fe",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/NAS100_USD.parquet",
+      "quoted_bars": 2387700,
+      "rows": 2387700,
+      "sha256": "a6777a5bedd3c42615005df58c0bb512b6c8d1ed1c86ef99445817005c966518",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/NZD_USD.parquet",
+      "quoted_bars": 2466272,
+      "rows": 2466272,
+      "sha256": "1e647ae0e43685187261fa497e351dbb9f0a28085f9242921efa250b01c75a24",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/SPX500_USD.parquet",
+      "quoted_bars": 2331264,
+      "rows": 2331264,
+      "sha256": "1b4fce283208b18d102a801c2247a8dd2d7714e2f60c6003fc13793c763fc3e5",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/UK100_GBP.parquet",
+      "quoted_bars": 1980872,
+      "rows": 1980872,
+      "sha256": "a0a80ce1d8e77848070e22b14b10fe6c249e9130d135df5d7f22a16fea60f67e",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:59:00+00:00",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/US30_USD.parquet",
+      "quoted_bars": 2375495,
+      "rows": 2375495,
+      "sha256": "48f85f576fbaa3ecafa9f60f416621ad7b3f8eeae9ef2d38a4513cd2b5ae556d",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/USD_CAD.parquet",
+      "quoted_bars": 2489238,
+      "rows": 2489238,
+      "sha256": "6d549e01361af15d4f08119aa2576e223133f058b3db681dd7e92bb2dcac6e4c",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/USD_CHF.parquet",
+      "quoted_bars": 2380423,
+      "rows": 2380423,
+      "sha256": "62100259e0d552c330a3d3d795629127d51472dc9fccfc30385233de7dd7fe6b",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/USD_JPY.parquet",
+      "quoted_bars": 2507748,
+      "rows": 2507748,
+      "sha256": "a2d3d28e3f63cd542530ffd8899dfce66cc56d8cc14f7cb025066330bc4f21bd",
+      "start": "2020-01-01T22:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/WTICO_USD.parquet",
+      "quoted_bars": 2360654,
+      "rows": 2360654,
+      "sha256": "d7843eaf413cbaf3f0c5bbbfd3738201e66fb40ca83929a050b1f8cebb6a0700",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/XAG_USD.parquet",
+      "quoted_bars": 2347255,
+      "rows": 2347255,
+      "sha256": "cdc04e0db148b3666af975c58c5e67813ed1d0aed2d1cc6bf7d4db379b7c4808",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/market/1m/041914943d0ac7eb/XAU_USD.parquet",
+      "quoted_bars": 2405139,
+      "rows": 2405139,
+      "sha256": "08b4ce675ec6e5820aac778d808b47fab5249555d27974249fbca6c1d742a545",
+      "start": "2020-01-01T23:00:00+00:00"
+    }
+  ],
+  "kind": "market",
+  "quality": {
+    "conflicting_duplicate_keys": 0,
+    "duplicate_complete_rows_removed": 12367671,
+    "duplicate_policy": "complete first; observed bid/ask first; source filename then payload SHA256 ascending",
+    "incomplete_rows_dropped": 2576,
+    "input_rows": 60958698
+  },
+  "raw_files": [
+    {
+      "bytes": 472108145,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/AUD_USD.csv",
+      "relative_path": "AUD_USD.csv",
+      "sha256": "8023df0edbdd63202f3160d21b4a36faf9f52255b5bd29a6ecdad017234222d9"
+    },
+    {
+      "bytes": 459008713,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/BCO_USD.csv",
+      "relative_path": "BCO_USD.csv",
+      "sha256": "15e608d7b35ef91dda182f4c6f8f776f3e7dcb7d89c9b8869ceddbd6c51c722e"
+    },
+    {
+      "bytes": 602111419,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/BTC_USD.csv",
+      "relative_path": "BTC_USD.csv",
+      "sha256": "b9ab56a2f01e54f6619b6d8116bafdb3c2481d4fa41d849c8c486ba4d4976253"
+    },
+    {
+      "bytes": 467799290,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/CN50_USD.csv",
+      "relative_path": "CN50_USD.csv",
+      "sha256": "566cfeb31e9e81d2a1002c08bedea2261bc2356e53b7a8ec4b583321c9b20ca1"
+    },
+    {
+      "bytes": 498018454,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/DE30_EUR.csv",
+      "relative_path": "DE30_EUR.csv",
+      "sha256": "c464b4c508882121a0d16b9c5960ea154fa7f701caaa892441d51f8ae7e08632"
+    },
+    {
+      "bytes": 560605375,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/ETH_USD.csv",
+      "relative_path": "ETH_USD.csv",
+      "sha256": "6bbfd383455d7c398db419c00a47b7ea611a98560c3fd9f94d535f9aef99985d"
+    },
+    {
+      "bytes": 481551081,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/EUR_USD.csv",
+      "relative_path": "EUR_USD.csv",
+      "sha256": "0d21206f4b0a41e1333f05211b3cad8b274d3917217ea97e51e09b78e3f15a1e"
+    },
+    {
+      "bytes": 479166408,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/GBP_USD.csv",
+      "relative_path": "GBP_USD.csv",
+      "sha256": "4c9086144cdeacae73ef8f3b61e50f19134e0c1b47c0cd5dfb857ab09cea1693"
+    },
+    {
+      "bytes": 383741476,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/HK33_HKD.csv",
+      "relative_path": "HK33_HKD.csv",
+      "sha256": "7a1e6840a7420e93eb742dce5ae2b8bc58dae1d7e3575ef267987b3d7da1d850"
+    },
+    {
+      "bytes": 554641008,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/JP225_USD.csv",
+      "relative_path": "JP225_USD.csv",
+      "sha256": "25a35f76392f8c021c98d9885ff8bbcd6364ff467323d5f2e5e8a73d15e7b926"
+    },
+    {
+      "bytes": 579531113,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/NAS100_USD.csv",
+      "relative_path": "NAS100_USD.csv",
+      "sha256": "1eabc749527c06562f6c13a0be38728b3fc11d046de55c1605bd13c234cfd7d7"
+    },
+    {
+      "bytes": 473266197,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/NZD_USD.csv",
+      "relative_path": "NZD_USD.csv",
+      "sha256": "d758baece28d8b6490d213c8f892c6ed5f0eface5db10922e3c97aba4085effd"
+    },
+    {
+      "bytes": 468224492,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/OUTPUT_BASE.csv",
+      "relative_path": "OUTPUT_BASE.csv",
+      "sha256": "efa52d6d54ea86038cc9ece35902949fe637941fb9f680ca5f56ea4dd20e030c"
+    },
+    {
+      "bytes": 538442815,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/SPX500_USD.csv",
+      "relative_path": "SPX500_USD.csv",
+      "sha256": "9e6ce71054a2469104224a5d2a458c5521347ab21f2f3b69d0d6bdfd98ff5244"
+    },
+    {
+      "bytes": 457835378,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/UK100_GBP.csv",
+      "relative_path": "UK100_GBP.csv",
+      "sha256": "2015dc030a567828b3e58726496f12ba279450414a21733b5e4682939303abf3"
+    },
+    {
+      "bytes": 572705494,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/US30_USD.csv",
+      "relative_path": "US30_USD.csv",
+      "sha256": "fb6b12162b401c927f98b06f396f3a8d25bc69b28cf35fad0528a4877dc980e0"
+    },
+    {
+      "bytes": 478089111,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/USD_CAD.csv",
+      "relative_path": "USD_CAD.csv",
+      "sha256": "ff611fee449d49d8d4c44971e615c57188ec7bf0151d99fdb0509f68c99619bc"
+    },
+    {
+      "bytes": 456578735,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/USD_CHF.csv",
+      "relative_path": "USD_CHF.csv",
+      "sha256": "c26b4bb1731f7d629166005523d5ac8f3d260b98c837b4d82f2a8f76e7f596e4"
+    },
+    {
+      "bytes": 542606697,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/USD_JPY.csv",
+      "relative_path": "USD_JPY.csv",
+      "sha256": "83159bee1c966122a834e2ae3eecea61d4d6d1468bebccaa9a6c5578bf079434"
+    },
+    {
+      "bytes": 488415884,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/WTICO_USD.csv",
+      "relative_path": "WTICO_USD.csv",
+      "sha256": "e7482e1e27ec91097df5fbee17ebf775bfaf75400736892dd54caecc6d0e3093"
+    },
+    {
+      "bytes": 478808482,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/XAG_USD.csv",
+      "relative_path": "XAG_USD.csv",
+      "sha256": "891b5af22ce1a303688248f82f3f7b73b64ea2ed3714c091d61b21827c5046b4"
+    },
+    {
+      "bytes": 549376160,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/XAU_USD.csv",
+      "relative_path": "XAU_USD.csv",
+      "sha256": "5a149a9e66b2c182fc6a1535d22a4f799456d869886d174377f48390d3402758"
+    },
+    {
+      "bytes": 14344464,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260505_123002.csv",
+      "relative_path": "prices_20260505_123002.csv",
+      "sha256": "aa176a43a7a162a872a23838d4c180b2bb6eda94c17e315b6afbe51ca1cdcc90"
+    },
+    {
+      "bytes": 8601271,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260506_123003.csv",
+      "relative_path": "prices_20260506_123003.csv",
+      "sha256": "4b8b88e3ec75b337081b75cc7f217ce61a456beee6256bb51b3405529477e044"
+    },
+    {
+      "bytes": 8590124,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260507_123003.csv",
+      "relative_path": "prices_20260507_123003.csv",
+      "sha256": "f80c09be134f421544db3fd079e60cf14fcd9f9f7566051a8ccd339c439f1fb4"
+    },
+    {
+      "bytes": 8581632,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260508_123003.csv",
+      "relative_path": "prices_20260508_123003.csv",
+      "sha256": "cec23df01d1df749788d2257216f26fc9eead4704048995ec74ce00efaa72f1b"
+    },
+    {
+      "bytes": 8576491,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260509_123003.csv",
+      "relative_path": "prices_20260509_123003.csv",
+      "sha256": "d89e50d7e9ec857e6e1d488b21a237986fb280aaaf79a026fdd1243702301f78"
+    },
+    {
+      "bytes": 8577414,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260511_123003.csv",
+      "relative_path": "prices_20260511_123003.csv",
+      "sha256": "a11d760cd9da0d32efa71380394838a28ea260c056ac92b881cc2df130241b39"
+    },
+    {
+      "bytes": 8578252,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260512_123003.csv",
+      "relative_path": "prices_20260512_123003.csv",
+      "sha256": "073be232814e8d30a2276c01c8449d8778e33990ff0819170d1c7f3eb219a51f"
+    },
+    {
+      "bytes": 8596790,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260513_123003.csv",
+      "relative_path": "prices_20260513_123003.csv",
+      "sha256": "393379814ac7f969644aa5bf9e8aae0d066c469e70a0c32cf4a9b9c1b6dc9be0"
+    },
+    {
+      "bytes": 8609550,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260514_123003.csv",
+      "relative_path": "prices_20260514_123003.csv",
+      "sha256": "3f4c541cfcd5abefb1b545bf0344fa670a8bb4d673fd7b1d90ee75ace6d8ddb4"
+    },
+    {
+      "bytes": 8606066,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260515_123003.csv",
+      "relative_path": "prices_20260515_123003.csv",
+      "sha256": "b5224c1b5b6ea1172afcc5c9c8e54f43a687fcefd5f68a38a873aa4bccc17553"
+    },
+    {
+      "bytes": 8611449,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260516_123003.csv",
+      "relative_path": "prices_20260516_123003.csv",
+      "sha256": "8430cc0b9816c060d56446062c7045fd0d8b1c4cf5d1a2fadabeda65170f8b64"
+    },
+    {
+      "bytes": 8613996,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260518_123003.csv",
+      "relative_path": "prices_20260518_123003.csv",
+      "sha256": "d6654c42bccf82de6408aabee27cffc47b71536552a9b4791418f90718ef4666"
+    },
+    {
+      "bytes": 6565129,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260519_123002.csv",
+      "relative_path": "prices_20260519_123002.csv",
+      "sha256": "61137c4bbe8e903d01a40c364cc8244fac9548ac42ce398829d7fe414b734032"
+    },
+    {
+      "bytes": 8622008,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260519_144036.csv",
+      "relative_path": "prices_20260519_144036.csv",
+      "sha256": "aab401f919256a750c2ff57c739af18c77cb9f7ccfd506f5d4177ed6b09bda40"
+    },
+    {
+      "bytes": 8617288,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260520_123003.csv",
+      "relative_path": "prices_20260520_123003.csv",
+      "sha256": "c597e4f79d55731761c5b745513019b8d459f3f1ca38ade86deda3c8db110c1d"
+    },
+    {
+      "bytes": 8609437,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260521_123003.csv",
+      "relative_path": "prices_20260521_123003.csv",
+      "sha256": "13a6834ab69e535240ca3819eda8c2f4ecb4e96f3a5aa30410e983cad0bc7317"
+    },
+    {
+      "bytes": 8609427,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260522_123004.csv",
+      "relative_path": "prices_20260522_123004.csv",
+      "sha256": "744b9387bbad14012e1f23233944e647c307542569ee3edd8f46abfb4e5900ff"
+    },
+    {
+      "bytes": 8608504,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260523_123003.csv",
+      "relative_path": "prices_20260523_123003.csv",
+      "sha256": "b45c084eff5949e653c4cdd819b74639bb87ec65f398032b265925534714bc1d"
+    },
+    {
+      "bytes": 8603185,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260525_123003.csv",
+      "relative_path": "prices_20260525_123003.csv",
+      "sha256": "b0e538a8072f7e721ff63268776ef9a5872437e4825bc6da30ada5a1d6e969a4"
+    },
+    {
+      "bytes": 8569382,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260526_123004.csv",
+      "relative_path": "prices_20260526_123004.csv",
+      "sha256": "38637f6ba88536e332ead464c9a204fd76db9fc48ce62409a7fc23646c531a64"
+    },
+    {
+      "bytes": 8539292,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260527_123003.csv",
+      "relative_path": "prices_20260527_123003.csv",
+      "sha256": "514d4f09683fefb1f93abad90c136693d9e08941331ab8c25a78e5da80695ecc"
+    },
+    {
+      "bytes": 8532413,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260528_123003.csv",
+      "relative_path": "prices_20260528_123003.csv",
+      "sha256": "a85aea77313d1b6b99550336135969cc4b3556ec729c0de579dc70dd0ed4fc22"
+    },
+    {
+      "bytes": 8528048,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260529_123003.csv",
+      "relative_path": "prices_20260529_123003.csv",
+      "sha256": "822c15dfc5e86cc14101795123f667a1e69966e74687eda07c21b31b6da14eca"
+    },
+    {
+      "bytes": 8527613,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260530_123003.csv",
+      "relative_path": "prices_20260530_123003.csv",
+      "sha256": "3553b5707bd9fec6c9b2a61ebf02e54936d7ef03d9c394c768f68a311da3314e"
+    },
+    {
+      "bytes": 8528621,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260601_123003.csv",
+      "relative_path": "prices_20260601_123003.csv",
+      "sha256": "604d683966d91028413a02a6e001362203c834000d88d75c26bb89ef66093a2f"
+    },
+    {
+      "bytes": 8530695,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260602_123003.csv",
+      "relative_path": "prices_20260602_123003.csv",
+      "sha256": "a7d0a389156da39b46a1e2ad81920b05d2c4ce8e61f85807b4e6fba9ac21edde"
+    },
+    {
+      "bytes": 8528893,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260603_123003.csv",
+      "relative_path": "prices_20260603_123003.csv",
+      "sha256": "4fa8ff758c82c3b58c2b1e0bd6ff42b0be610dc5b7ef1803ba07e1a5507ab962"
+    },
+    {
+      "bytes": 8539948,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260604_123004.csv",
+      "relative_path": "prices_20260604_123004.csv",
+      "sha256": "1900c076af312065e37062476a19c3ccd99e95eafb92658b20436cf02617e8ce"
+    },
+    {
+      "bytes": 8542361,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260605_123004.csv",
+      "relative_path": "prices_20260605_123004.csv",
+      "sha256": "a773ca8b42f8697990057f6c0d725ba0c91feb565548a46d86560b6877a73488"
+    },
+    {
+      "bytes": 8538986,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260606_123004.csv",
+      "relative_path": "prices_20260606_123004.csv",
+      "sha256": "ecd73c9ac42b89615f9354155c50b2a5d8a272e2f8ef36e630bc425de2f9ccf4"
+    },
+    {
+      "bytes": 8536858,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260608_123003.csv",
+      "relative_path": "prices_20260608_123003.csv",
+      "sha256": "5b760e38f31e8c80af06cf3559791730be7390e16c11b907b170fb712e0adb5e"
+    },
+    {
+      "bytes": 8542765,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260609_123003.csv",
+      "relative_path": "prices_20260609_123003.csv",
+      "sha256": "67567f4fff796d864f2c1596d04efbaf3988f67ffb2be73cc73fa130811b4b26"
+    },
+    {
+      "bytes": 8545644,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260610_123003.csv",
+      "relative_path": "prices_20260610_123003.csv",
+      "sha256": "90f6b9ad955643ad6d9e5662c09a56ac265ad4a5ca6f648e602463b2a969f0af"
+    },
+    {
+      "bytes": 8548142,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260611_123003.csv",
+      "relative_path": "prices_20260611_123003.csv",
+      "sha256": "cf1cce21bfb115a8a37b94a991c1c08f9414141db390b3ac0b2ae1d487d59323"
+    },
+    {
+      "bytes": 8550721,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260612_123003.csv",
+      "relative_path": "prices_20260612_123003.csv",
+      "sha256": "0cd1b6e93c55631d6ea3d029715470bf152960935835cca5d75d9d9e123b2970"
+    },
+    {
+      "bytes": 8549624,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260613_123003.csv",
+      "relative_path": "prices_20260613_123003.csv",
+      "sha256": "ba5e4ef58a4ec0e06e284a7dbb62a9aa3bf2a68deb32948a83c0715b7e3e43c8"
+    },
+    {
+      "bytes": 8548990,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260615_123004.csv",
+      "relative_path": "prices_20260615_123004.csv",
+      "sha256": "d6c40cd8ba2fe17fb4a44632524786b9b54627418d83bdee5da2dbdb3af4e4af"
+    },
+    {
+      "bytes": 8539592,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260616_123003.csv",
+      "relative_path": "prices_20260616_123003.csv",
+      "sha256": "70105a02d146bec75657263d5e9d82d64cb6e33938b9dd20b2443967d3bde599"
+    },
+    {
+      "bytes": 8531488,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260617_123003.csv",
+      "relative_path": "prices_20260617_123003.csv",
+      "sha256": "a77b30f111cde3f7588d4b6b950aba4f3756e8a3a5c6042364b8873594c2b2d6"
+    },
+    {
+      "bytes": 8532608,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260618_123003.csv",
+      "relative_path": "prices_20260618_123003.csv",
+      "sha256": "8be13bcf050454b0cdce848d4872974d0b9497ac619c71b8d1509e832ebd5c82"
+    },
+    {
+      "bytes": 8535661,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260619_123004.csv",
+      "relative_path": "prices_20260619_123004.csv",
+      "sha256": "832cce3479536ab902109233fdc9b443d9f9e761c0c5786e375ebfff86e44bbc"
+    },
+    {
+      "bytes": 8534857,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260620_123004.csv",
+      "relative_path": "prices_20260620_123004.csv",
+      "sha256": "b2e56fb4a8ebe32cb2f59add1db140b6e5a12b27637297db13500b5b4f6e923c"
+    },
+    {
+      "bytes": 8534179,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260622_123003.csv",
+      "relative_path": "prices_20260622_123003.csv",
+      "sha256": "a9590640642babfbdaf68a1d83a65bb186f73417fece22dfce4abe0b5b178d2a"
+    },
+    {
+      "bytes": 8532037,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260623_123004.csv",
+      "relative_path": "prices_20260623_123004.csv",
+      "sha256": "2e7c09f0097dc40d33e9d9251f3dc8ebdb106d5e9562d8034af94876781c339c"
+    },
+    {
+      "bytes": 8534908,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260624_123003.csv",
+      "relative_path": "prices_20260624_123003.csv",
+      "sha256": "d7f96d06d38ed65b4d7058682c28bd466eb07b9be3469600734f6ae708e5b78a"
+    },
+    {
+      "bytes": 8538333,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260625_123004.csv",
+      "relative_path": "prices_20260625_123004.csv",
+      "sha256": "5b88115f329f67e7e14f73382ed202001780e0357c3c5c8d37c950ea211984f3"
+    },
+    {
+      "bytes": 8538676,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260626_123003.csv",
+      "relative_path": "prices_20260626_123003.csv",
+      "sha256": "5faeaf3aa4b3938778a2b0c80ac9442b03641f099795d34bdccb7d1d64b6170d"
+    },
+    {
+      "bytes": 8538163,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260627_123004.csv",
+      "relative_path": "prices_20260627_123004.csv",
+      "sha256": "dd8cc5fd1f27ca124c540218e49f3640be15555fddd96d984ec00382ebc53c2b"
+    },
+    {
+      "bytes": 8538418,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260629_123004.csv",
+      "relative_path": "prices_20260629_123004.csv",
+      "sha256": "be838c4fde7960632e4dbde9c66941cfd094ae1d66b6a7c41d84acca019cac28"
+    },
+    {
+      "bytes": 8536327,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260630_123004.csv",
+      "relative_path": "prices_20260630_123004.csv",
+      "sha256": "92b4c265a4bcdcf408b11f072e2852945f6c8630062e017170a18858019e6c64"
+    },
+    {
+      "bytes": 8530934,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260701_123003.csv",
+      "relative_path": "prices_20260701_123003.csv",
+      "sha256": "32b240fd68dd1550be19b13ee0fa942a29ea798171904e8bc2cc65b032be73cc"
+    },
+    {
+      "bytes": 8531104,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260702_123003.csv",
+      "relative_path": "prices_20260702_123003.csv",
+      "sha256": "82796eeed9e91e10dac1652b55f6e355923ff188208daaea5a90ce2bc7e1f695"
+    },
+    {
+      "bytes": 8535036,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260703_123003.csv",
+      "relative_path": "prices_20260703_123003.csv",
+      "sha256": "7be46b425a4c67e9b30182aad3215683e93d1be62afb08c0a712d5ee31c416e4"
+    },
+    {
+      "bytes": 8530176,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260704_123004.csv",
+      "relative_path": "prices_20260704_123004.csv",
+      "sha256": "c7a1a06198e58e48de42a5536e7739b5d3596ba283d2fe8438a7e5d8e8e66a82"
+    },
+    {
+      "bytes": 8530161,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260706_123004.csv",
+      "relative_path": "prices_20260706_123004.csv",
+      "sha256": "a6caa4e19dc7da616226cdd3e19ff3d6d2c927145afa1817073e68a45259cc07"
+    },
+    {
+      "bytes": 8526827,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260707_123004.csv",
+      "relative_path": "prices_20260707_123004.csv",
+      "sha256": "7d6366cfd032f3e830e2523cdd06b6e6231fb4e7fbd0d149a5d23daf8be383e2"
+    },
+    {
+      "bytes": 8532502,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260708_123004.csv",
+      "relative_path": "prices_20260708_123004.csv",
+      "sha256": "73cf9a7b6bb71fdda0b690f3cc285bfc40dd362fe596ce55e40685d659da9c36"
+    },
+    {
+      "bytes": 7719524,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260709_123004.csv",
+      "relative_path": "prices_20260709_123004.csv",
+      "sha256": "d68fe0d121e872e2e202afc556732049452bde47787c36480f650bc4a779152a"
+    },
+    {
+      "bytes": 8126785,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260710_123004.csv",
+      "relative_path": "prices_20260710_123004.csv",
+      "sha256": "0ff08b4ef4a2ea82dd67a4ee3bc22a4603d88df2dadfc31b89f02fd0fe3e86f4"
+    },
+    {
+      "bytes": 8531697,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260711_123003.csv",
+      "relative_path": "prices_20260711_123003.csv",
+      "sha256": "79bd298a565885e385e57fc3ec837ecd9d63f26c27dde59ad2054a52f3984430"
+    },
+    {
+      "bytes": 8532425,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260713_123003.csv",
+      "relative_path": "prices_20260713_123003.csv",
+      "sha256": "5f7710651ae9ed5c7e2e19bac3768c8e3e5cf42dfccbd7411ca69edda4e8464c"
+    },
+    {
+      "bytes": 8534737,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260714_123003.csv",
+      "relative_path": "prices_20260714_123003.csv",
+      "sha256": "cd1ec427dd19db7238d8e0be845a17b1f4bac1d9836b3b5994ac84fe37375ca2"
+    },
+    {
+      "bytes": 8538550,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260715_123003.csv",
+      "relative_path": "prices_20260715_123003.csv",
+      "sha256": "df14d144be795a39f571d046b75b3f21314d6cdce7d92f207f13f34d083c2f88"
+    },
+    {
+      "bytes": 8535986,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260716_123004.csv",
+      "relative_path": "prices_20260716_123004.csv",
+      "sha256": "a8526951cf7b75256bd1dc8a9c9e44c0622e9eccd58a0bd421276c0f87584a47"
+    },
+    {
+      "bytes": 8533393,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260717_123003.csv",
+      "relative_path": "prices_20260717_123003.csv",
+      "sha256": "c72216dca0cf7236ff06c2c99c78fc3254ff3b1c8ebf7a06fe511de2d3181a1e"
+    },
+    {
+      "bytes": 8533340,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260718_123004.csv",
+      "relative_path": "prices_20260718_123004.csv",
+      "sha256": "a08040b28b0957ae9da0977a8d24ad100d144c5de0e97ac32481795b4440d69a"
+    },
+    {
+      "bytes": 8534476,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260720_123003.csv",
+      "relative_path": "prices_20260720_123003.csv",
+      "sha256": "8eded2f62879bd1a0f317e035f2357cfd4fc9473fe089d0626d12d9f676ca894"
+    },
+    {
+      "bytes": 8536199,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260721_123003.csv",
+      "relative_path": "prices_20260721_123003.csv",
+      "sha256": "90e460bf6005b7024ac8b3907349673d36df512304511e2ef07b964f9f15ced8"
+    },
+    {
+      "bytes": 8533726,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260722_123003.csv",
+      "relative_path": "prices_20260722_123003.csv",
+      "sha256": "68269510f755b023814f56163609abb8971319c81af16f643eecdbfdf70ff956"
+    },
+    {
+      "bytes": 8124814,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260723_123004.csv",
+      "relative_path": "prices_20260723_123004.csv",
+      "sha256": "8be70080e60efdea0c1a2dce717c29819855f2faeef9a5d03ba2865c13096843"
+    },
+    {
+      "bytes": 8544467,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260724_123003.csv",
+      "relative_path": "prices_20260724_123003.csv",
+      "sha256": "abe8ad9af6036bd4ea234e3e0818a2c4e1d8aad61e0afe1fbfedeb712328c6a7"
+    },
+    {
+      "bytes": 8547711,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260725_123003.csv",
+      "relative_path": "prices_20260725_123003.csv",
+      "sha256": "72a063dc4b74262d6fd88503790a29e0662fd5a16fa1cf6666883b8d8b42c4e0"
+    },
+    {
+      "bytes": 8547549,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260727_123003.csv",
+      "relative_path": "prices_20260727_123003.csv",
+      "sha256": "ff0f79c8cb637f8aeb49519bcb6dbaf2c39444db983ec694b0516f272dda556a"
+    },
+    {
+      "bytes": 8540994,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260728_123003.csv",
+      "relative_path": "prices_20260728_123003.csv",
+      "sha256": "a936e331d454283735a76f8430f760738c8f191a486b904019b5d43d15be7111"
+    },
+    {
+      "bytes": 8533992,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260729_123003.csv",
+      "relative_path": "prices_20260729_123003.csv",
+      "sha256": "0b5a37686dcecd6c4c9503726c3939b234408f0a48de284db756603bbbf8d999"
+    },
+    {
+      "bytes": 8538181,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260730_123003.csv",
+      "relative_path": "prices_20260730_123003.csv",
+      "sha256": "09793dd793d58e27df031a2a493b43fba1f6d031fc5acf3b4202489c5ba65dbe"
+    },
+    {
+      "bytes": 8538780,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260731_123003.csv",
+      "relative_path": "prices_20260731_123003.csv",
+      "sha256": "bf6b1640e906ee99ddcced8a5d78b608b1643fb589991955c7e26f7035fecd12"
+    },
+    {
+      "bytes": 8537605,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260801_123003.csv",
+      "relative_path": "prices_20260801_123003.csv",
+      "sha256": "9eb44d78d2efd4fdaeccd7ab1a79b791b42b16cc4cea55916dcddfc22b6963e2"
+    },
+    {
+      "bytes": 8536940,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260803_123003.csv",
+      "relative_path": "prices_20260803_123003.csv",
+      "sha256": "314a8364839507ba67f2d4dbffebb5025684d65dfdeedd697f84fa7cc52e5740"
+    },
+    {
+      "bytes": 8531981,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260804_123004.csv",
+      "relative_path": "prices_20260804_123004.csv",
+      "sha256": "1e092a6e43059d311c793bfa3df04b5cc68c1c7b4c9b082de83382bb6653fd1e"
+    },
+    {
+      "bytes": 8528976,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260805_123003.csv",
+      "relative_path": "prices_20260805_123003.csv",
+      "sha256": "ea0b37de9cd4ee4fe2168110d88661bac84f2fec07b69031a64beb873b0bc0f9"
+    },
+    {
+      "bytes": 8121307,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260806_123003.csv",
+      "relative_path": "prices_20260806_123003.csv",
+      "sha256": "ad53ef7d7ef4be91ba4f57f4adc5968dff5627400f4e6e1b7ec591c63437ed32"
+    },
+    {
+      "bytes": 8528240,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260807_123003.csv",
+      "relative_path": "prices_20260807_123003.csv",
+      "sha256": "58f7edba00611d406336e8a8d57f47fab5d4e3437e3acac3a2785ea237405b58"
+    },
+    {
+      "bytes": 8528701,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260808_123004.csv",
+      "relative_path": "prices_20260808_123004.csv",
+      "sha256": "2bf3eb93df1a10c8781bde1a1d5eb7e752ab9dec6916b9143ab4b298dfc9efe3"
+    },
+    {
+      "bytes": 8528967,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260810_123004.csv",
+      "relative_path": "prices_20260810_123004.csv",
+      "sha256": "7b22a8444a1b6446a42afd485ce573c6500629208a2339201b76769edadf0153"
+    },
+    {
+      "bytes": 8523289,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260811_123003.csv",
+      "relative_path": "prices_20260811_123003.csv",
+      "sha256": "f5041de93c494f1afd447a8d0ab449ff9734e75d61ed9eb2d383f6c0702fa9e9"
+    },
+    {
+      "bytes": 8111202,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260812_123004.csv",
+      "relative_path": "prices_20260812_123004.csv",
+      "sha256": "6ea3443d4cac1319a0248c9bc4804b24960c73c714e381aa0ce1dad707f4c69d"
+    },
+    {
+      "bytes": 8522178,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260813_123003.csv",
+      "relative_path": "prices_20260813_123003.csv",
+      "sha256": "a5eba01d742571289542448112b51034b542cfe49940bc2f1a5189156303f26c"
+    },
+    {
+      "bytes": 8523296,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260814_123004.csv",
+      "relative_path": "prices_20260814_123004.csv",
+      "sha256": "15816f9d26eff702b5ae9bd49cc4cc8c9105f5b8240f068c8e5194d21369520f"
+    },
+    {
+      "bytes": 8519405,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260815_123003.csv",
+      "relative_path": "prices_20260815_123003.csv",
+      "sha256": "a917ceeac1471be8225828ba7202f455d1cffddab05027dea7fc1560b6b724fc"
+    },
+    {
+      "bytes": 8520807,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260817_123003.csv",
+      "relative_path": "prices_20260817_123003.csv",
+      "sha256": "8b57981055fb611a316ca7d43b14c47ac0f3077f0e29c688702be9d651f470e3"
+    },
+    {
+      "bytes": 8520918,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260818_123003.csv",
+      "relative_path": "prices_20260818_123003.csv",
+      "sha256": "57039028a4f90ac3c470f76ffac46f1d1c6e9396d7ffe061fb57a5a5795ce5b7"
+    },
+    {
+      "bytes": 8524014,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260819_123004.csv",
+      "relative_path": "prices_20260819_123004.csv",
+      "sha256": "c140b7755ed5c6128c06749022ed49c8cf85b14702fd720aaaa74cf150d19f47"
+    },
+    {
+      "bytes": 8529252,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260820_123003.csv",
+      "relative_path": "prices_20260820_123003.csv",
+      "sha256": "6b6db401deadeecf7461a1f8cbe7e1fbeba486ac44d80575269b6a3a7a7a7b70"
+    },
+    {
+      "bytes": 8532419,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260821_123004.csv",
+      "relative_path": "prices_20260821_123004.csv",
+      "sha256": "e2150680fa4efaefe110ad7e5d379adc291b3ca86e4b7512630cd3e2120b73ac"
+    },
+    {
+      "bytes": 8530792,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260822_123003.csv",
+      "relative_path": "prices_20260822_123003.csv",
+      "sha256": "55915dbe26fa71a1801880146050ba13e8666bac298108c8b34d83b825424ea9"
+    },
+    {
+      "bytes": 8531172,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260824_123004.csv",
+      "relative_path": "prices_20260824_123004.csv",
+      "sha256": "2566c69f2473d7f4aab4d70b636ba6ed92b3264f2db13c35820a2e85282b6873"
+    },
+    {
+      "bytes": 8530877,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260825_123004.csv",
+      "relative_path": "prices_20260825_123004.csv",
+      "sha256": "1b70e05aff8453dd9a7fcd35d790331148f5fc4514a0f13141b9d49a9317a233"
+    },
+    {
+      "bytes": 8531036,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260826_123003.csv",
+      "relative_path": "prices_20260826_123003.csv",
+      "sha256": "568432c3ecc142860a9d5808012c14b61cae3f5645c339264ce856d4d1392661"
+    },
+    {
+      "bytes": 8529040,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260827_123004.csv",
+      "relative_path": "prices_20260827_123004.csv",
+      "sha256": "ee8a74d74dccc39ca419c89a41843edb81e85076810ac7fb217f794d96620148"
+    },
+    {
+      "bytes": 8527345,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260828_123004.csv",
+      "relative_path": "prices_20260828_123004.csv",
+      "sha256": "29fe293fe623d074b47636018b85369c3a70c9a2c402a371240aa483b6193b47"
+    },
+    {
+      "bytes": 8529766,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260829_123003.csv",
+      "relative_path": "prices_20260829_123003.csv",
+      "sha256": "5a2e357cda76598bd38c2c3d8a9a92143a7b6916ac0a5f45e22d49a2f0d6f83c"
+    },
+    {
+      "bytes": 8529745,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260831_123004.csv",
+      "relative_path": "prices_20260831_123004.csv",
+      "sha256": "4cfaa30d9bb301defc3e8b716b1f5a70f0367381ae2ee0820d3beedb5d3438c8"
+    },
+    {
+      "bytes": 8528839,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260901_123003.csv",
+      "relative_path": "prices_20260901_123003.csv",
+      "sha256": "ba2f997c9a1f1d7101598cdb06a0fe3c05f3cb88c6e0c837ecdfaabb3123383e"
+    },
+    {
+      "bytes": 8119888,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260902_123003.csv",
+      "relative_path": "prices_20260902_123003.csv",
+      "sha256": "a0af059f9f5e45b952546b4d07cdfb4f67adc7da8367389d1c417c019a4b35f6"
+    },
+    {
+      "bytes": 8529689,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260903_123003.csv",
+      "relative_path": "prices_20260903_123003.csv",
+      "sha256": "3470aa6cc43fdc33c4c310f6a644601e0a9bc0e94d3a7f092d497837f6f94737"
+    },
+    {
+      "bytes": 8529401,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260904_123003.csv",
+      "relative_path": "prices_20260904_123003.csv",
+      "sha256": "24d52e8af6cfa915e2d266b2c6edb638b27c8622c3195b4b1c84498b36269dcf"
+    },
+    {
+      "bytes": 8527225,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260905_123004.csv",
+      "relative_path": "prices_20260905_123004.csv",
+      "sha256": "cf9248126de3b07257c1de55b96f9212aadddeeca912053952ff8330f1a9f45a"
+    },
+    {
+      "bytes": 8526647,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260907_123004.csv",
+      "relative_path": "prices_20260907_123004.csv",
+      "sha256": "69ae174ba34588d60cfc577cf109170a84fcf5682a72da549e385d0c432e26b4"
+    },
+    {
+      "bytes": 8518215,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260908_123003.csv",
+      "relative_path": "prices_20260908_123003.csv",
+      "sha256": "e73704a64740b5963b8097e9a9835b08b2a08c046d692cd290fa3c8bdcc7259d"
+    },
+    {
+      "bytes": 8523677,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260909_123003.csv",
+      "relative_path": "prices_20260909_123003.csv",
+      "sha256": "88bdc4c7b6c7600ffd19e77d190044b8553a1e4d62286ee01a95265369177a13"
+    },
+    {
+      "bytes": 8539518,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260910_123003.csv",
+      "relative_path": "prices_20260910_123003.csv",
+      "sha256": "5dedcd00180c31b0458c3ed02865b4c39101e29a4458eac18d813752e383ccc9"
+    },
+    {
+      "bytes": 8558327,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260911_123004.csv",
+      "relative_path": "prices_20260911_123004.csv",
+      "sha256": "1511fef418d22192ffbe60789d4e3edb8d3b75f9fe6e47c2259dc005cd9762f9"
+    },
+    {
+      "bytes": 8569516,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260912_123003.csv",
+      "relative_path": "prices_20260912_123003.csv",
+      "sha256": "6378bab0da57d218b8f00add22b1b0b4d117b12dad83884bde2382214d504798"
+    },
+    {
+      "bytes": 8574117,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260914_123003.csv",
+      "relative_path": "prices_20260914_123003.csv",
+      "sha256": "29b2f0ca4b019aeca55583fd5eb3fa0c775e9ac2074d7cece2a4ec5835151af8"
+    },
+    {
+      "bytes": 8585714,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260915_123004.csv",
+      "relative_path": "prices_20260915_123004.csv",
+      "sha256": "226e2f706108b4a29763db2692f50b17abcf02ff34e563cfc81d182d0cb29aa5"
+    },
+    {
+      "bytes": 8587717,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260916_123003.csv",
+      "relative_path": "prices_20260916_123003.csv",
+      "sha256": "0cff4ddb44d39edc3fb45335d8aabe60b4eeac1bdc514807a85b66fcac2e950d"
+    },
+    {
+      "bytes": 8586832,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260917_123004.csv",
+      "relative_path": "prices_20260917_123004.csv",
+      "sha256": "78a445b9e35722fbe3b145e6d4e94d2e7ff4727896b85e39aab68cb35b7fdd46"
+    },
+    {
+      "bytes": 8583781,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260918_123003.csv",
+      "relative_path": "prices_20260918_123003.csv",
+      "sha256": "a7cded36384229fed3a8617092a9b5b42f853df65ec42e9978cab038a7aeb34e"
+    },
+    {
+      "bytes": 8581266,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260919_123003.csv",
+      "relative_path": "prices_20260919_123003.csv",
+      "sha256": "bb0f97650bce0f1a8d915d9e2a1e6b825774b99bc2bab7eda6e2453bfdbb5248"
+    },
+    {
+      "bytes": 8578827,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260921_123003.csv",
+      "relative_path": "prices_20260921_123003.csv",
+      "sha256": "6454bd6ffada7cb7cc43007914df5d42f832fa252618460af772286b68eaf1bc"
+    },
+    {
+      "bytes": 8150364,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260922_123004.csv",
+      "relative_path": "prices_20260922_123004.csv",
+      "sha256": "9f4cd1c4365abb53cfd0563a9c3513acf8bb61ec60d347585c96f1c9924c0894"
+    },
+    {
+      "bytes": 8541004,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260923_123003.csv",
+      "relative_path": "prices_20260923_123003.csv",
+      "sha256": "89f787112ad97e0d097aa14be37e2d702db5f0452328d705c01c98250ecf9cb9"
+    },
+    {
+      "bytes": 8129662,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260924_123003.csv",
+      "relative_path": "prices_20260924_123003.csv",
+      "sha256": "e878aacc643a1abfbd037e1f1fdc770b5e1d37dba7cda3faf07eaa6827de9a03"
+    },
+    {
+      "bytes": 8545901,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260925_123004.csv",
+      "relative_path": "prices_20260925_123004.csv",
+      "sha256": "6e7c164d869d98a0c2a808124f6fb4b4043af858ffd9e7af392735d2883defdd"
+    },
+    {
+      "bytes": 8554393,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260926_123004.csv",
+      "relative_path": "prices_20260926_123004.csv",
+      "sha256": "d0340b1e2c2d3b61765b368bbc9c650904e6ca6a18ed1aa7f04c3a8c8c97a150"
+    },
+    {
+      "bytes": 8555506,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260928_123004.csv",
+      "relative_path": "prices_20260928_123004.csv",
+      "sha256": "1c440c04687a5d12a4f8d237f794075b518dbf6733e28fe7982ef36011c3fc36"
+    },
+    {
+      "bytes": 8556326,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260929_123004.csv",
+      "relative_path": "prices_20260929_123004.csv",
+      "sha256": "268bffedd1a4c6b40aa8289e8f9652d894747f202da30dda70bc003a2aba60ca"
+    },
+    {
+      "bytes": 8553557,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20260930_123003.csv",
+      "relative_path": "prices_20260930_123003.csv",
+      "sha256": "57b802ba7efa30ce0a0d56a74da06ebb3f72010a004046cb52758dd85a7724c4"
+    },
+    {
+      "bytes": 8550380,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261001_123004.csv",
+      "relative_path": "prices_20261001_123004.csv",
+      "sha256": "1bafa65ffb378a2b082505d1aae0f0e7ddd1b88ff5b00f4de76a00958eda902f"
+    },
+    {
+      "bytes": 8553334,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261002_123004.csv",
+      "relative_path": "prices_20261002_123004.csv",
+      "sha256": "ad0cccec35326593fd139615fb56a5638c00d826cb42887aa1de47aa039bddc5"
+    },
+    {
+      "bytes": 8559421,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261003_123003.csv",
+      "relative_path": "prices_20261003_123003.csv",
+      "sha256": "acce16c8531d4240fa721072cfb051a5f51613e1bdee4fcecc544922b6695762"
+    },
+    {
+      "bytes": 8149621,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261005_123003.csv",
+      "relative_path": "prices_20261005_123003.csv",
+      "sha256": "cd8f13c14e0cfab26688cc0bc325229957e511ace02bd7a06287408f9ddc7b0a"
+    },
+    {
+      "bytes": 8556069,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261006_123004.csv",
+      "relative_path": "prices_20261006_123004.csv",
+      "sha256": "d9ca8d43b6890ed7baaff4e03f44ad0f8c3c971ede734e7c27c0a404a712e452"
+    },
+    {
+      "bytes": 8139647,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261007_123004.csv",
+      "relative_path": "prices_20261007_123004.csv",
+      "sha256": "daf9d525a6e9b33e92b8244154c0d33942686a37326135473451360df4fc9734"
+    },
+    {
+      "bytes": 8545679,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261008_123003.csv",
+      "relative_path": "prices_20261008_123003.csv",
+      "sha256": "df87a1a7142557b3abd7631e74720894b24975c4eb668af00830a328e2c1eb36"
+    },
+    {
+      "bytes": 8550118,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261009_123004.csv",
+      "relative_path": "prices_20261009_123004.csv",
+      "sha256": "959e91545005e255ca7db7ebdb8aa0394af2c22303e425b2f6e716a2fa7d9850"
+    },
+    {
+      "bytes": 8549717,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261010_123004.csv",
+      "relative_path": "prices_20261010_123004.csv",
+      "sha256": "4a8c9ef76c2a7433ba16177b47506ba8db52c9e1c9803dc7f718d093e573b2a6"
+    },
+    {
+      "bytes": 8550070,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261012_123004.csv",
+      "relative_path": "prices_20261012_123004.csv",
+      "sha256": "0888b25dfaf2c3f6f72cf14bbd54ab1b8b5b5b26619ac61fed69086f41173680"
+    },
+    {
+      "bytes": 8546003,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261013_123003.csv",
+      "relative_path": "prices_20261013_123003.csv",
+      "sha256": "61dfd7ee41fcf57c776efb2dd942d43117369a54c3ee36f08670b8df0a6cfe01"
+    },
+    {
+      "bytes": 8545445,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261014_123003.csv",
+      "relative_path": "prices_20261014_123003.csv",
+      "sha256": "bffafa58657e2eeb8dcf9f5f9624dce70f5797b4bcda234db67a105be41a853f"
+    },
+    {
+      "bytes": 8550579,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261015_123003.csv",
+      "relative_path": "prices_20261015_123003.csv",
+      "sha256": "efdc7bf61283dd941b84d3e68546d868cd21efbd5d007bc724e2d157d07aff4d"
+    },
+    {
+      "bytes": 8555438,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261016_123003.csv",
+      "relative_path": "prices_20261016_123003.csv",
+      "sha256": "fc0037504cbeed283dcb32dea9651c22ceafb5d373ff5077fe15dd0e158cf8e8"
+    },
+    {
+      "bytes": 8560858,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261017_123004.csv",
+      "relative_path": "prices_20261017_123004.csv",
+      "sha256": "e959ca1a8e3ba0d539f617a665b09016cbf1c3844fcde9e2ce217897169e975d"
+    },
+    {
+      "bytes": 8561425,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261019_123003.csv",
+      "relative_path": "prices_20261019_123003.csv",
+      "sha256": "8fb1112adff4f117944117b16ac0d49694373f38ce6bdc83e5d7b93d705db0ed"
+    },
+    {
+      "bytes": 8567308,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261020_123003.csv",
+      "relative_path": "prices_20261020_123003.csv",
+      "sha256": "7ee008ed0ae73da4379fb613d74a3b7d7094003f1ce304b3650ea6de96ddcc71"
+    },
+    {
+      "bytes": 7346521,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261021_123003.csv",
+      "relative_path": "prices_20261021_123003.csv",
+      "sha256": "e348d6a5ac3c34f42c738d245b2122c1fcb03afe6539d9d743b405fbd152b435"
+    },
+    {
+      "bytes": 8576492,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261022_123003.csv",
+      "relative_path": "prices_20261022_123003.csv",
+      "sha256": "eaabb526e00ee930d3f9ab305bb76e684d3b503a9fd7e88430de861df80760ee"
+    },
+    {
+      "bytes": 8580231,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261023_123003.csv",
+      "relative_path": "prices_20261023_123003.csv",
+      "sha256": "fb7c1e45d92893533e2ccb9fbfd457a4b0832fe47cf03bc2a56ee4954c02d303"
+    },
+    {
+      "bytes": 8587315,
+      "path": "/home/ubuntu/work/nova/data/raw_csv/prices_20261024_123004.csv",
+      "relative_path": "prices_20261024_123004.csv",
+      "sha256": "f7cfda07f3871e29d4b2ba2c16893421e2905aaa79defd8aa506361e4f9082ee"
+    }
+  ],
+  "snapshot_id": "041914943d0ac7eb2514edaca216f73f27fc105a622e70282ca42b5db8f00d02",
+  "source_kind": "oanda",
+  "timeframe_minutes": 1,
+  "volume_semantics": "OANDA quote/tick activity; used as market-volume proxy"
+}

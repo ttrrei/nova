@@ -1,14 +1,74 @@
-.venv/
+# Nova ignore policy
+#
+# Policy (user directive, 2026-11-03): every folder in the project must remain
+# visible in the code repository. No directory is ignored wholesale.
+# Files that must not be uploaded (large data, binary artifacts, build outputs,
+# caches) are excluded by file type, and each folder keeps at least one tracked
+# file (typically README.md) so its directory entry stays visible on GitHub.
+
+# --- Regenerable Python / build / local-env artifacts ---
 __pycache__/
 *.py[cod]
-.pytest_cache/
 *.egg-info/
-build/
-dist/
-data/
-runs/
-legacy/
-background/
-*.duckdb.wal
-.DS_Store
+*.egg-info/**
+.cache/
+*.cache/
 
+# --- Data and run artifacts, excluded by file type (not by folder) ---
+*.parquet
+*.duckdb
+*.duckdb.wal
+*.csv
+*.npy
+*.zip
+*.gz
+*.so
+*.log
+*.pyf
+*.pxd
+*.pyi
+
+# --- Keep folder placeholders and human-readable metadata visible ---
+!README.md
+!*.md
+!*.json
+!*.yaml
+!*.yml
+!*.txt
+
+# --- Venvs are opaque: their subdirectories are ignored, then the venv's
+#     README.md placeholder is re-allowed so the folder stays visible. ---
+.venv/bin/
+venv/pyvenv.cfg
+venv/CACHEDIR.TAG
+.venv/pyvenv.cfg
+.venv/CACHEDIR.TAG
+.venv/lib/
+.venv/include/
+.venv/share/
+venv/bin/
+venv/pyvenv.cfg
+venv/CACHEDIR.TAG
+venv/lib/
+venv/include/
+venv/share/
+legacy/moneta/.venv/bin/
+legacy/moneta/.venv/pyvenv.cfg
+legacy/moneta/.venv/CACHEDIR.TAG
+venv/pyvenv.cfg
+venv/CACHEDIR.TAG
+.venv/pyvenv.cfg
+.venv/CACHEDIR.TAG
+legacy/moneta/.venv/lib/
+legacy/moneta/.venv/include/
+legacy/moneta/venv/bin/
+legacy/moneta/venv/pyvenv.cfg
+legacy/moneta/venv/CACHEDIR.TAG
+venv/pyvenv.cfg
+venv/CACHEDIR.TAG
+legacy/moneta/venv/lib/
+legacy/moneta/venv/include/
+!/.venv/README.md
+!/venv/README.md
+!/legacy/moneta/.venv/README.md
+!/legacy/moneta/venv/README.md

@@ -1,0 +1,16 @@
+WITH s0 AS (SELECT * FROM features),
+s1 AS (SELECT *, (breakout_up_24 = TRUE) AS _condition_0 FROM s0),
+s2 AS (SELECT *, (range_position_24 > 0.75) AS _condition_1 FROM s1),
+s3 AS (SELECT *, CASE WHEN count(_condition_1) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) = 2 THEN bool_and(_condition_1) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) END AS _condition_2 FROM s2),
+s4 AS (SELECT *, lag(_condition_0, 2) OVER (PARTITION BY instrument ORDER BY bar_open_time) AND _condition_2 AS _condition_3 FROM s3),
+s5 AS (SELECT *, (close_ema60_distance_atr > 0.0) AS _condition_4 FROM s4),
+s6 AS (SELECT *, (_condition_3 AND _condition_4) AS _condition_5 FROM s5),
+s7 AS (SELECT *, (breakout_down_24 = TRUE) AS _condition_6 FROM s6),
+s8 AS (SELECT *, (range_position_24 < 0.25) AS _condition_7 FROM s7),
+s9 AS (SELECT *, CASE WHEN count(_condition_7) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) = 2 THEN bool_and(_condition_7) OVER (PARTITION BY instrument ORDER BY bar_open_time ROWS BETWEEN 1 PRECEDING AND CURRENT ROW) END AS _condition_8 FROM s8),
+s10 AS (SELECT *, lag(_condition_6, 2) OVER (PARTITION BY instrument ORDER BY bar_open_time) AND _condition_8 AS _condition_9 FROM s9),
+s11 AS (SELECT *, (close_ema60_distance_atr < 0.0) AS _condition_10 FROM s10),
+s12 AS (SELECT *, (_condition_9 AND _condition_10) AS _condition_11 FROM s11),
+s13 AS (SELECT *, (range_position_24 < 0.5) AS _condition_12 FROM s12),
+s14 AS (SELECT *, (range_position_24 > 0.5) AS _condition_13 FROM s13)
+SELECT instrument, bar_open_time, bar_close_time, coalesce(_condition_5, FALSE) AS entry_long, coalesce(_condition_11, FALSE) AS entry_short, coalesce(_condition_12, FALSE) AS exit_long, coalesce(_condition_13, FALSE) AS exit_short FROM s14 ORDER BY instrument, bar_open_time

@@ -1,0 +1,55 @@
+{
+  "family": "pullback_reentry",
+  "phase": 1,
+  "rounds": 20,
+  "audited_trades": 412388,
+  "distinct_effective_strategies": 20,
+  "best_round": 18,
+  "best_run_id": "00d5575a38e5bda33229",
+  "best_yaml": "/home/ubuntu/work/nova/runs/research_campaign/pullback_reentry/strategies/phase_1_round_18.yaml",
+  "ranking_key": [
+    13,
+    0.08318175451706959,
+    0.02312749503264805
+  ],
+  "passing_instruments": [
+    "BCO_USD",
+    "BTC_USD",
+    "DE30_EUR",
+    "ETH_USD",
+    "HK33_HKD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAG_USD",
+    "XAU_USD"
+  ],
+  "passing_without_best_year": [
+    "BCO_USD",
+    "DE30_EUR",
+    "ETH_USD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAG_USD",
+    "XAU_USD"
+  ],
+  "passes_dependent_on_best_year": [
+    "BTC_USD",
+    "HK33_HKD"
+  ],
+  "guidance": [
+    "Preserve long-only winner as primary branch but retain symmetric round15 as control; the directional choice explains much of improvement.",
+    "Test a few close neighbors of pullback memory12, recovery50, hold48 and Supertrend exit before adding more filters.",
+    "Do not infer broad FX edge: most FX pairs remain negative.",
+    "JP225 positivity is blocked by monthly gaps; inspect dates and whether causal relaxation can improve coverage without asset-specific rules.",
+    "Evaluate unchanged rules under higher adverse slippage in later stages; never lower baseline execution costs.",
+    "Inspect yearly concentration and partial2026 separately; no new gate is introduced."
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "created_at": "2026-10-31T21:24:30.024502+00:00",
+  "data_producer_revision": "unknown; not inferred from the inspected source code commit",
+  "data_version": "nova-market-v1",
+  "files": [
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/AUD_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 31105,
+      "sha256": "bfc695200e2b8e3c650f1bf162c97f6907eb4b4fd0c52047eef2ad966496f524",
+      "start": "2020-01-02T15:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/BCO_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 29303,
+      "sha256": "f0da9c36afe99e7835dfa9fa0d507b22bf10491b5ab087e9abaffcd9f7950f4a",
+      "start": "2020-01-02T11:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/BTC_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 39579,
+      "sha256": "0cebee2c22b66316e42e352daf08c0533e3d61d69f1c9812ff0d3c3501614eb2",
+      "start": "2020-01-02T02:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/CN50_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 19637,
+      "sha256": "d08639dc2f94302bdc227085dec4179ff609909575e7a6b30b184dd717b85bd1",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/DE30_EUR.parquet",
+      "quoted_bars": 0,
+      "rows": 27591,
+      "sha256": "e2bcd027548474db3befad7593aa72a4c5cbbba0f0a788cc3f6ecdea8ab2583a",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/ETH_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 38609,
+      "sha256": "4a3bd61bde317ca1236ed4480a8acd6150f84d2dd1707544c680df3ed51a4a7c",
+      "start": "2020-01-02T06:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/EUR_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 36698,
+      "sha256": "f53b692d8753f1938dad15a26321b8391da2a78259b25ee2679405142758a914",
+      "start": "2020-01-02T09:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/GBP_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 35192,
+      "sha256": "f084be7eef84629a80701bdf060c5f9877e58dbfdb8cd6b7a6d8f574edef679d",
+      "start": "2020-01-02T05:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T19:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/HK33_HKD.parquet",
+      "quoted_bars": 0,
+      "rows": 22933,
+      "sha256": "76b7e89d7eb73e0b3b115d18a6ee4932920712ad53f8ac879507aadc149a5b0d",
+      "start": "2020-01-02T02:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/JP225_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 24906,
+      "sha256": "b6c50fb452a4a43bbcadea6f69312bfe4a32104844dfa131a00fbd66f36dc87e",
+      "start": "2020-01-03T02:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/NAS100_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 36344,
+      "sha256": "3181cb3484ab376d7c6401cb882689d8653af1d477ce494d22d37802d4ee2f30",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/NZD_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 30271,
+      "sha256": "2316f0c724af16a7590d1d734ba6efe6bcb37dc9062c7a61c4f5a604fd851a31",
+      "start": "2020-01-02T06:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/SPX500_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 28363,
+      "sha256": "a33e3d1dde902656565bd4ae8cfa0cdefa0a8d372467c40e710f8ce9155e049b",
+      "start": "2020-01-02T15:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/UK100_GBP.parquet",
+      "quoted_bars": 0,
+      "rows": 23122,
+      "sha256": "68a4a048d4b93c34777a749cc88f7849e0853da6aa355ee9fb261fc249fc0e99",
+      "start": "2020-01-02T06:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/US30_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 34130,
+      "sha256": "d3e6f6736c2908035b67c57401acceef00fcca7d62c25ba9322de4fb261c194d",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/USD_CAD.parquet",
+      "quoted_bars": 0,
+      "rows": 34429,
+      "sha256": "deb5eb02df3998f1420b9ae1d269930c045f032309fde36310d706fdd1210325",
+      "start": "2020-01-02T13:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/USD_CHF.parquet",
+      "quoted_bars": 0,
+      "rows": 28265,
+      "sha256": "fbb9bf053f87773adca5135e0cdbb22ec0904de69c474365d9d630523a913fe6",
+      "start": "2020-01-02T14:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/USD_JPY.parquet",
+      "quoted_bars": 0,
+      "rows": 37416,
+      "sha256": "cc3f18051c10f27fc0efea5785572f8268b04eb165b470f3d7369bfed70c1553",
+      "start": "2020-01-02T14:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/WTICO_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 30909,
+      "sha256": "09c4fdf379b02608ca6e2277a1f52203eac4bf876c11501762a905a28377b683",
+      "start": "2020-01-02T08:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/XAG_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 29143,
+      "sha256": "2f7df1ca5200cda35b8550ded0f62d52132a59eb1a8203d097aafde857354a87",
+      "start": "2020-01-02T13:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/import-check/market/60m/ab48c8f1f7ce7e32/XAU_USD.parquet",
+      "quoted_bars": 0,
+      "rows": 36418,
+      "sha256": "5868b8b5c3efb163e5a2a0fa28fb92229f776614b9d9661c03f7ec81c80553ee",
+      "start": "2020-01-02T01:00:00+00:00"
+    }
+  ],
+  "ignored_columns": [],
+  "input_format": "parquet",
+  "kind": "market",
+  "quality": {
+    "conflicting_duplicate_keys": 0,
+    "duplicate_complete_rows_removed": 0,
+    "duplicate_policy": "complete first; observed bid/ask first; source filename then payload SHA256 ascending",
+    "incomplete_rows_dropped": 179550,
+    "input_rows": 833913
+  },
+  "raw_files": [
+    {
+      "bytes": 25170268,
+      "path": "/home/ubuntu/work/nova/data/import-check/raw_parquet/ohlcv_1h.parquet",
+      "relative_path": "ohlcv_1h.parquet",
+      "sha256": "74085ae7910e1e2f08bf95b064bd070d01460b9b15a06ce160d803309b5b6332"
+    }
+  ],
+  "snapshot_id": "ab48c8f1f7ce7e32621a8d852c8d56624e3b80710a9455dd61ca3947ca88229e",
+  "source_kind": "ohlcv",
+  "timeframe_minutes": 60,
+  "volume_semantics": "source-provided activity; used as market-volume proxy"
+}

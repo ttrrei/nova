@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "full_data_trade_signal_summary_parity": true,
+  "run_id": "3595d76bd957d3e1d2e3",
+  "engine_hash": "1135b043ad9fe3f30714c06a49140d7ff31869d7449455415123bfa81bda3ad2",
+  "seconds": 6.828,
+  "audit": {
+    "status": "passed",
+    "trades_checked": 25604,
+    "exit_reasons": {
+      "indicator_exit": 23253,
+      "stop_gap": 100,
+      "take_profit": 869,
+      "stop_loss": 1371,
+      "end_of_data": 11
+    },
+    "artifact_hashes_checked": 7
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "version": "0.2.0",
+  "total": 69,
+  "passed": 54,
+  "skipped": 15,
+  "failures": 0,
+  "errors": 0,
+  "duckdb_integration_executed": false,
+  "skipped_checks": [
+    {
+      "test": "test_exclusive_api_end_does_not_drop_last_candle (test_download_reuse.DownloadReuseTests.test_exclusive_api_end_does_not_drop_last_candle)",
+      "reason": "Optional requests dependency is not installed"
+    },
+    {
+      "test": "test_inclusive_api_end_does_not_duplicate_or_drop_candles (test_download_reuse.DownloadReuseTests.test_inclusive_api_end_does_not_duplicate_or_drop_candles)",
+      "reason": "Optional requests dependency is not installed"
+    },
+    {
+      "test": "test_after_event_confirms_on_third_following_close (test_duckdb.DuckDBTests.test_after_event_confirms_on_third_following_close)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_appending_future_bars_does_not_change_past_features (test_duckdb.DuckDBTests.test_appending_future_bars_does_not_change_past_features)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_both_example_strategies_run_end_to_end (test_duckdb.DuckDBTests.test_both_example_strategies_run_end_to_end)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_feature_warmup_and_reuse (test_duckdb.DuckDBTests.test_feature_warmup_and_reuse)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_invalid_timeframe_rejected (test_duckdb.DuckDBTests.test_invalid_timeframe_rejected)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_unknown_feature_negation_does_not_trigger_warmup_entry (test_duckdb.DuckDBTests.test_unknown_feature_negation_does_not_trigger_warmup_entry)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_full_feature_profile_matches_registered_names_and_known_talib_outputs (test_migration_duckdb.LegacyNumericalTests.test_full_feature_profile_matches_registered_names_and_known_talib_outputs)",
+      "reason": "Full legacy numerical dependencies are not installed"
+    },
+    {
+      "test": "test_cannot_reuse_cached_features_across_resampling (test_migration_duckdb.MigrationDuckDBTests.test_cannot_reuse_cached_features_across_resampling)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_duplicate_survivor_prefers_complete_quotes (test_migration_duckdb.MigrationDuckDBTests.test_duplicate_survivor_prefers_complete_quotes)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_imported_feature_profile_derives_psar_events (test_migration_duckdb.MigrationDuckDBTests.test_imported_feature_profile_derives_psar_events)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_parquet_export_reuses_catalogue_without_replacing_working_table (test_migration_duckdb.MigrationDuckDBTests.test_parquet_export_reuses_catalogue_without_replacing_working_table)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_raw_mid_only_parquet_runs_through_core (test_migration_duckdb.MigrationDuckDBTests.test_raw_mid_only_parquet_runs_through_core)",
+      "reason": "DuckDB dependency is not installed"
+    },
+    {
+      "test": "test_raw_to_five_minute_preserves_bid_ask_and_drops_partial (test_migration_duckdb.MigrationDuckDBTests.test_raw_to_five_minute_preserves_bid_ask_and_drops_partial)",
+      "reason": "DuckDB dependency is not installed"
+    }
+  ],
+  "dependency_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "PyYAML": "6.0.3"
+  }
+}

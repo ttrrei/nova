@@ -1,0 +1,208 @@
+# Indicator & feature spec — moneta / Nova (source of truth: pipeline/indicators.py)
+#
+# This file describes the EXACT feature engine that produces:
+#   * data/ohlcv_5m_features/ohlcv_5m_features.parquet  (305 columns)
+#   * data/ohlcv_1h_features/ohlcv_1h_features.parquet  (270 columns)
+#
+# IMPORTANT:
+#   - The authoritative implementation is `pipeline/indicators.py` (orchestration
+#     + TA-Lib calls); the custom indicators (Supertrend, PSAR direction) live in
+#     the `library/` package and are imported there. If any of these and this
+#     file disagree, the code wins — update this file in the same change
+#     (see docs/README.md "Maintenance rule").
+#   - The 5m table = the 1h table PLUS the `h1_*` context block (last 35 columns).
+#   - Do NOT invent new windows. The grid below is a hard whitelist enforced by
+#     `validate_grid()`; only the values listed here are allowed.
+#   - Free (non-window) parameters (PSAR accel/max, Supertrend multiplier) are
+#     NOT whitelisted — they are named constants (B10/B11), overridden per run
+#     via `--psar` / `--st-mult`. Their values appear in the column names.
+#   - A prior legacy version of this file listed classic US-equity windows
+#     (ema_9/21/50, sma_200, rsi_14, cci_20, bb(20), kc(20,14), obv, vwap "per
+#     UTC day"). That has been superseded by the CFD grid below and removed.
+#   - Placeholders: {n} = a window from parameter_grid.windows_n;
+#     {f}_{s} = one of parameter_grid.macd_pairs (fast_slow).
+
+# ---------------------------------------------------------------------------
+# Parameter grid (spec section 4.1) — HARD WHITELIST
+# ---------------------------------------------------------------------------
+parameter_grid:
+  windows_n: [6, 12, 24, 60, 120]              # every rolling-window indicator
+  macd_pairs: [[6, 24], [12, 60], [24, 120]]   # only these (fast, slow) pairs
+  macd_signal_period: "fast"                    # signal period = fast (spec section 5)
+  norm_atr: 24                                  # window for ATR-normalized features
+  bb_sigma: 2.0                                 # Bollinger population-std (ddof=0)
+  keltner_mult: 2.0                             # Keltner = ema_N +/- 2.0 * atr_N
+  # Free (non-window) parameters: NOT restricted to the N grid / whitelist.
+  # Override per run: python -m pipeline.indicators --psar 0.02:0.2,0.01:0.1 --st-mult 2,3
+  psar_params: [[0.02, 0.20], [0.01, 0.10]]     # Wilder SAR (acceleration, maximum)
+  supertrend_mults: [2.0, 3.0]                  # Supertrend ATR multiplier (length = windows_n)
+  stochastic_d_sma: 6                           # %D = SMA-6 of raw %K (STOCHF, not STOCH)
+  eps: 1.0e-12
+  warmup_drop: 360                              # 3 * max(N); leading warm-up rows dropped
+
+# ---------------------------------------------------------------------------
+# Precision & causality policy (spec sections 2 & 3)
+# ---------------------------------------------------------------------------
+policy:
+  compute_dtype: float64
+  store_dtype: float32
+  lookahead: forbidden                          # feature at bar T uses data <= T only
+  synthetic_fill: forbidden                     # gaps exposed as flags, never imputed
+  h1_to_5m_join: "as-of on close_time (m.close_time >= h.close_time)"
+  execution: "signal on closed bar T, fill at open of bar T+1"
+  cost_bps_one_way: 2                           # strategy backtests (not this engine)
+
+# ---------------------------------------------------------------------------
+# Session reset anchors (spec section 4.2) — local market time
+#   vwap resets here (not UTC midnight); is_near_market_close = Fri 2h before this.
+# ---------------------------------------------------------------------------
+session_anchors:
+  fx_and_metals:
+    instruments: [AUD_USD, EUR_USD, GBP_USD, NZD_USD, USD_CAD, USD_CHF, USD_JPY, XAU_USD, XAG_USD]
+    anchor: "17:00 New York"
+  us_indices:
+    instruments: [US30_USD, SPX500_USD, NAS100_USD]
+    anchor: "09:30 New York"
+  eu_indices:
+    instruments: [DE30_EUR, UK100_GBP]
+    anchor: "08:00 CET/BST"
+  asia_indices:
+    instruments: [JP225_USD, HK33_HKD, CN50_USD]
+    anchor: "local exchange open (09:00 JST / 09:30 HKT)"
+  energy_and_crypto:
+    instruments: [WTICO_USD, BCO_USD, BTC_USD, ETH_USD]
+    anchor: "00:00 UTC"
+
+# ---------------------------------------------------------------------------
+# Feature families (one table = base + every family below)
+#   {n} = a window from parameter_grid.windows_n
+#   {f}_{s} = one of parameter_grid.macd_pairs
+# ---------------------------------------------------------------------------
+timeframes:
+  base:                       # OHLCV_COLS, present on both tables
+    - {name: instrument, dtype: string}
+    - {name: time, dtype: "timestamp[us, UTC]", note: "bar OPEN time"}
+    - {name: open, dtype: float64}
+    - {name: high, dtype: float64}
+    - {name: low, dtype: float64}
+    - {name: close, dtype: float64}
+    - {name: volume, dtype: float64, note: "tick volume = activity proxy"}
+    - {name: n_bars, dtype: int64, note: "1-min bars fed this bar"}
+
+  trend:
+    per_window_n:
+      - sma_{n}
+      - ema_{n}
+      - adx_{n}
+      - plus_di_{n}
+      - minus_di_{n}
+      - aroon_up_{n}
+      - aroon_down_{n}
+      - dc_upper_{n}
+      - dc_lower_{n}
+      - dc_mid_{n}
+    macd_per_pair:
+      - macd_{f}_{s}
+      - macd_signal_{f}_{s}
+      - macd_hist_{f}_{s}
+    per_psar_param:            # a,m = accel,max tags (0.02 -> 0p02); dir = +1/-1
+      - psar_{a}_{m}
+      - psar_dir_{a}_{m}
+    per_window_n_x_mult:       # k = multiplier tag (2.5 -> 2p5); dir = +1 up / -1 down
+      - st_{n}_{k}
+      - st_dir_{n}_{k}
+    notes: "TA-Lib; dc = Donchian channel; aroon = AROON up/down; MACD signal period = fast. PSAR via talib.SAR (direction ours); Supertrend is our own causal implementation (library/supertrend.py)."
+
+  momentum:
+    per_window_n:
+      - rsi_{n}
+      - roc_{n}
+      - mom_{n}
+      - stoch_k_{n}
+      - stoch_d_{n}
+      - cci_{n}
+      - willr_{n}
+    notes: "stoch_d_{n} = SMA-6 of raw %K built with talib.STOCHF (not smoothed STOCH)."
+
+  volatility:
+    no_window: [tr]                        # True Range
+    per_window_n:
+      - atr_{n}
+      - bb_mid_{n}
+      - bb_upper_{n}
+      - bb_lower_{n}
+      - bb_width_{n}
+      - bb_pctb_{n}
+      - kc_mid_{n}
+      - kc_upper_{n}
+      - kc_lower_{n}
+      - sqz_on_{n}
+      - hv_{n}
+    notes: "bb uses population std (ddof=0); kc = ema_N +/- 2.0*atr_N; sqz_on = 1 when Bollinger inside Keltner (volatility compression); hv = rolling std of log returns."
+
+  regime:
+    per_window_n:
+      - er_{n}
+      - chop_{n}
+    notes: "er = efficiency ratio 0-1 (1=trend, 0=chop); chop = choppiness 0-100. Both from pandas_ta_classic."
+
+  candle_structure:           # no window
+    - bar_body_ratio
+    - bar_upper_wick_ratio
+    - bar_lower_wick_ratio
+    - bar_clv                 # -1..+1, (close-low)-(high-close) / range
+
+  volume:
+    no_window: [vwap]          # session-anchored (see session_anchors), cumulative within session
+    per_window_n:
+      - vol_sma_{n}
+      - vol_rel_{n}
+      - mfi_{n}
+      - cmf_{n}
+    notes: "vol_rel = volume / its SMA; tick volume is an activity proxy; cmf from pandas_ta_classic."
+
+  derived:                    # scale-free / ATR-normalized
+    per_window_n:
+      - atr_pct_{n}
+      - ema_dist_{n}
+      - dc_pos_{n}
+      - dist_high_{n}
+      - dist_low_{n}
+    per_window_n_x_mult:
+      - st_dist_{n}_{k}       # k in supertrend_mults (per n x k)
+    per_psar_param:
+      - psar_dist_{a}_{m}     # (close - psar) / atr_24
+    macd_per_pair:
+      - ema_spread_{f}_{s}
+      - macd_hist_atr_{f}_{s}
+      - vol_ratio_{f}_{s}
+    notes: "atr_pct = atr/close; ema_dist = (close-ema)/atr_24; dc_pos = 0-1 position in Donchian channel; dist_high/low = ATR-normalized distance to the PREVIOUS n-bar extreme (already shift(1) -> lookahead-safe); vol_ratio = atr_f/atr_s; st_dist/psar_dist = signed ATR distance to the trailing-stop line (sign = side)."
+
+  time_cyclic:                # no window
+    - hour_sin
+    - hour_cos
+    - dow_sin
+    - dow_cos
+
+  flags:                      # int8 0/1, input signals (never impute)
+    - is_gap_bar              # gap since previous bar's close exceeds one period
+    - is_partial              # bar built from fewer 1-min bars than the standard count
+    - is_near_market_close    # Friday, within 2h before the session anchor
+
+  # 5m table ONLY — last closed 1h bar projected via as-of join on close_time (no lookahead).
+  5m_context:
+    per_window_n:
+      - h1_ema_dist_{n}
+      - h1_adx_{n}
+      - h1_rsi_{n}
+      - h1_er_{n}
+      - h1_atr_pct_{n}
+    per_window_n_x_mult:
+      - h1_st_dir_{n}_{k}     # 1h Supertrend direction (per n x k)
+
+# ---------------------------------------------------------------------------
+# Column counts (verified against the built tables)
+# ---------------------------------------------------------------------------
+column_counts:
+  ohlcv_1h_features: 270
+  ohlcv_5m_features: 305     # = 270 + 35 (h1_* block: 5 windows x 5 + 5 windows x 2 Supertrend mults)

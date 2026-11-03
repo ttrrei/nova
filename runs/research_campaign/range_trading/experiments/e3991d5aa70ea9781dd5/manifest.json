@@ -1,0 +1,588 @@
+{
+  "artifact_hashes": {
+    "compiled.sql": "c2dbf9d3d19b51b17f21bd1dc09442bd195ec665a0597a8243943b0531d7a5ec",
+    "feature_catalog.json": "855e954b133038b65c230280fc82372139bb880ec6f7dd6e1c5e3363c080c3c4",
+    "report.md": "07979393cc0143e0594fa86a5fee62d4704c569ca66a54eaf8d773c3c14dab2c",
+    "signals.csv.gz": "78a35d3b7832ef94450a76c8d67c86b821c3a6ad762ef35dbc58c625fa7a0d7c",
+    "strategy.yaml": "ea52d09c2de444a040300e0ce33113c9f7ec444467942f9370b00e8b4aba4057",
+    "summary.json": "6aaea9f4bff1dca292007668b80ea033846af80048b477a92d2c590592c81119",
+    "trades.csv.gz": "b48a595f535b452affe9ea29f74361cf0569e7db096ff821cedb945658d78ad0"
+  },
+  "assumptions": {
+    "annualization": "arithmetic net trade-return sum / full calendar years",
+    "costs": "observed bid/ask when present, configured full spread otherwise; adverse per-side slippage; flat commission and daily financing",
+    "intrabar_exit_timestamp": "bar-close reporting proxy; financing uses that approximation",
+    "intrabar_order": "stop first when unknown; known open chronology first",
+    "signal_execution": "close confirmation then next observed open",
+    "signals_csv": "only rows with at least one true entry/exit condition; includes signals while holding",
+    "target_gap": "conservative fill at target; no favorable gap improvement",
+    "temporal_windows": "observed complete bars; no gap filling",
+    "unit": "trade; no quantity, leverage, account or portfolio return",
+    "validation": "historical exploration; no legacy OOS machinery",
+    "volume": "OANDA quote/tick activity; used as market-volume proxy"
+  },
+  "created_at": "2026-10-31T22:38:33.152999+00:00",
+  "features": {
+    "catalog": {
+      "atr_14": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 15
+      },
+      "atr_sma_14": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 14
+      },
+      "breakout_down_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "breakout_up_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "close": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 1
+      },
+      "close_ema60_distance_atr": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 60
+      },
+      "close_sma24_distance_atr": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "atr_sma_14",
+        "warmup_bars": 24
+      },
+      "efficiency_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "0_to_1",
+        "warmup_bars": 25
+      },
+      "ema_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 24
+      },
+      "ema_6": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 6
+      },
+      "ema_60": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 60
+      },
+      "ema_alignment_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "sign",
+        "warmup_bars": 24
+      },
+      "ema_cross_down_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "ema_cross_up_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "failed_breakout_down_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "failed_breakout_up_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "prior_high_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 25
+      },
+      "prior_low_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 25
+      },
+      "psar": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 2
+      },
+      "psar_direction": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "sign",
+        "warmup_bars": 2
+      },
+      "psar_distance_atr": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 15
+      },
+      "psar_flip_down": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 3
+      },
+      "psar_flip_up": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 3
+      },
+      "range_atr": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 15
+      },
+      "range_position_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "prior_range_fraction",
+        "warmup_bars": 25
+      },
+      "range_width_atr_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 25
+      },
+      "relative_volume_24": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "prior_activity_ratio",
+        "warmup_bars": 25
+      },
+      "return_6_atr": {
+        "available_at": "bar_close_time",
+        "domain": "momentum",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 15
+      },
+      "rsi_14": {
+        "available_at": "bar_close_time",
+        "domain": "momentum",
+        "type": "VALUE",
+        "unit": "0_to_100",
+        "warmup_bars": 15
+      },
+      "sma_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 24
+      },
+      "sma_6": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 6
+      },
+      "sma_alignment_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "sign",
+        "warmup_bars": 24
+      },
+      "sma_cross_down_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "sma_cross_up_6_24": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 25
+      },
+      "supertrend": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "price",
+        "warmup_bars": 15
+      },
+      "supertrend_direction": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "STATE",
+        "unit": "sign",
+        "warmup_bars": 15
+      },
+      "supertrend_distance_atr": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "VALUE",
+        "unit": "atr_14",
+        "warmup_bars": 15
+      },
+      "supertrend_flip_down": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 16
+      },
+      "supertrend_flip_up": {
+        "available_at": "bar_close_time",
+        "domain": "trend",
+        "type": "EVENT",
+        "unit": "boolean",
+        "warmup_bars": 16
+      },
+      "utc_hour": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "UTC_hour",
+        "warmup_bars": 1
+      },
+      "volume": {
+        "available_at": "bar_close_time",
+        "domain": "core",
+        "type": "VALUE",
+        "unit": "source_activity",
+        "warmup_bars": 1
+      }
+    },
+    "feature_version": "nova-features-v2",
+    "market_snapshot_id": "ecaa0a6c6cd7eb46b103d6e92b3fa66f05fc0878af622d7186e512113f1d2881",
+    "parameters": {
+      "atr": 14,
+      "ema": [
+        6,
+        24,
+        60
+      ],
+      "psar": {
+        "acceleration": 0.02,
+        "maximum": 0.2
+      },
+      "research": {
+        "efficiency_bars": 24,
+        "normalization": "atr_14",
+        "prior_range_bars": 24,
+        "relative_volume_prior_bars": 24,
+        "return_bars": 6,
+        "session_clock": "bar_open_time_UTC"
+      },
+      "rsi": 14,
+      "sma": [
+        6,
+        24
+      ],
+      "supertrend": {
+        "atr": 14,
+        "multiplier": 3.0
+      }
+    },
+    "runtime": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "talib": "0.8.2"
+    },
+    "snapshot_id": "70ef7eab32db8047fc35ec2f263b4ff67e798bb29deb31186fdba8fee9680335",
+    "timeframe_minutes": 60,
+    "volume_semantics": "OANDA quote/tick activity; used as market-volume proxy",
+    "windows": {
+      "AUD_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T15:00:00+00:00"
+      },
+      "BCO_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T11:00:00+00:00"
+      },
+      "BTC_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T02:00:00+00:00"
+      },
+      "CN50_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      },
+      "DE30_EUR": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      },
+      "ETH_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "EUR_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T09:00:00+00:00"
+      },
+      "GBP_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T05:00:00+00:00"
+      },
+      "HK33_HKD": {
+        "end": "2026-10-23T19:00:00+00:00",
+        "start": "2020-01-02T02:00:00+00:00"
+      },
+      "JP225_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-03T02:00:00+00:00"
+      },
+      "NAS100_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-01T23:00:00+00:00"
+      },
+      "NZD_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "SPX500_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T15:00:00+00:00"
+      },
+      "UK100_GBP": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "US30_USD": {
+        "end": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-01T23:00:00+00:00"
+      },
+      "USD_CAD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T13:00:00+00:00"
+      },
+      "USD_CHF": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T14:00:00+00:00"
+      },
+      "USD_JPY": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T14:00:00+00:00"
+      },
+      "WTICO_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T08:00:00+00:00"
+      },
+      "XAG_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T13:00:00+00:00"
+      },
+      "XAU_USD": {
+        "end": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      }
+    }
+  },
+  "inputs": {
+    "csv_compression": "gzip-v1",
+    "engine_hash": "1135b043ad9fe3f30714c06a49140d7ff31869d7449455415123bfa81bda3ad2",
+    "feature_snapshot": "70ef7eab32db8047fc35ec2f263b4ff67e798bb29deb31186fdba8fee9680335",
+    "instruments": [
+      "AUD_USD",
+      "BCO_USD",
+      "BTC_USD",
+      "CN50_USD",
+      "DE30_EUR",
+      "ETH_USD",
+      "EUR_USD",
+      "GBP_USD",
+      "HK33_HKD",
+      "JP225_USD",
+      "NAS100_USD",
+      "NZD_USD",
+      "SPX500_USD",
+      "UK100_GBP",
+      "US30_USD",
+      "USD_CAD",
+      "USD_CHF",
+      "USD_JPY",
+      "WTICO_USD",
+      "XAG_USD",
+      "XAU_USD"
+    ],
+    "runtime": {
+      "PyYAML": "6.0.3",
+      "TA-Lib": "0.8.2",
+      "duckdb": "1.5.6",
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "pyarrow": "26.0.0",
+      "python": "3.12.3"
+    },
+    "since": null,
+    "strategy_hash": "cbb714a894d5456cd539e3f2096d8dea53f30ecc679958cdfc3cb03bc5beee27",
+    "until_exclusive": null
+  },
+  "run_id": "e3991d5aa70ea9781dd5",
+  "strategy": {
+    "entry": {
+      "long": {
+        "all": [
+          {
+            "feature": "efficiency_24",
+            "op": "lt",
+            "value": 0.25
+          },
+          {
+            "within": {
+              "bars": 3,
+              "condition": {
+                "all": [
+                  {
+                    "feature": "range_position_24",
+                    "op": "gte",
+                    "value": 0
+                  },
+                  {
+                    "feature": "range_position_24",
+                    "op": "lt",
+                    "value": 0.15
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "feature": "range_position_24",
+            "op": "gte",
+            "value": 0.15
+          },
+          {
+            "feature": "range_position_24",
+            "op": "lt",
+            "value": 0.5
+          }
+        ]
+      },
+      "short": {
+        "all": [
+          {
+            "feature": "efficiency_24",
+            "op": "lt",
+            "value": 0.25
+          },
+          {
+            "within": {
+              "bars": 3,
+              "condition": {
+                "all": [
+                  {
+                    "feature": "range_position_24",
+                    "op": "gt",
+                    "value": 0.85
+                  },
+                  {
+                    "feature": "range_position_24",
+                    "op": "lte",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "feature": "range_position_24",
+            "op": "lte",
+            "value": 0.85
+          },
+          {
+            "feature": "range_position_24",
+            "op": "gt",
+            "value": 0.5
+          }
+        ]
+      }
+    },
+    "execution": {
+      "commission_bps_round_trip": 0.0,
+      "financing_bps_per_day": 0.0,
+      "slippage_bps_per_side": 0.2,
+      "spread_bps": 2.0
+    },
+    "exit": {
+      "long": {
+        "feature": "range_position_24",
+        "op": "gte",
+        "value": 0.5
+      },
+      "max_holding_bars": 12,
+      "short": {
+        "feature": "range_position_24",
+        "op": "lte",
+        "value": 0.5
+      },
+      "stop_loss_pct": 0.02,
+      "take_profit_pct": 0.01
+    },
+    "family": "range_trading",
+    "hypothesis": "A return from the outer range back into its inner band may confirm range rejection before fading to midpoint.",
+    "id": "range_p1_r02",
+    "timeframe_minutes": 60,
+    "version": 1
+  }
+}

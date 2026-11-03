@@ -1,0 +1,23 @@
+volatility_expansion phase=1 round=19 run=f6ec6a188417d538401a audit=passed trades=17011 pass=7/21 positive=8/21 rank=[7, 0.04323208334603364, -0.011423846282436504] replay=False
+AUD_USD     score=-0.089733 trades=  768 zero_months= 0 positive_years=0/7 pass=False
+BCO_USD     score=+0.043232 trades=  724 zero_months= 0 positive_years=4/7 pass=True
+BTC_USD     score=+0.082105 trades= 1104 zero_months= 0 positive_years=5/7 pass=True
+CN50_USD    score=-0.087479 trades=  568 zero_months= 0 positive_years=3/7 pass=False
+DE30_EUR    score=-0.001157 trades=  668 zero_months= 0 positive_years=3/7 pass=False
+ETH_USD     score=-0.052352 trades= 1075 zero_months= 0 positive_years=3/7 pass=False
+EUR_USD     score=-0.051513 trades=  998 zero_months= 0 positive_years=0/7 pass=False
+GBP_USD     score=-0.039191 trades=  944 zero_months= 0 positive_years=0/7 pass=False
+HK33_HKD    score=-0.060574 trades=  647 zero_months= 0 positive_years=2/7 pass=False
+JP225_USD   score=+0.003072 trades=  555 zero_months= 2 positive_years=4/7 pass=False
+NAS100_USD  score=+0.051885 trades=  939 zero_months= 0 positive_years=6/7 pass=True
+NZD_USD     score=-0.052333 trades=  727 zero_months= 0 positive_years=3/7 pass=False
+SPX500_USD  score=-0.010974 trades=  726 zero_months= 0 positive_years=2/7 pass=False
+UK100_GBP   score=-0.026049 trades=  518 zero_months= 0 positive_years=3/7 pass=False
+US30_USD    score=-0.032759 trades=  913 zero_months= 0 positive_years=1/7 pass=False
+USD_CAD     score=-0.033042 trades=  876 zero_months= 0 positive_years=1/7 pass=False
+USD_CHF     score=-0.011424 trades=  698 zero_months= 1 positive_years=3/7 pass=False
+USD_JPY     score=+0.005314 trades=  989 zero_months= 0 positive_years=4/7 pass=True
+WTICO_USD   score=+0.047391 trades=  824 zero_months= 0 positive_years=3/7 pass=True
+XAG_USD     score=+0.034639 trades=  767 zero_months= 0 positive_years=3/7 pass=True
+XAU_USD     score=+0.017446 trades=  983 zero_months= 0 positive_years=4/7 pass=True
+7/21 pass; 1 additional positive-score instruments fail monthly frequency; 13/21 have nonpositive scores; 0 instruments have no trades. Yearly concentration is descriptive, not another acceptance gate.

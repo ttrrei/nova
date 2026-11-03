@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "family": "failed_breakout",
+  "phase": 1,
+  "rounds": 20,
+  "unique_effective_strategies": 20,
+  "instrument_evaluations": 420,
+  "audited_trade_records": 288809,
+  "baseline_passes": 1,
+  "winner_round": 18,
+  "winner_run_id": "684c24a30a2b69da3a08",
+  "winner_strategy": "/home/ubuntu/work/nova/runs/research_campaign/failed_breakout/strategies/p1_r18.yaml",
+  "ranking_key": [
+    9,
+    0.047041666365020614,
+    -0.007023438890463908
+  ],
+  "passing_instruments": [
+    "AUD_USD",
+    "CN50_USD",
+    "GBP_USD",
+    "NZD_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_CAD",
+    "WTICO_USD"
+  ],
+  "best_year_dependent_passing_instruments": [
+    "CN50_USD",
+    "GBP_USD",
+    "NZD_USD",
+    "USD_CAD",
+    "WTICO_USD"
+  ],
+  "passing_instruments_with_losing_reported_years": [
+    "AUD_USD",
+    "CN50_USD",
+    "GBP_USD",
+    "NZD_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_CAD",
+    "WTICO_USD"
+  ],
+  "long_only_alternative_round": 19,
+  "long_only_positive_names": [
+    "AUD_USD",
+    "BCO_USD",
+    "BTC_USD",
+    "DE30_EUR",
+    "ETH_USD",
+    "JP225_USD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_CAD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAG_USD",
+    "XAU_USD"
+  ],
+  "long_only_positive_monthly_failures": [
+    "AUD_USD",
+    "JP225_USD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD"
+  ],
+  "short_only_passes": [
+    "USD_CAD"
+  ]
+}

@@ -1,0 +1,760 @@
+{
+  "catalog": {
+    "atr_14": {
+      "available_at": "bar_close_time",
+      "domain": "core",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 15
+    },
+    "atr_sma_14": {
+      "available_at": "bar_close_time",
+      "domain": "core",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 14
+    },
+    "close": {
+      "available_at": "bar_close_time",
+      "domain": "core",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 1
+    },
+    "close_ema60_distance_atr": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "atr_14",
+      "warmup_bars": 60
+    },
+    "close_sma24_distance_atr": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "atr_sma_14",
+      "warmup_bars": 24
+    },
+    "ema_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 24
+    },
+    "ema_6": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 6
+    },
+    "ema_60": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 60
+    },
+    "ema_alignment_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "STATE",
+      "unit": "sign",
+      "warmup_bars": 24
+    },
+    "ema_cross_down_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 25
+    },
+    "ema_cross_up_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 25
+    },
+    "psar": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 2
+    },
+    "psar_direction": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "STATE",
+      "unit": "sign",
+      "warmup_bars": 2
+    },
+    "psar_distance_atr": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "atr_14",
+      "warmup_bars": 15
+    },
+    "psar_flip_down": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 3
+    },
+    "psar_flip_up": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 3
+    },
+    "rsi_14": {
+      "available_at": "bar_close_time",
+      "domain": "momentum",
+      "type": "VALUE",
+      "unit": "0_to_100",
+      "warmup_bars": 15
+    },
+    "sma_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 24
+    },
+    "sma_6": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 6
+    },
+    "sma_alignment_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "STATE",
+      "unit": "sign",
+      "warmup_bars": 24
+    },
+    "sma_cross_down_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 25
+    },
+    "sma_cross_up_6_24": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 25
+    },
+    "supertrend": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "price",
+      "warmup_bars": 15
+    },
+    "supertrend_direction": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "STATE",
+      "unit": "sign",
+      "warmup_bars": 15
+    },
+    "supertrend_distance_atr": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "VALUE",
+      "unit": "atr_14",
+      "warmup_bars": 15
+    },
+    "supertrend_flip_down": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 16
+    },
+    "supertrend_flip_up": {
+      "available_at": "bar_close_time",
+      "domain": "trend",
+      "type": "EVENT",
+      "unit": "boolean",
+      "warmup_bars": 16
+    },
+    "volume": {
+      "available_at": "bar_close_time",
+      "domain": "core",
+      "type": "VALUE",
+      "unit": "source_activity",
+      "warmup_bars": 1
+    }
+  },
+  "feature_version": "nova-features-v1",
+  "files": [
+    {
+      "domain": "core",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/AUD_USD_core.parquet",
+      "rows": 462826,
+      "sha256": "d7ad4c7f700fa83144a631186b6529d90b02262efb41cfa2ea9c4f00e5c8626d"
+    },
+    {
+      "domain": "trend",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/AUD_USD_trend.parquet",
+      "rows": 462826,
+      "sha256": "57090b65f22eb18cae8c9c114c2d4e7f66e4193461ece9917af5f8802867d571"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/AUD_USD_momentum.parquet",
+      "rows": 462826,
+      "sha256": "0657fd1b6953b8d7bf66d434219e683003a2044823b82ca9b8828914a31bbaa2"
+    },
+    {
+      "domain": "core",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BCO_USD_core.parquet",
+      "rows": 426204,
+      "sha256": "e7ca58e48d53cb09ca96bae4cf431cd35c412ac6bbb962475d45cdf0c79ceba1"
+    },
+    {
+      "domain": "trend",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BCO_USD_trend.parquet",
+      "rows": 426204,
+      "sha256": "ee4cfb099d0c661e43d4ff2647c6e1940f536a7be3030ed6ff2189a590999449"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BCO_USD_momentum.parquet",
+      "rows": 426204,
+      "sha256": "ef1e822e5912ecdf89782ee5f855c77ed594205845c97801eeef73638730808a"
+    },
+    {
+      "domain": "core",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BTC_USD_core.parquet",
+      "rows": 498785,
+      "sha256": "6c46e98539aba1b620e9126517667dd66c5646183c4dec92eb1dcbb969b7bd7f"
+    },
+    {
+      "domain": "trend",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BTC_USD_trend.parquet",
+      "rows": 498785,
+      "sha256": "c387e9eb6a7713cba80b7193bf758678dbd1b169fdd0d66dff463154ab859e8c"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/BTC_USD_momentum.parquet",
+      "rows": 498785,
+      "sha256": "de3c625be7cf79736762a253a33ba430a02b4d8bcd13ad43dce21f5e1c35855f"
+    },
+    {
+      "domain": "core",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/CN50_USD_core.parquet",
+      "rows": 351345,
+      "sha256": "16e90371bf2d5ed61650288b30e4aac1a7ae71e5921a7eabdf0f3903a44b0b7c"
+    },
+    {
+      "domain": "trend",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/CN50_USD_trend.parquet",
+      "rows": 351345,
+      "sha256": "51009a3083c410f295e8d99dcd8f252016ce5d3fb23b55eb100d7354c76dce91"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/CN50_USD_momentum.parquet",
+      "rows": 351345,
+      "sha256": "b7c0ac88f2ae785db0fe628b4acccd41aa43a487628b2ec4226ea9667095ffb0"
+    },
+    {
+      "domain": "core",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/DE30_EUR_core.parquet",
+      "rows": 398063,
+      "sha256": "bc11ced8b49ab96736a99afa8e7c147747afc3a477bfc882c9bfab8f2db2271a"
+    },
+    {
+      "domain": "trend",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/DE30_EUR_trend.parquet",
+      "rows": 398063,
+      "sha256": "a26631029005ddb44147821706f480946eb5d0cabc2eb2b6173ad43c0a75d55c"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/DE30_EUR_momentum.parquet",
+      "rows": 398063,
+      "sha256": "21da339372c454cadbf3e89b63149d3fade45730d1dc5a85812df8b45919b1c5"
+    },
+    {
+      "domain": "core",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/ETH_USD_core.parquet",
+      "rows": 492001,
+      "sha256": "ded63321fcf3dc7f348cb511cac1f2ea61bd568d928a005d5c82f734b49d83fe"
+    },
+    {
+      "domain": "trend",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/ETH_USD_trend.parquet",
+      "rows": 492001,
+      "sha256": "08795f6b7eb725605487a95a684287b61a2ba4cc27747d37c984ed8a14da4993"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/ETH_USD_momentum.parquet",
+      "rows": 492001,
+      "sha256": "ad3331c52a2317f9fe87039b6a396462014b6cb399a5a8ae2ae7a56320fd1770"
+    },
+    {
+      "domain": "core",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/EUR_USD_core.parquet",
+      "rows": 488709,
+      "sha256": "d0ef0eb11fb465024115c038ebed484b9f954a6906272ed03af257c61bb6cde8"
+    },
+    {
+      "domain": "trend",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/EUR_USD_trend.parquet",
+      "rows": 488709,
+      "sha256": "7d6b3ea9e39e299a6583d1b4b062a582576256b01731febda926dcd4b2776638"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/EUR_USD_momentum.parquet",
+      "rows": 488709,
+      "sha256": "9e230d6b2ea275cb82a65603d95008688e0a7961846558960f06c2b45d718738"
+    },
+    {
+      "domain": "core",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/GBP_USD_core.parquet",
+      "rows": 481568,
+      "sha256": "0a6e1b37a252f93aa14e0d911835019db83c2b6b3838ff0fbb531696659b4c53"
+    },
+    {
+      "domain": "trend",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/GBP_USD_trend.parquet",
+      "rows": 481568,
+      "sha256": "d446888f73e5b341e8ce66afc50badc1d30fdc81e73f3c0908c1564046f3a813"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/GBP_USD_momentum.parquet",
+      "rows": 481568,
+      "sha256": "93a27c9bcdb2989e40c58fbf94d83fb6f42c2761408afcbabe6cef592be1d1c1"
+    },
+    {
+      "domain": "core",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/HK33_HKD_core.parquet",
+      "rows": 317420,
+      "sha256": "f33e09a7e926a6cf0ed89c8e9dab1eaacf9a8d607a1ba46df7eb4b3f1c81a3c3"
+    },
+    {
+      "domain": "trend",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/HK33_HKD_trend.parquet",
+      "rows": 317420,
+      "sha256": "338589887fa3322bd9e32a57817f39c200959e70f33842d9a7b8fad313cd166f"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/HK33_HKD_momentum.parquet",
+      "rows": 317420,
+      "sha256": "23ca5f15d119ebb0bdf099ed55f2cce6627c3e4c322e7efe7fa24f665e8d775e"
+    },
+    {
+      "domain": "core",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/JP225_USD_core.parquet",
+      "rows": 418331,
+      "sha256": "e3efd970c94e533f7323371185312ef7812b0d7611ebdbca9423a2f3640390ca"
+    },
+    {
+      "domain": "trend",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/JP225_USD_trend.parquet",
+      "rows": 418331,
+      "sha256": "ec413eb466934445628c3fc06546ff9d4040dca7bd64a853bb183c2ef852fc3f"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/JP225_USD_momentum.parquet",
+      "rows": 418331,
+      "sha256": "8e526789b395e1e7dd67665053ad03fe3cb66df6eee0d0e5beb883bf0898c701"
+    },
+    {
+      "domain": "core",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NAS100_USD_core.parquet",
+      "rows": 468990,
+      "sha256": "d9259eb8dc23fb5c1f45055d391d846fb1c04b245312486259ed0bcb429685a6"
+    },
+    {
+      "domain": "trend",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NAS100_USD_trend.parquet",
+      "rows": 468990,
+      "sha256": "0658d9ccd50b8bac3fda52a8acd6d2807cb2de25f1998d6d1fcb9c5e171de3fa"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NAS100_USD_momentum.parquet",
+      "rows": 468990,
+      "sha256": "85b517593bd3caefbc635ef3b1ded63cc6d4cf230790d703326e1dc39e7bc9c6"
+    },
+    {
+      "domain": "core",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NZD_USD_core.parquet",
+      "rows": 466909,
+      "sha256": "19b52cdfd5d51bc85a58a53077d4e53a3934ce52033293310d72a9041ff77403"
+    },
+    {
+      "domain": "trend",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NZD_USD_trend.parquet",
+      "rows": 466909,
+      "sha256": "7181b7e0b290204da4db92d1862f7589cf4a540ef725c387e9d35b292944df64"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/NZD_USD_momentum.parquet",
+      "rows": 466909,
+      "sha256": "1d1c91b47df828988d4be3cf5546a8ad73eecfe805df61307eee3c091c751646"
+    },
+    {
+      "domain": "core",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/SPX500_USD_core.parquet",
+      "rows": 434572,
+      "sha256": "214d7d5fb67126a59038571e57e3cc67a12451e5511e7e9d364ff081f7b08789"
+    },
+    {
+      "domain": "trend",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/SPX500_USD_trend.parquet",
+      "rows": 434572,
+      "sha256": "60aa7706ed47d1e6933612d2eeefb6fca9472442c964bcf4531a2a345801d13f"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/SPX500_USD_momentum.parquet",
+      "rows": 434572,
+      "sha256": "ba80af06e1f80db857c4bccd2a8f6315c5189ff84909f9328887977dc4b31b33"
+    },
+    {
+      "domain": "core",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/UK100_GBP_core.parquet",
+      "rows": 364375,
+      "sha256": "d38fc7b1e7d2abe1dd432984074fa117fd779bca57082ba71d2ba956d5aab842"
+    },
+    {
+      "domain": "trend",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/UK100_GBP_trend.parquet",
+      "rows": 364375,
+      "sha256": "089ba0361cbbae5fe189161c549f173633f66cc49fcfb93b54201a96881f6ceb"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/UK100_GBP_momentum.parquet",
+      "rows": 364375,
+      "sha256": "ad2221afa57a7a3b8eae0ebc4f3133e02c5512971b314412034e1f263ddeafb1"
+    },
+    {
+      "domain": "core",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/US30_USD_core.parquet",
+      "rows": 461065,
+      "sha256": "6539234a30a233427f27ae1b1746310503d007e79e3a0b1d602003a50e4423d2"
+    },
+    {
+      "domain": "trend",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/US30_USD_trend.parquet",
+      "rows": 461065,
+      "sha256": "bb387293c85d38eaae1cad16e944b920fba71dae2d58a15c5024240e9d6a9e66"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/US30_USD_momentum.parquet",
+      "rows": 461065,
+      "sha256": "6dfcd68dc2b37d48d02f863405af7b6de11df3d1e7e2665b0804af18605d6991"
+    },
+    {
+      "domain": "core",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CAD_core.parquet",
+      "rows": 479448,
+      "sha256": "4374bd8acf19209e0bac1f2fa3f0074e9c2fd2058f2295a5a115cf7af907297c"
+    },
+    {
+      "domain": "trend",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CAD_trend.parquet",
+      "rows": 479448,
+      "sha256": "3fd03da21ec877fb78509a31a2aad7bb1c88f877bcb484a4a601983d4035af43"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CAD_momentum.parquet",
+      "rows": 479448,
+      "sha256": "fd58da650735eb43992ee55fc6af176d07ebe1f9ead3f48f88467f2c9d53eedf"
+    },
+    {
+      "domain": "core",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CHF_core.parquet",
+      "rows": 432224,
+      "sha256": "a3376a56d306cd5340812d23db04b5a9a435d3c9bc6d5b07a6f6e08ab3abd86d"
+    },
+    {
+      "domain": "trend",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CHF_trend.parquet",
+      "rows": 432224,
+      "sha256": "aa437171004142c97957de9e97e6c165bfd4c153aed33489e48648939d5b1cd1"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_CHF_momentum.parquet",
+      "rows": 432224,
+      "sha256": "403ccb9fc667ba7ccdd5cd54765bb0dc6c7407490883bc0c80774e61ab47c637"
+    },
+    {
+      "domain": "core",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_JPY_core.parquet",
+      "rows": 490940,
+      "sha256": "4bffec7db342fba4880f0e8e4d6783a7635795d4166750b6302464675903760f"
+    },
+    {
+      "domain": "trend",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_JPY_trend.parquet",
+      "rows": 490940,
+      "sha256": "65258254051f2bbb4cfe760a5c3c4d8f0c838a12a666d3f48ad697b5706fee6a"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/USD_JPY_momentum.parquet",
+      "rows": 490940,
+      "sha256": "96d7649f3b2c5c2f1a2008739d53ef99462ef050e33fac2789e787e52fb11d53"
+    },
+    {
+      "domain": "core",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/WTICO_USD_core.parquet",
+      "rows": 447669,
+      "sha256": "0c8f4c78e21df49fc0824c51cbb8977ef9ae1fda66afbd5744930747f87ba591"
+    },
+    {
+      "domain": "trend",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/WTICO_USD_trend.parquet",
+      "rows": 447669,
+      "sha256": "5d06d76f7af24d79d960f4a9df59f908db8d2f396473d852ef44f6cff497dce7"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/WTICO_USD_momentum.parquet",
+      "rows": 447669,
+      "sha256": "51bc9dfc14c43a32769d4bd7d70d5e12db03654ac13b718a0303ce41e3877510"
+    },
+    {
+      "domain": "core",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAG_USD_core.parquet",
+      "rows": 441590,
+      "sha256": "9fdb7bdda587ebdc27fe256ffa2683a73a98ac18110c7c25b58b89884eb78ab3"
+    },
+    {
+      "domain": "trend",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAG_USD_trend.parquet",
+      "rows": 441590,
+      "sha256": "333eb2e723541364ff110edd3287300a80d79c705fe19650104b330cf0cb1410"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAG_USD_momentum.parquet",
+      "rows": 441590,
+      "sha256": "9f89be3987ab12513665bacf3b690fe97eb504c1921409aaba6c9404e2e8ab51"
+    },
+    {
+      "domain": "core",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAU_USD_core.parquet",
+      "rows": 476486,
+      "sha256": "26d3b567d1416600ad65a9a52fd0615960d1c88ba1d61dd19a1f500566a53279"
+    },
+    {
+      "domain": "trend",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAU_USD_trend.parquet",
+      "rows": 476486,
+      "sha256": "3412da368970077c5859569469d1b54fccd5fa16e48e1eefe5bf1c6a37c5b1ca"
+    },
+    {
+      "domain": "momentum",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/features/5m/22d25208bac99177/XAU_USD_momentum.parquet",
+      "rows": 476486,
+      "sha256": "4b1390bdc957fd52bcd41eba99d6a44573410e9b3919abd09d562363a8252e58"
+    }
+  ],
+  "market_snapshot_id": "bb03b6a0414d350705e2394ceb5149a62979666a6897261d2e33681c935f99b9",
+  "parameters": {
+    "atr": 14,
+    "ema": [
+      6,
+      24,
+      60
+    ],
+    "psar": {
+      "acceleration": 0.02,
+      "maximum": 0.2
+    },
+    "rsi": 14,
+    "sma": [
+      6,
+      24
+    ],
+    "supertrend": {
+      "atr": 14,
+      "multiplier": 3.0
+    }
+  },
+  "runtime": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "talib": "0.8.2"
+  },
+  "snapshot_id": "22d25208bac991771a05d62d94fdb3e03f6a20737cb281d7f0e1fa7f7dbef711",
+  "timeframe_minutes": 5,
+  "volume_semantics": "OANDA quote/tick activity; used as market-volume proxy",
+  "windows": {
+    "AUD_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T22:20:00+00:00"
+    },
+    "BCO_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    "BTC_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "CN50_USD": {
+      "end": "2026-10-23T20:45:00+00:00",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    "DE30_EUR": {
+      "end": "2026-10-23T20:00:00+00:00",
+      "start": "2020-01-02T00:15:00+00:00"
+    },
+    "ETH_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-02T05:05:00+00:00"
+    },
+    "EUR_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T22:45:00+00:00"
+    },
+    "GBP_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T22:40:00+00:00"
+    },
+    "HK33_HKD": {
+      "end": "2026-10-23T19:00:00+00:00",
+      "start": "2020-01-02T01:15:00+00:00"
+    },
+    "JP225_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "NAS100_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "NZD_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T22:30:00+00:00"
+    },
+    "SPX500_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "UK100_GBP": {
+      "end": "2026-10-23T20:00:00+00:00",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    "US30_USD": {
+      "end": "2026-10-23T20:55:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "USD_CAD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:55:00+00:00"
+    },
+    "USD_CHF": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-02T01:25:00+00:00"
+    },
+    "USD_JPY": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T22:10:00+00:00"
+    },
+    "WTICO_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "XAG_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    "XAU_USD": {
+      "end": "2026-10-23T21:00:00+00:00",
+      "start": "2020-01-01T23:00:00+00:00"
+    }
+  }
+}

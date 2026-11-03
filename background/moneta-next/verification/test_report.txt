@@ -1,0 +1,74 @@
+test_boolean_parameter_is_not_a_number (test_core.ConfigurationTests.test_boolean_parameter_is_not_a_number) ... ok
+test_duplicate_yaml_keys_rejected (test_core.ConfigurationTests.test_duplicate_yaml_keys_rejected) ... ok
+test_event_requires_boolean_comparison (test_core.ConfigurationTests.test_event_requires_boolean_comparison) ... ok
+test_non_two_percent_stop_rejected (test_core.ConfigurationTests.test_non_two_percent_stop_rejected) ... ok
+test_strategy_python_escape_rejected (test_core.ConfigurationTests.test_strategy_python_escape_rejected) ... ok
+test_temporal_operators_emit_past_only_windows (test_core.ConfigurationTests.test_temporal_operators_emit_past_only_windows) ... ok
+test_unknown_feature_and_sql_injection_rejected (test_core.ConfigurationTests.test_unknown_feature_and_sql_injection_rejected) ... ok
+test_monthly_count_uses_open_not_exit_date (test_core.MetricTests.test_monthly_count_uses_open_not_exit_date) ... ok
+test_no_complete_months_cannot_pass_monthly_screen (test_core.MetricTests.test_no_complete_months_cannot_pass_monthly_screen) ... ok
+test_no_trade_years_remain_in_annual_report (test_core.MetricTests.test_no_trade_years_remain_in_annual_report) ... ok
+test_pooled_months_include_no_entry_months (test_core.MetricTests.test_pooled_months_include_no_entry_months) ... ok
+test_zero_entry_months_are_not_dropped (test_core.MetricTests.test_zero_entry_months_are_not_dropped) ... ok
+test_conflicting_directions_are_skipped (test_core.TradeTests.test_conflicting_directions_are_skipped) ... ok
+test_flat_commission_and_financing (test_core.TradeTests.test_flat_commission_and_financing) ... ok
+test_gap_is_not_clamped_to_stop_price (test_core.TradeTests.test_gap_is_not_clamped_to_stop_price) ... ok
+test_holding_one_bar_exits_at_following_open (test_core.TradeTests.test_holding_one_bar_exits_at_following_open) ... ok
+test_indicator_exit_executes_next_open_before_later_stop (test_core.TradeTests.test_indicator_exit_executes_next_open_before_later_stop) ... ok
+test_known_open_target_precedes_later_intrabar_stop (test_core.TradeTests.test_known_open_target_precedes_later_intrabar_stop) ... ok
+test_last_bar_signal_cannot_create_a_trade (test_core.TradeTests.test_last_bar_signal_cannot_create_a_trade) ... ok
+test_long_stop_is_two_percent_of_entry (test_core.TradeTests.test_long_stop_is_two_percent_of_entry) ... ok
+test_misaligned_signals_are_rejected (test_core.TradeTests.test_misaligned_signals_are_rejected) ... ok
+test_observed_bid_ask_does_not_add_synthetic_spread (test_core.TradeTests.test_observed_bid_ask_does_not_add_synthetic_spread) ... ok
+test_persistent_signal_has_one_position_and_no_same_bar_reentry (test_core.TradeTests.test_persistent_signal_has_one_position_and_no_same_bar_reentry) ... ok
+test_short_stop_is_two_percent_of_entry (test_core.TradeTests.test_short_stop_is_two_percent_of_entry) ... ok
+test_signal_executes_next_open (test_core.TradeTests.test_signal_executes_next_open) ... ok
+test_spread_and_slippage_are_adverse_on_both_sides (test_core.TradeTests.test_spread_and_slippage_are_adverse_on_both_sides) ... ok
+test_unknown_long_intrabar_order_selects_loss (test_core.TradeTests.test_unknown_long_intrabar_order_selects_loss) ... ok
+test_unknown_short_intrabar_order_selects_loss (test_core.TradeTests.test_unknown_short_intrabar_order_selects_loss) ... ok
+test_exclusive_api_end_does_not_drop_last_candle (test_download_reuse.DownloadReuseTests.test_exclusive_api_end_does_not_drop_last_candle) ... skipped 'Optional requests dependency is not installed'
+test_inclusive_api_end_does_not_duplicate_or_drop_candles (test_download_reuse.DownloadReuseTests.test_inclusive_api_end_does_not_duplicate_or_drop_candles) ... skipped 'Optional requests dependency is not installed'
+test_after_event_confirms_on_third_following_close (test_duckdb.DuckDBTests.test_after_event_confirms_on_third_following_close) ... skipped 'DuckDB dependency is not installed'
+test_appending_future_bars_does_not_change_past_features (test_duckdb.DuckDBTests.test_appending_future_bars_does_not_change_past_features) ... skipped 'DuckDB dependency is not installed'
+test_both_example_strategies_run_end_to_end (test_duckdb.DuckDBTests.test_both_example_strategies_run_end_to_end) ... skipped 'DuckDB dependency is not installed'
+test_feature_warmup_and_reuse (test_duckdb.DuckDBTests.test_feature_warmup_and_reuse) ... skipped 'DuckDB dependency is not installed'
+test_invalid_timeframe_rejected (test_duckdb.DuckDBTests.test_invalid_timeframe_rejected) ... skipped 'DuckDB dependency is not installed'
+test_unknown_feature_negation_does_not_trigger_warmup_entry (test_duckdb.DuckDBTests.test_unknown_feature_negation_does_not_trigger_warmup_entry) ... skipped 'DuckDB dependency is not installed'
+test_duplicate_context_is_rejected (test_migration.AlignmentTests.test_duplicate_context_is_rejected) ... ok
+test_empty_context_returns_unknown (test_migration.AlignmentTests.test_empty_context_returns_unknown) ... ok
+test_hourly_context_visible_at_its_close_only (test_migration.AlignmentTests.test_hourly_context_visible_at_its_close_only) ... ok
+test_capped_age_resets_at_gap (test_migration.IndicatorReuseTests.test_capped_age_resets_at_gap) ... ok
+test_center_stretch_prefix_and_degenerate_input (test_migration.IndicatorReuseTests.test_center_stretch_prefix_and_degenerate_input) ... ok
+test_confirmed_structure_never_backdates_pivot (test_migration.IndicatorReuseTests.test_confirmed_structure_never_backdates_pivot) ... ok
+test_direction_transitions_are_nullable_one_bar_events (test_migration.IndicatorReuseTests.test_direction_transitions_are_nullable_one_bar_events) ... ok
+test_parameter_tags_and_validation (test_migration.IndicatorReuseTests.test_parameter_tags_and_validation) ... ok
+test_psar_direction_preserves_source_convention (test_migration.IndicatorReuseTests.test_psar_direction_preserves_source_convention) ... ok
+test_structure_prefix_invariance_and_gap_reset (test_migration.IndicatorReuseTests.test_structure_prefix_invariance_and_gap_reset) ... ok
+test_supertrend_prefix_invariance (test_migration.IndicatorReuseTests.test_supertrend_prefix_invariance) ... ok
+test_supertrend_rejects_nonpositive_multiplier (test_migration.IndicatorReuseTests.test_supertrend_rejects_nonpositive_multiplier) ... ok
+test_supertrend_warmup_and_direction_domain (test_migration.IndicatorReuseTests.test_supertrend_warmup_and_direction_domain) ... ok
+test_all_archived_files_match_pinned_git_blobs (test_migration.ProvenanceTests.test_all_archived_files_match_pinned_git_blobs) ... ok
+test_no_old_strategy_or_oos_module_is_a_runtime_import (test_migration.ProvenanceTests.test_no_old_strategy_or_oos_module_is_a_runtime_import) ... ok
+test_unchanged_runtime_modules_are_byte_identical (test_migration.ProvenanceTests.test_unchanged_runtime_modules_are_byte_identical) ... ok
+test_aroon_down_up_contract_is_respected (test_migration.ReturnOrderRepairTests.test_aroon_down_up_contract_is_respected) ... ok
+test_bbands_upper_middle_lower_contract_is_respected (test_migration.ReturnOrderRepairTests.test_bbands_upper_middle_lower_contract_is_respected) ... ok
+test_first_gap_flag_is_initialized (test_migration.ReturnOrderRepairTests.test_first_gap_flag_is_initialized) ... ok
+test_aggregation_preserves_quote_ohlc_and_complete_counts (test_migration.SchemaTests.test_aggregation_preserves_quote_ohlc_and_complete_counts) ... ok
+test_all_five_yaml_examples_compile_against_registry (test_migration.SchemaTests.test_all_five_yaml_examples_compile_against_registry) ... ok
+test_full_registry_has_expected_names_and_safe_identifiers (test_migration.SchemaTests.test_full_registry_has_expected_names_and_safe_identifiers) ... ok
+test_known_bad_cached_features_are_excluded (test_migration.SchemaTests.test_known_bad_cached_features_are_excluded) ... ok
+test_legacy_aggregate_requires_bar_count (test_migration.SchemaTests.test_legacy_aggregate_requires_bar_count) ... ok
+test_partial_quote_schema_rejected (test_migration.SchemaTests.test_partial_quote_schema_rejected) ... ok
+test_raw_schema_and_quotes_are_mapped (test_migration.SchemaTests.test_raw_schema_and_quotes_are_mapped) ... ok
+test_full_feature_profile_matches_registered_names_and_known_talib_outputs (test_migration_duckdb.LegacyNumericalTests.test_full_feature_profile_matches_registered_names_and_known_talib_outputs) ... skipped 'Full legacy numerical dependencies are not installed'
+test_cannot_reuse_cached_features_across_resampling (test_migration_duckdb.MigrationDuckDBTests.test_cannot_reuse_cached_features_across_resampling) ... skipped 'DuckDB dependency is not installed'
+test_duplicate_survivor_prefers_complete_quotes (test_migration_duckdb.MigrationDuckDBTests.test_duplicate_survivor_prefers_complete_quotes) ... skipped 'DuckDB dependency is not installed'
+test_imported_feature_profile_derives_psar_events (test_migration_duckdb.MigrationDuckDBTests.test_imported_feature_profile_derives_psar_events) ... skipped 'DuckDB dependency is not installed'
+test_parquet_export_reuses_catalogue_without_replacing_working_table (test_migration_duckdb.MigrationDuckDBTests.test_parquet_export_reuses_catalogue_without_replacing_working_table) ... skipped 'DuckDB dependency is not installed'
+test_raw_mid_only_parquet_runs_through_core (test_migration_duckdb.MigrationDuckDBTests.test_raw_mid_only_parquet_runs_through_core) ... skipped 'DuckDB dependency is not installed'
+test_raw_to_five_minute_preserves_bid_ask_and_drops_partial (test_migration_duckdb.MigrationDuckDBTests.test_raw_to_five_minute_preserves_bid_ask_and_drops_partial) ... skipped 'DuckDB dependency is not installed'
+
+----------------------------------------------------------------------
+Ran 69 tests in 0.244s
+
+OK (skipped=15)

@@ -1,0 +1,22 @@
+[
+  {
+    "run": "/home/ubuntu/work/nova/runs/46777f5e674a09ea61a3",
+    "strategy": "strategies/ema_pullback.yaml",
+    "total_trades": 14329
+  },
+  {
+    "run": "/home/ubuntu/work/nova/runs/b0905f905411e8b7fe22",
+    "strategy": "strategies/mean_reversion.yaml",
+    "total_trades": 34182
+  },
+  {
+    "run": "/home/ubuntu/work/nova/runs/b5419de0b4c8b3f0c280",
+    "strategy": "strategies/psar_supertrend.yaml",
+    "total_trades": 25604
+  },
+  {
+    "run": "/home/ubuntu/work/nova/runs/60dfd5efa8f0b08157fb",
+    "strategy": "strategies/trend_hold.yaml",
+    "total_trades": 30131
+  }
+]

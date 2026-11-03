@@ -1,0 +1,2550 @@
+[$github](app://connector_76869538009648d5b282a4bb21c3d157) https://github.com/ttrrei/moneta
+针对这个github 的代码，我已经推进了很多迭代。
+我已经感觉失去重心了。
+我打算根据现在的状况，进行一系列的重构，
+能够让整个代码更加优化，空间换时间。
+让寻找的策略分布更广，每个策略更有方向性，迭代更加有针对性。
+我看了当前 GitHub 的 main 分支。首先有一个比较重要的判断：
+你现在需要的不是再增加一轮策略研究功能，而是从「研究功能开发」切换到「研究效率和策略发现能力建设」。
+这两件事的目标不同。
+过去的迭代主要在解决：
+•	指标够不够多，计算是否正确。
+•	策略能否表达更多不同的入场、出场逻辑。
+•	回测指标是否完整，结果是否可信。
+•	OOS、结果检查、实验记录和审计是否形成闭环。
+下一阶段应该重点解决：
+•	同样的 CPU 时间，能探索多少不同类型的策略？
+•	如何避免搜索空间集中在少数熟悉的指标组合？
+•	如何判断某个策略为什么值得继续迭代？
+•	怎样将一次实验的结果转化成下一次更有价值的实验？
+•	哪些昂贵的计算应该提前完成并存储，而不是每次回测重新计算？
+这意味着应该重新定义 Moneta 的核心目标：不是尽可能多地生成 Strategy，而是尽可能高效地发现、验证和筛选具有不同市场逻辑的 Alpha。
+一、我对当前项目的判断
+我认为目前的问题不是代码质量整体差，而是三个层次的发展速度不一致：
+层次	当前状态	我的判断
+数据与指标基础设施	305/270 列特征、Parquet、DuckDB、因果性保护	基础已经比较成熟
+回测与研究可靠性	共享引擎、OOS Ledger、配置 Hash、实验审计	工程投入较多，已有较好基础
+Alpha Discovery	特征研究、200 个策略实验、策略迭代	仍然缺少足够的搜索广度和研究方向
+尤其是最近的两项研究，值得仔细看。
+1. 50 个 Feature 的实验告诉我们什么？
+50 个 Feature Idea 全部实现并完成实验：
+•	43 个未达到晋级标准。
+•	7 个需要修订。
+•	没有一个通过完整的跨资产、跨时间验证。
+•	22 个经过调整后有显著性的独立结果，其中 21 个主要反映价格波动幅度或风险，只有 1 个与方向有关。
+这说明一个重要问题：
+很多 Indicator 擅长告诉我们市场正在发生什么，但不一定能告诉我们应该做多还是做空。
+我认为后续应该把特征分成三种不同角色：
+特征角色	作用	示例
+Directional Alpha	判断方向	Trend、Momentum、结构突破
+Market Context	判断市场状态	ATR、CHOP、ADX、Volume
+Risk / Exit Information	判断风险与退出时机	MAE、MFE、波动收缩、结构失效
+不能再把所有 Indicator 都直接转换成一个入场信号。
+参考：50 个 Feature 实验结果
+2. 200 个策略实验告诉我们什么？
+这部分更值得重视。
+指标	第一轮 100 个	第二轮 100 个
+完成回测单元	4,500	4,500
+达到晋级标准	0	0
+平均 Full Trades 中位数	549.5	106
+平均 Exposure 中位数	15.265%	2.655%
+最大回撤中位数	29.105%	9.385%
+第二轮确实降低了交易频率和回撤。
+但同时出现了更多空信号和稀疏交易。它并没有找到新的统计优势。
+而且要注意：
+这 200 个策略并不是 200 种完全独立的交易思想。它们主要来自原有 50 个特征家族，再组合不同的方向与确认机制。
+两轮采用的主要交易框架也相当接近：
+•	1H 执行。
+•	24 小时最大持仓。
+•	1 ATR Stop Loss。
+•	2 ATR Take Profit。
+•	不同的 Entry Episode 和 Context。
+因此，实际上你进行了很多组合实验，却没有充分探索不同的交易机制。
+另外，入场特征的 1,200 项研究中，只有 178 项具备统计样本支持，第二轮验证期更是没有一项达到样本支持要求。
+这里的 199 个 revise 不能理解为 199 个特征都没有价值，而是当前实验无法充分判断它们。
+参考：200 个策略及其入场特征研究
+二、我建议重新定义 Strategy Discovery
+我希望你把一个核心概念改变：
+Strategy 不应该等于 Indicator + Parameters。
+Strategy 应该代表一个明确的市场行为假设。
+例如：
+市场进入低波动状态 → 价格突破区间 → 成交活动放大 → 突破后回踩 → 继续沿突破方向交易。
+这才是一个完整的策略思想。
+其中：
+•	ATR 可能负责识别市场状态。
+•	Donchian 负责识别区间突破。
+•	Volume 指标负责确认活动变化。
+•	EMA 或市场结构负责方向。
+•	Pullback 负责入场时机。
+•	ATR 或结构失效负责退出。
+这里面有多个 Feature，但它们各自承担不同职责。
+我建议建立 8 个独立的研究方向
+01. Trend Continuation
+核心方向
+Introduction to technical analysis - VALUETRENDSHUB
+valuetrendshub.com
+慢趋势、趋势强度、EMA 斜率、市场结构延续、趋势加速与减速。
+02. Pullback & Re-entry
+Using Fibonacci extensions in trend trading
+moomoo.com
+趋势中的回撤、回踩均线、回撤后动量恢复、突破后的二次入场。
+03. Volatility Expansion / Breakout
+布林线指标| Bollinger Bands| 开始交易 | Capital.com
+capital.com
+波动压缩、ATR 收缩、区间突破、波动扩张和突破持续性。
+04. Mean Reversion
+Mean Reversion Trading Strategy: Your Ultimate Guide
+tiomarkets.com
+VWAP 偏离、价格过度延伸、均值回归、趋势与震荡环境下的不同回归机制。
+05. Failed Breakout / Reversal
+WOI Scanner – US Stock Screener & Technical Rankings | Breakout, Momentum & Compression
+wayofinvestment.com
+假突破、流动性扫荡、长影线拒绝、结构突破失败、反向交易。
+06. Market Structure
+Swing High and Swing Low in Forex Trading: The Essential Guide for Traders | by Rosemary Ekong | Medium
+medium.com
+Swing High/Low、Higher High、Lower Low、结构转变、结构确认。
+07. Volume / Order Activity / Session
+Intro to Volume Profile and Value Areas | Options Hawk
+optionshawk.com
+Volume Surprise、CMF、VPT、活动异常、交易时段特征。这一方向更多负责 Context 和 Confirmation，不应该强迫它直接预测方向。
+08. Relative Strength / Relative Value
+How Divergence In Correlated Assets Can Help You Add An Edge To Your Trading | by Global Prime | Medium
+globalprime.medium.com
+资产间相对强弱、价差偏离、相关性变化和跨市场状态。这一部分需要独立的组合会计、同步时间和资金成本模型，建议放在后续阶段。
+这八个方向的意义不是让你一次性生成更多策略。
+而是让搜索空间具有不同的经济假设。
+例如，Trend Continuation 和 Failed Breakout 应该是两种不同的 Alpha Family，即使它们使用相同的 RSI、ATR 和 EMA，也不能算成同一种策略的两个参数变体。
+三、代码重构：我认为最值得做的是这五件事
+这里进入具体工程设计。
+我不建议推倒现有项目重新写。现有的指标计算、数据质量检查、OOS 保护和共享回测引擎应该尽可能保留。
+但需要把计算流程重新拆开。
+1. Feature Store：空间换时间
+最高优先级
+现在你已经有：
+•	5m Feature Table。
+•	1h Feature Table。
+•	多种 Indicator。
+•	自定义 SuperTrend、PSAR、Market Structure 等。
+我建议进一步建立持久化的 Feature Store。
+基本原则：
+同一份数据、同一个 Feature、同一组参数，只计算一次。
+例如：
+Feature Store
+│
+├── EUR_USD
+│   ├── 5m
+│   │   ├── EMA
+│   │   ├── RSI
+│   │   ├── ATR
+│   │   ├── ADX
+│   │   ├── SuperTrend
+│   │   └── Market Structure
+│   │
+│   └── 1h
+│       ├── EMA
+│       ├── ADX
+│       ├── ATR
+│       └── Regime
+│
+├── BTC_USD
+├── XAU_USD
+└── ...
+每个 Feature 的缓存使用唯一身份：
+instrument
+timeframe
+data_hash
+feature_name
+parameter_hash
+feature_version
+建议采用：
+•	Parquet：持久化原始特征数据。
+•	NumPy .npy / memory map：高速读取连续数组。
+•	float32：普通连续特征。
+•	int8：方向、离散状态。
+•	Boolean：事件、条件和状态标记。
+•	DuckDB：查询实验结果和特征元数据。
+不要在每个 Strategy 里面重复使用 Pandas 计算相同的 EMA、ATR、RSI。
+也不要把所有可能的参数组合都提前计算。采用按需生成、持久化缓存，才能避免参数空间膨胀。
+2. Signal Compiler：把策略转换成信号数组
+这是我认为当前系统缺少的关键抽象。
+现在策略大多通过 Python Rule 在每根 Bar 上决定当前 Position。
+应该拆成：
+Feature Values
+       |
+       v
+Condition Evaluation
+       |
+       v
+Entry Events
+       |
+       v
+Direction Array
+       |
+       v
+Position State Array
+       |
+       v
+Backtest Engine
+例如：
+entry_signal = (    (ema_24 > ema_60)    & (adx_24 > adx_threshold)    & (close > donchian_upper))direction = np.where(entry_signal, 1, 0).astype(np.int8)
+实际系统当然还需要处理状态、确认、退出和时间因果性，但最终都应该尽可能转换成连续数组。
+最重要的是缓存：
+Signal Cache
+    candidate_hash
+    feature_hash
+    instrument
+    timeframe
+    data_hash
+
+    -> entry_events.npy
+    -> direction.npy
+    -> context.npy
+    -> position.npy
+不同 Strategy 如果共享相同的 Feature 和 Signal 条件，就不需要重新计算。
+3. Backtest Engine：一次计算多个 Cost Tier
+高优先级性能优化
+我看了目前的 strategy/engine.py 和 strategy/strategy_lib.py。
+发现一个值得优先改进的地方。
+现有 S-series 的 run_strategy() 明确是每个 Cost Tier 重新执行信号与会计计算。128MB 的作用域缓存只能减少重复数据读取，并不能消除重复计算。
+而新 200 策略实验虽然已经把 Position Array 在不同成本之间复用，但仍然为每种成本重复调用回测引擎。
+例如：
+Strategy A
+
+0 bps  -> Engine Loop
+2 bps  -> Engine Loop
+5 bps  -> Engine Loop
+我建议改成：
+Strategy A
+    |
+    v
+Position Array（计算一次）
+    |
+    v
+Multi-Cost Engine
+    |
+    +---- 0 bps
+    |
+    +---- 2 bps
+    |
+    +---- 5 bps
+具体实现可以采用 Numba 编译的循环，将不同 Cost Tier 的账户状态作为独立数组，在同一个 Bar Loop 中同步更新。
+这仍然是有状态的计算，不能简单地把所有收益都交给 NumPy 一次性向量化。
+建议保留原来的 Python Engine 作为 Reference Engine，新的 Fast Engine 必须通过完全一致的回归测试：
+•	Trade Entry / Exit。
+•	Entry Price / Exit Price。
+•	Net PnL。
+•	Equity Curve。
+•	Drawdown。
+•	Sharpe。
+•	Cost Calculation。
+先证明结果一致，再比较运行速度。
+另外，未来要引入真正的 CFD Bid/Ask、Financing、Slippage 和 Rollover 成本，最好建立独立的会计模型，而不是直接改变旧引擎的历史收益定义。
+参考：engine.py
+4. Strategy Specification：减少大量重复策略代码
+目前的 Strategy Library 有大量独立的 strategy_xxx_lib.py。
+我建议将简单策略逐步迁移成声明式 Specification。
+例如：
+id: HYPOTHESIS-001
+
+family: trend_continuation
+
+direction:
+  source: ema_structure
+  mode: directional
+
+context:
+  - adx_regime
+  - atr_regime
+
+entry:
+  type: pullback_confirmation
+
+exit:
+  type: atr_trailing
+
+horizon:
+  - 12
+  - 24
+  - 60
+
+parameters:
+  ema_fast: [12, 24]
+  ema_slow: [60, 120]
+这里只是格式示意，不代表所有参数都要采用固定候选值。
+复杂的 Market Structure、PSAR、SuperTrend 状态机仍然可以保留 Python 实现，通过统一接口接入。
+不要为了统一而把所有不同的交易逻辑强行塞进一个巨大的 Strategy Class。
+建议先覆盖最常见的 70%–80% 简单规则，其余保留独立实现。
+5. Research Scheduler：让迭代有方向
+这是整个重构最重要的业务部分。
+我希望每一个策略结束之后，系统不只是给出一个 Return、Sharpe 和 Drawdown。
+而是给出一个明确的失败诊断。
+失败类型	下一轮应该探索的方向
+No Signal	放宽触发条件，检查事件频率
+Excessive Trades	增加市场状态过滤、减少重复入场
+Gross Positive / Net Negative	降低换手，优化执行方式
+Direction Reversal	独立验证反向假设，而非直接翻转参数
+One Asset Only	判断是资产特有现象还是普适规律
+High Drawdown	研究退出条件和风险管理
+Profitable but Sparse	检查样本量和可重复性，不急于晋级
+Good Entry / Bad Portfolio	单独研究退出与持仓管理
+例如：
+某个策略发现：
+Gross Return       Positive
+Net Return         Negative
+Trade Frequency    Excessive
+Directional Edge   Weak
+下一次不应该继续随机尝试 RSI-6、RSI-12、RSI-24。
+应该针对它的失败机制，尝试：
+1.	增加 Volatility Regime。
+2.	增加 Trend Context。
+3.	尝试 Pullback Entry。
+4.	减少重复入场。
+一次迭代尽量只改变一个研究维度。
+这样才叫 Targeted Iteration。
+四、我建议最终形成的整体架构
+这是我建议的目标结构。不是要求一次性创建全部目录，而是作为重构的边界。
+01 · Market Data Layer
+Parquet · DuckDB · Data Quality · Instrument Calendar
+02 · Feature Store
+Indicator Library · Feature Cache · Memory Mapping · Regime
+03 · Alpha Research Layer
+Directional Alpha · Context · Entry Events · Market Structure
+04 · Strategy Compiler
+Hypothesis Specification · Signal Arrays · Position State
+05 · Fast Backtest Engine
+Numba · Multi-Cost · Execution · Portfolio Accounting
+06 · Research Evaluation
+Statistics · Benchmark · Risk · Robustness · Validation
+07 · Discovery & Iteration
+Candidate Ranking · Diversity · Failure Diagnosis · Targeted Mutation
+贯穿所有阶段：Experiment Registry、Code Hash、Data Hash、OOS Protection。
+五、重构应该按照什么顺序推进？
+我不建议一次性重写整个项目。我建议分成五个阶段。
+阶段	工作	完成标准
+R0	冻结现状、基准测试、整理历史实验	能够准确重现现有结果
+R1	Feature Store、Signal Cache	相同 Feature 不重复计算
+R2	Fast Engine、Multi-Cost	回测结果一致，运行时间明显下降
+R3	Strategy Specification、规则统一	减少重复代码，方便组合策略
+R4	Research Scheduler、Diversity Search	可以系统地发现不同机制并针对性迭代
+每个阶段都需要测试和性能基准，不能只以代码行数减少作为完成标准。
+尤其是：
+•	不要删除旧的结果和历史审计。
+•	不要重新触碰已经保护的 OOS 数据。
+•	不要同时改变历史交易会计公式和策略逻辑。
+•	不要在没有基准测试之前就引入 Ray、Dask 或大量并行依赖。
+•	不要继续增加 S-133、S-134 这样的策略编号来代替研究方向的突破。
+OOS Ledger 和现有验证机制应该保留。
+六、还有三个研究设计需要重新考虑
+这三个事情可能比再增加 100 个策略更有价值。
+1. 目前只使用三个主要标的进行策略研究。
+现有数据管道并非只能处理三个标的。21 个标的已经存在于两个 Feature Table 中。
+建议广度筛选阶段扩大到更多标的，并按资产类型和相关性分组。最终统计不能简单把高度相关的标的当成独立证据。
+2. Buy & Hold 比较需要更合理地匹配策略风险。
+目前的 200 策略中，第二轮中位 Exposure 仅 2.655%，但 Buy & Hold 是持续满仓，而且 BTC 的全窗口涨幅达到 1,257.33%。
+这会使低暴露、多空、均值回归策略处于非常不对称的比较环境。
+不建议直接修改当前晋级标准，而是为下一项研究预先设计多种基准：
+•	Buy & Hold。
+•	相同 Exposure 的基准。
+•	相同波动率的基准。
+•	适当匹配方向、事件时段与交易次数的控制策略。
+3. 下一轮研究应该先做统计可行性评估。
+现在 200 个入场特征中，第二轮验证 2 没有一个达到最低样本支持要求。
+在运行下一轮大规模策略之前，应该先计算预期事件数量、可用样本、独立交易周数量、匹配支持和统计检验能力。
+不要再投入大量计算资源，最后才发现实验设计本身无法支持结论。
+我的最终建议
+我认为 Moneta 接下来应该发生一次方向上的转变：
+过去的路径：
+增加 Indicator
+    ↓
+增加 Strategy
+    ↓
+增加 Variant
+    ↓
+运行更多 Backtest
+    ↓
+检查结果
+未来应该变成：
+定义不同 Alpha Hypothesis
+    ↓
+寻找独立的市场行为
+    ↓
+预计算 Feature / Signal
+    ↓
+快速搜索大量候选
+    ↓
+识别失败机制
+    ↓
+针对性生成下一代假设
+    ↓
+独立验证
+我尤其建议把 Feature Store + Signal Compiler + Multi-Cost Fast Engine 作为第一轮真正的代码重构。
+这三个部分解决的是搜索系统的计算效率和重复劳动，而不是表面上的代码整洁。
+之后再重构 Strategy Specification 和 Discovery Scheduler。
+还有一点很重要：不要把 200 个实验全部判定为浪费。它们已经提供了大量关于交易频率、波动环境、方向性、样本不足和成本侵蚀的证据。应该保留这些结果作为历史研究资产，而不是重新从零开始。
+我建议下一步形成一份唯一的 MONETA_REFACTOR_BLUEPRINT.md，把上述架构、模块边界、缓存设计、性能优化、策略搜索空间和分阶段验收标准固化下来。然后让后续开发围绕这一个蓝图推进，而不是继续被每一轮 Review 带着走。
+这次真正要优化的不是策略数量，而是每一次计算和每一次策略迭代所产生的信息价值。
+我还是希望能够开个新的repo重构。我觉得这一轮获得很多资产，可以传递到下一代。我希望能够有磨刀不误砍柴工的。
+在新的一轮里，我觉得定义好目标，你有给我八个方向，我觉得如果需要可以考虑再补充一些震荡的方向等等。然后再严格的限制所有的策略定义都能够定义成为可以量化的indicator,无论是状态的，还是触发点的，比如处在ema上方这种状态，和形成金叉这种出发点。我希望所有的策略都是出于这些indicator，不用yaml以外的任何东西，尤其是python code来定义。
+最后标准不是buy hold， 而是年化在30倍杠杆下能够达到相对较高收益，有可解释的多个标的能有正收益，当然也不能爆仓。
+另外入场是一方面，出场是各种方向，按固定时间，或者固定收益止损，然后和入场同一条件，以及比入场更严格，甚至完全不同因子，等等组合。
+完全规定好，如果没有indicator 就在数据库去创建，不能写在策略端。策略端只负责yaml定义！
+
+你觉得这样怎么样？
+
+我认为这个方向比我上一轮提出的渐进式重构更好。而且我支持你直接开一个全新的 Repository，重新设计第二代 Moneta，而不是继续在旧项目上修修补补。
+我甚至认为，你这次提出的几个原则，应该成为新项目的最高级设计约束：
+1.	所有策略必须由可量化的 Indicator 构成。
+2.	Indicator 分为状态、触发事件和连续数值，不允许策略自己发明计算逻辑。
+3.	策略定义只能使用 YAML，不允许 Python 编写策略逻辑。
+4.	没有的 Indicator，先进入 Indicator Library 建设流程，再进入数据库和特征计算系统。
+5.	Entry 和 Exit 完全解耦，可以自由组合。
+6.	以 30 倍杠杆的真实 CFD 交易条件进行评估，而不是拿 Buy & Hold 当作唯一基准。
+7.	策略必须在多个有解释性的标的上表现出正收益，同时满足严格的爆仓和风险约束。
+8.	每一轮搜索都必须有明确研究假设，避免大量参数排列组合产生没有研究价值的结果。
+我想再向前推进一步：
+新项目不应该只是一个 Strategy Backtester，而应该是一个 Indicator-driven Quantitative Strategy Discovery Platform。
+它的核心竞争力应该是：任何一个已经实现的 Indicator，都可以通过 YAML 与其他 Indicator 组合，形成不同交易假设、入场机制、退出机制和风险管理方式。
+而且不需要为了增加一种策略，再修改 Python 策略代码。
+这才是真正的可扩展性。
+一、先重新定义新项目的设计哲学
+我建议把新项目分成三个严格的层次。
+Layer 1 · Indicator Infrastructure
+唯一负责计算市场信息
+•	Indicator Registry
+•	Indicator Definitions
+•	Indicator Parameters
+•	State / Event / Value
+•	Historical Feature Store
+•	Indicator Versioning
+允许 Python 实现计算引擎
+Layer 2 · Strategy DSL
+唯一负责定义交易假设
+•	Entry Conditions
+•	Exit Conditions
+•	Position Management
+•	Risk Rules
+•	Indicator Composition
+•	Parameter Search Space
+只允许 YAML
+Layer 3 · Discovery & Execution
+负责搜索、回测和研究
+•	YAML Compiler
+•	Signal Engine
+•	Backtest Engine
+•	Leverage & Margin Simulation
+•	Experiment Scheduler
+•	Statistical Validation
+•	Targeted Evolution
+不允许策略专属代码
+这里有一个非常重要的边界：
+策略不能定义 Indicator 的算法，但 Indicator 本身当然需要 Python、Numba 或其他计算实现。
+例如，SuperTrend 的算法应该属于 Indicator Library，而不是某个策略文件。
+策略只能引用：
+indicator: supertrend
+parameters:
+  period: 12
+  multiplier: 3.0
+这样才能真正做到策略定义完全数据化。
+二、八个方向应该扩展为完整的 Alpha Research Taxonomy
+你提到震荡方向，我认为必须增加，而且不应该只是 Mean Reversion 的一个子类别。
+我建议新一代先定义为 12 个 Alpha Research Families。
+以下是研究分类，不是要求每个方向都必须立即实现。
+Sobat Forex - Analisa Chart Forex dari Foto
+01. Trend Continuation
+趋势持续、趋势强度、EMA 排列、ADX、趋势加速、趋势减速。
+研究核心：趋势什么时候值得跟随？
+Definitive Guide to Trading Pullbacks within a Trend - Forex Training Group
+02. Pullback & Re-entry
+EMA 回踩、斐波那契回撤、回撤后的动量恢复、趋势二次入场。
+研究核心：趋势中的什么位置具有更好的入场赔率？
+Crypto Breakout Trading: The Complete Strategy Guide
+03. Volatility Expansion & Breakout
+ATR 收缩、Bollinger Band Width、Donchian 突破、波动扩张。
+研究核心：什么时候市场开始产生新的方向性波动？
+System Rules: Short-Term Bollinger Reversion Strategy - Babypips.com
+04. Mean Reversion
+RSI 极端值、VWAP 偏离、价格偏离均值、回归速度。
+研究核心：价格偏离是否已经达到具有统计优势的程度？
+Range trading: definition, strategies and indicators
+05. Range Trading & Oscillation
+新增独立方向
+Range High/Low、区间位置、Stochastic、CCI、RSI 周期振荡、均值穿越、区间内反转。
+研究核心：市场在没有明显趋势时，如何从周期性摆动中获利？
+How to Trade with Candle Range Theory: A Smart Money Strategy | FOREX TUTORIALS posted on the topic | LinkedIn
+06. Failed Breakout & Reversal
+假突破、Liquidity Sweep、突破失败、长影线拒绝、反转结构。
+研究核心：什么时候突破失败反而成为反向机会？
+Smart Money Concepts: Beginner's Guide for Forex in 2026 | FXNX
+07. Market Structure
+Swing High/Low、BOS、CHOCH、HH/HL、LH/LL。
+研究核心：市场结构变化能否领先于价格方向变化？
+Understanding Volume Profile in Forex Trading
+08. Volume & Order Activity
+OBV、VPT、CMF、Volume Surprise、成交活动变化。
+研究核心：交易活动能否确认或否定价格信号？
+How to Trade EUR/USD: 5 Tips for your Trading | Trading Knowledge | OANDA | US
+09. Session & Temporal Behaviour
+London / New York Session、时段波动、日内周期、星期效应、开盘行为。
+研究核心：市场是否在特定时间呈现可重复的行为？
+Currency Strength Matrix | Buy Trading Indicator for MetaTrader 4
+10. Relative Strength & Cross-Asset
+资产相对强弱、货币强弱、跨资产相关性、价差偏离。
+研究核心：相对表现是否能提供独立交易优势？
+변동성 지표 - Volatility Indicator - Zero Markets Blog Korean
+11. Market Regime Transition
+新增独立方向
+ADX Regime、CHOP Regime、波动状态转换、趋势转震荡、震荡转趋势。
+研究核心：能否识别市场行为从一种模式切换到另一种模式？
+Divergence Detection: Price vs Momentum | King Research Academy posted on the topic | LinkedIn
+12. Momentum & Exhaustion
+新增独立方向
+ROC、MACD Histogram、RSI Divergence、Momentum Deceleration、价格与动量背离。
+研究核心：动量何时加速、减弱或耗尽？
+我还想强调：
+这 12 个方向并不是互斥的。
+例如：
+•	Trend Continuation + Volume Confirmation。
+•	Range Trading + Volatility Regime。
+•	Failed Breakout + Market Structure。
+•	Pullback + Momentum Recovery。
+这些交叉组合才是后面产生更丰富策略的来源。
+不过，系统必须记录每个策略的主要 Alpha Family 和辅助 Family，不能因为用了三个方向的指标，就把它算成三个独立的 Alpha。
+三、Indicator 必须有严格的类型系统
+这是我认为你这次最重要的要求。
+你举的两个例子非常准确：
+•	价格处于 EMA 上方：状态。
+•	EMA 快线向上穿越慢线：触发事件。
+我建议 Indicator 统一分为四种类型。
+类型	含义	示例
+STATE	当前市场处于什么状态	close_above_ema
+EVENT	刚刚发生了什么	ema_bullish_cross
+VALUE	当前量化数值	atr_pct、rsi、adx
+REGIME	市场所处的离散状态	trending、ranging、volatile
+STATE、EVENT、REGIME 可以产生 Boolean 或枚举值；VALUE 返回数值，供策略比较、区间筛选和连续优化。
+例如：
+Indicator 示例：EMA
+STATE
+id: close_above_ema
+type: state
+inputs: [close, ema]
+expression: close > ema
+EVENT
+id: ema_bullish_cross
+type: event
+inputs: [ema_fast, ema_slow]
+expression: cross_above(ema_fast, ema_slow)
+VALUE
+id: ema_distance_pct
+type: value
+inputs: [close, ema]
+expression: (close / ema - 1) * 100
+REGIME
+id: trend_regime
+type: regime
+inputs: [adx]
+states:
+  ranging: adx < 20
+  trending: adx >= 25
+  transitional: adx >= 20 and adx < 25
+上面的 YAML 是为了说明概念。实际设计中，Indicator Registry 和 Strategy DSL 应该使用不同的 Schema，不能混为一谈。
+我建议 Indicator Registry 有以下强制字段
+id: ema_bullish_cross
+version: 1
+
+family: trend
+type: event
+
+inputs:
+  - ema_fast
+  - ema_slow
+
+output:
+  datatype: boolean
+  semantics: one_bar_event
+
+parameters:
+  ema_fast:
+    type: integer
+    default: 12
+  ema_slow:
+    type: integer
+    default: 24
+
+calculation:
+  engine_ref: ema_cross_v1
+
+temporal:
+  confirmation: bar_close
+  lookahead: false
+
+tests:
+  - warmup
+  - boundary
+  - causality
+  - missing_data
+这里的 engine_ref 不是允许策略写 Python，而是指向已经审核、注册的底层计算实现。
+数据库负责管理 Indicator 的定义、参数、版本、依赖和计算结果；Python 计算引擎负责实现经过审核的计算函数。
+这条边界必须严格。
+另外，必须区分：
+•	cross_above：本 Bar 发生一次事件。
+•	above：当前状态持续为 True。
+•	crossed_within_3_bars：过去三根 Bar 是否发生过事件。
+不能把事件当成持续状态，否则一个金叉可能被错误地当成连续三根 Bar 的新入场信号。
+关于 Indicator 参数
+你之前强调过 CFD 常用的时间窗口，例如：
+6、12、24、60、120
+我建议保留这些作为初始研究候选值，但不要把所有 Indicator 的参数限制为这些数字。
+特别是 PSAR、SuperTrend、ATR Multiplier、阈值等，应该拥有各自的合理参数空间。
+也就是说：
+•	时间窗口参数：使用合理的 CFD 时间尺度。
+•	算法参数：使用算法自己的参数范围。
+•	阈值参数：根据 Indicator 的数值分布和市场含义定义。
+•	离散参数：使用有限的合法选项。
+不要把参数搜索空间和 Indicator 的定义混为一谈。
+四、策略端必须完全 YAML 化
+我赞同你这一点，而且建议做成强制的架构限制。
+策略不能出现：
+if close > ema:    ...
+也不能出现：
+def generate_entry_signal():    ...
+更不能让不同策略拥有自己的 Python 回测函数。
+我建议采用一个可以表达组合条件的 DSL。
+例如：
+Strategy Example A：Trend Pullback
+纯声明式策略
+strategy:
+  id: trend_pullback_001
+  family: trend_continuation
+
+market:
+  instruments: [EUR_USD, GBP_USD, AUD_USD]
+  timeframe: H1
+
+entry:
+  direction: long
+
+  all:
+    - indicator: close_above_ema
+      parameters: {period: 60}
+
+    - indicator: ema_bullish_alignment
+      parameters: {fast: 12, slow: 24}
+
+    - indicator: adx_above
+      parameters: {threshold: 20}
+
+    - indicator: rsi_recovery
+      parameters: {period: 12}
+
+exit:
+  any:
+    - type: fixed_time
+      bars: 24
+
+    - type: indicator_condition
+      indicator: ema_bearish_cross
+
+    - type: fixed_loss
+      value: 1.5
+      unit: atr
+
+risk:
+  leverage: 30
+  risk_per_trade_pct: 0.5
+仅为 DSL 设计示例。正式版本还需明确价格成交、资金占用和止损执行语义。
+这个设计有几个优势：
+1.	策略可以由 AI 生成 YAML。
+2.	系统可以自动检查 Indicator 是否存在。
+3.	可以自动验证参数是否合法。
+4.	可以自动计算哪些 Indicator 需要预计算。
+5.	可以根据 YAML Hash 判断策略是否重复。
+6.	可以将同一策略定义转换成不同的搜索实验。
+7.	策略执行引擎完全不需要知道具体策略的名称。
+我甚至建议新项目设置一个硬性测试：
+如果删除所有 Strategy 专属 Python 文件，系统仍然应该可以完整运行所有策略。
+Python 代码只能属于通用计算、编译、执行、会计和统计基础设施。
+五、Entry 和 Exit 应该成为两个独立的搜索空间
+这一点我非常赞同。
+我认为你之前的策略设计可能过度把入场、出场和持仓管理绑定在一起了。
+这会限制策略探索。
+一个真正有价值的研究平台，应该允许：
+同一个 Entry，尝试不同的 Exit。
+同一个 Exit，也可以服务于不同的 Entry。
+Entry 的研究维度
+维度	示例
+Direction	Long / Short / Both
+Market State	Trend / Range / Volatility
+Trigger	Cross / Breakout / Re-entry
+Confirmation	Volume / Momentum / Structure
+Timing	Immediate / Next Bar / Retest
+Frequency	Once / Repeated / Cooldown
+Exit 应该至少有六种类型
+Exit Family 01 · Fixed Time
+Strategies
+tradingview.com
+•	持仓 6、12、24、60、120 根 Bar 后退出。
+•	固定时间退出。
+•	最长持仓时间。
+Exit Family 02 · Fixed Profit / Loss
+Mean Reversion Trading Insights for Smart Traders | EBC Financial Group
+ebc.com
+•	固定 PnL。
+•	固定 R Multiple。
+•	ATR 止损和止盈。
+•	固定账户权益百分比。
+Exit Family 03 · Entry Condition Reversal
+•	入场条件不再成立。
+•	原入场状态发生反转。
+•	入场事件的反向事件发生。
+Exit Family 04 · Stricter Entry Condition
+•	入场要求 EMA 12 > EMA 24。
+•	出场要求 EMA 12 < EMA 24，并且 ADX 下降。
+•	更严格的反向确认。
+Exit Family 05 · Independent Exit Alpha
+•	使用完全不同的 Indicator。
+•	例如趋势策略入场，RSI 背离退出。
+•	突破策略入场，波动衰竭退出。
+Exit Family 06 · Dynamic Risk / Trailing
+•	Trailing Stop。
+•	ATR Trailing。
+•	PSAR。
+•	Swing Low / High。
+•	Chandelier Exit。
+我还建议增加第七类：
+Portfolio / Margin Exit
+这类退出不是传统的技术指标，而是账户安全约束：
+•	Margin Level。
+•	Maximum Open Risk。
+•	Maximum Concurrent Exposure。
+•	Equity Drawdown。
+•	Margin Close-out。
+它们必须和交易信号退出分开管理。
+一个特别重要的设计：Exit Matrix
+不要只测试一个策略的 Entry + 一个 Exit。
+例如：
+一个 Entry，六种 Exit
+Fixed Time
+Fixed SL/TP
+Entry Reversal
+Stricter Entry
+Independent Alpha
+Trailing Stop
+6 个独立 Exit 结果
+交易次数 · 持仓时间 · 净收益 · MAE · MFE · 回撤 · 爆仓风险
+这样你就能判断：
+•	Entry 是否真的有优势？
+•	是不是 Exit 限制了策略表现？
+•	固定时间退出是否比技术指标退出更好？
+•	是否需要更快退出亏损交易？
+•	是否让盈利交易拥有更长的持仓时间？
+这比单纯增加 Entry 组合有价值得多。
+但是 Exit Matrix 不能无限制地做笛卡尔积。应该先对 Entry 做独立评估，再选择有意义的 Exit Family 组合，防止搜索量和多重检验问题失控。
+六、30 倍杠杆应该成为核心回测约束，而不是简单的参数
+这里我想特别认真地讨论一下。
+你说的目标是：
+年化在 30 倍杠杆下达到相对较高收益，多个标的有正收益，并且不能爆仓。
+我认为这是合理的研究目标，但必须先明确一个概念：
+30 倍杠杆不等于每笔交易都必须使用 30 倍名义敞口。
+它应该是最大允许杠杆，策略根据风险预算决定实际仓位。
+例如：
+项目	示例
+账户权益	$10,000
+最大名义敞口	$300,000
+最大杠杆	30x
+每笔初始风险预算	0.5%
+每笔风险金额	$50
+止损距离	1 ATR
+仓位	根据止损距离计算
+这意味着你需要建立真正的 CFD Account Simulator，而不是只在回测收益上乘以 30。
+必须模拟的账户机制
+项目	必须支持
+Leverage	最高 30x
+Margin Requirement	按 Instrument 设置
+Used Margin	动态计算
+Free Margin	动态计算
+Unrealised PnL	实时更新
+Realised PnL	成交后更新
+Spread	Bid / Ask
+Commission	Instrument / Broker
+Slippage	可配置
+Financing / Swap	隔夜费用
+Margin Close-out	强制平仓
+Gap Risk	跳空和止损滑点
+Equity Drawdown	账户级回撤
+特别要注意：如果使用 30 倍杠杆，不能假设价格触及 Stop Loss 就一定能以 Stop Loss 价格成交。
+真实市场中可能发生：
+•	Spread 扩大。
+•	Slippage。
+•	Gap。
+•	Margin Close-out 先于预设止损。
+•	不同资产保证金规则不同。
+如果这些没有纳入模拟，所谓不爆仓只是数学模型里的不爆仓。
+我建议采用两层评价体系
+第一层：Strategy Performance
+•	Annualised Return
+•	CAGR
+•	Sharpe / Sortino
+•	Profit Factor
+•	Maximum Drawdown
+•	Average Trade
+•	Trade Frequency
+•	MAE / MFE
+•	Long / Short 分开表现
+第二层：Leveraged Account Survival
+•	Maximum Effective Leverage
+•	Maximum Used Margin
+•	Minimum Free Margin
+•	Minimum Margin Level
+•	Margin Close-out Count
+•	Account Ruin Probability
+•	Gap Stress Loss
+•	Equity Recovery Time
+我建议最终的晋级标准必须满足：
+1.	多个具有不同市场属性的标的有正的净收益。
+2.	不是只依赖一个特别强势的资产。
+3.	不出现 Margin Close-out。
+4.	历史压力测试下仍然有足够 Margin Buffer。
+5.	OOS 有稳定表现。
+6.	在不同交易成本假设下不轻易失去优势。
+还要补充一个统计问题：不能只看所有标的加总收益为正。应该要求各资产的表现、资产类型分组表现和组合表现都经过单独检查。
+不要过早把 30% 年化作为硬性门槛
+30 倍最大杠杆下，年化收益目标需要结合风险预算和爆仓概率制定。
+我更倾向于：
+•	先筛选有方向性优势的 Alpha。
+•	再寻找有效的 Exit。
+•	然后通过仓位管理提高资本效率。
+•	最后才比较不同杠杆与风险预算下的收益。
+否则，搜索引擎可能找到的只是承担极端风险换取高历史收益的策略。
+七、Indicator Database 应该成为新项目的核心资产
+你说：
+如果没有 Indicator，就在数据库去创建，不能写在策略端。
+我认为这个要求应该升级为一套完整的 Indicator Lifecycle。
+Research Idea
+     |
+     v
+Indicator Proposal
+     |
+     v
+Indicator Specification
+     |
+     v
+Implementation Review
+     |
+     v
+Unit / Causality Tests
+     |
+     v
+Indicator Registry
+     |
+     v
+Feature Computation
+     |
+     v
+Persistent Feature Store
+     |
+     v
+Available for YAML Strategy
+这里有一个细节：
+不是所有 Indicator 都应该用 SQL 实现。
+例如：
+•	EMA、RSI、ATR：可以使用高性能数组计算。
+•	SuperTrend、PSAR：可能需要状态机式计算。
+•	Swing Structure：需要因果性确认。
+•	多标的相对强弱：需要跨资产同步计算。
+数据库负责管理和索引，计算引擎负责执行。
+我建议建立以下几个核心实体：
+Registry	用途
+indicator_registry	Indicator 基础定义
+indicator_versions	算法版本及变更历史
+indicator_parameters	参数 Schema 和搜索范围
+indicator_dependencies	Indicator 依赖关系
+indicator_outputs	输出类型、语义和单位
+indicator_feature_store	已计算特征的元数据
+indicator_validation	测试和因果性验证
+indicator_usage	哪些策略使用了哪些 Indicator
+此外，Indicator 必须有明确的可用时间：
+例如 Swing High 在第 100 根 Bar 形成，但只有在第 103 根 Bar 确认后才可以被使用。
+那么这个 Indicator 的事件时间应该是 103，而不是 100。
+同样，跨时间框架的 H1 Indicator 不能在 H1 K 线尚未收盘时泄露其最终值给 M5 策略。
+我建议把 Causality / No Lookahead 做成整个系统的基础规则，而不是回测结束后的一个检查项目。
+八、新一代搜索引擎不能再随机生成大量组合
+我认为这是你希望重新获得的另一个重要资产。
+我建议把搜索拆成四个阶段。
+Stage 1 · Alpha Family Exploration
+首先确保 12 个方向都得到探索。
+不是先跑 1,000 个 Trend 策略，而是有计划地覆盖不同市场行为。
+Stage 2 · Entry Discovery
+在每个方向内部寻找有统计意义的 Entry。
+例如：
+•	EMA State + ADX State。
+•	RSI Recovery Event + Range State。
+•	Donchian Breakout Event + ATR Expansion。
+Stage 3 · Exit Discovery
+对已经具有一定 Entry 证据的策略，独立研究不同 Exit。
+不要在这一阶段同时大幅修改 Entry。
+Stage 4 · Robustness & Portfolio Validation
+进行跨资产、跨市场阶段、跨成本和杠杆压力测试。
+搜索必须具有 Diversity Control
+我希望系统能够知道：
+•	已经探索过多少个 Trend 策略？
+•	已经探索过多少个 Range 策略？
+•	哪些 Indicator 被过度使用？
+•	哪些 Entry 组合只是参数微调？
+•	哪些 Alpha Family 还没有充分探索？
+•	哪些 Exit 机制已经被验证无效？
+例如：
+如果已经产生 100 个策略，其中 80 个都依赖 EMA + RSI，那么即使它们有不同的参数，也不能说搜索覆盖得很好。
+建议为每个策略建立一个 Research Fingerprint：
+Alpha Family
+Primary Indicator
+Secondary Indicators
+Entry Event
+Context States
+Exit Family
+Risk Model
+Parameter Signature
+然后使用 Fingerprint 做相似度计算，控制搜索集中度。
+另外，我建议引入三种不同的搜索方式
+搜索方式	作用
+Structured Search	系统探索不同 Indicator 组合
+Hypothesis-driven Search	根据市场行为提出具体假设
+Evolutionary Search	根据实验失败原因针对性变异
+不要让 AI 直接自由发挥生成大量 YAML。
+AI 应该在经过约束的 Indicator Registry 和 DSL Schema 内工作。
+AI 可以提出研究假设、生成候选定义、解释失败原因，但不能绕过编译器和验证规则。
+九、旧项目应该如何向新项目传递资产？
+这里我非常支持你说的「磨刀不误砍柴工」。
+新项目不是从零开始。
+我建议把旧项目视为上一代研究资产仓库，而不是新项目的代码基础。
+旧项目资产	新项目的处理方式
+原始 OANDA 数据	直接继承
+Bid / Ask / Mid 数据	直接继承
+Indicator 实现	逐个验证后迁移
+Indicator Catalogue	作为 Registry 初始候选
+305/270 Feature 研究	作为初始研究知识
+200 Strategy 实验	作为失败与成功证据
+OOS Ledger	继承其验证原则和历史记录
+Trade Accounting	作为参考实现，重新验证
+Backtest Engine	作为 Reference Engine
+Strategy Python Library	不直接迁移，提取可表达的逻辑
+Research Documents	整理后转为正式设计资产
+我会特别保留三个东西：
+1.	已经证明正确的计算逻辑。
+2.	已经发现的失败机制。
+3.	已经验证过的数据质量和因果性保护。
+不要把所有旧代码复制过去，否则新项目很快又会变成旧项目的另一个版本。
+建议新 Repository 的第一阶段就建立：
+legacy/
+    indicator_inventory/
+    indicator_validation/
+    experiment_archive/
+    research_knowledge/
+    accounting_reference/
+    data_contracts/
+这些目录是迁移资产，不是新系统运行时的依赖。
+十、我建议的新 Repository 结构
+下面是我目前认为比较合适的第一版：
+moneta-next/
+│
+├── config/
+│   ├── instruments/
+│   ├── timeframes/
+│   ├── execution/
+│   ├── leverage/
+│   └── research/
+│
+├── indicators/
+│   ├── registry/
+│   ├── specifications/
+│   ├── parameters/
+│   ├── tests/
+│   └── catalogue/
+│
+├── strategies/
+│   ├── hypotheses/
+│   ├── families/
+│   ├── entry/
+│   ├── exit/
+│   ├── risk/
+│   └── experiments/
+│
+├── engine/
+│   ├── indicator_engine/
+│   ├── feature_store/
+│   ├── yaml_compiler/
+│   ├── signal_engine/
+│   ├── execution_engine/
+│   ├── accounting_engine/
+│   ├── margin_engine/
+│   └── portfolio_engine/
+│
+├── discovery/
+│   ├── family_exploration/
+│   ├── candidate_generation/
+│   ├── diversity/
+│   ├── mutation/
+│   └── diagnostics/
+│
+├── validation/
+│   ├── statistical/
+│   ├── walk_forward/
+│   ├── cross_asset/
+│   ├── stress_testing/
+│   └── oos/
+│
+├── research/
+│   ├── hypotheses/
+│   ├── experiments/
+│   ├── results/
+│   └── knowledge_base/
+│
+├── database/
+│   ├── schema/
+│   └── migrations/
+│
+├── tests/
+│
+└── docs/
+    ├── architecture/
+    ├── specifications/
+    ├── decisions/
+    └── migration/
+这是逻辑边界，不代表每个目录都需要立即实现。尤其不要为了目录完整而提前创建大量空模块。
+十一、我认为还有四条规则必须在项目开始前确定
+这四条是为了防止新项目重复旧项目走过的弯路。
+规则 1：策略 DSL 不允许逃生通道
+•	不允许 Python callback。
+•	不允许自定义 Python Signal Function。
+•	不允许在 YAML 中嵌入 Python。
+•	不允许策略直接读取未经注册的 Feature。
+•	不允许绕过 Indicator Registry。
+•	不允许某个策略拥有特殊的回测逻辑。
+YAML 可以引用通用的逻辑运算符，例如 AND、OR、NOT、cross_above、within_bars、rising、falling。
+但这些运算符必须属于系统统一 DSL，而不是每个策略自己实现。
+规则 2：Indicator 缺失必须先建设，不能临时绕过
+如果 AI 生成了一个策略，发现缺少 range_position：
+Strategy Compilation
+       |
+       v
+Indicator Not Found
+       |
+       v
+Reject Candidate
+       |
+       v
+Create Indicator Proposal
+       |
+       v
+Implement & Validate
+       |
+       v
+Register Indicator
+       |
+       v
+Retry Strategy
+这样才能持续积累真正可复用的 Indicator 资产。
+规则 3：所有实验必须可复现
+每个实验至少记录：
+•	Strategy YAML Hash。
+•	Indicator Version Hash。
+•	Data Hash。
+•	Engine Version。
+•	Execution Configuration。
+•	Instrument。
+•	Timeframe。
+•	Cost Model。
+•	Leverage / Margin Model。
+•	Validation Window。
+相同输入必须能够重现相同结果。
+规则 4：不允许通过不断试验 OOS 来挑选赢家
+Discovery、Development、Validation、Final Holdout 必须分开管理。
+大量搜索会产生多重检验和 Winner's Curse。即使每个策略的单独 Sharpe 看起来很好，也不能证明真正存在 Alpha。
+需要采用适当的多重检验、Walk Forward、Deflated Sharpe 或其他稳健性评估。最终 Holdout 不能被反复用于指导搜索。
+十二、实际开发之前，我建议先冻结以下项目目标
+我把我认为最重要的设计决策整理成一份项目 Charter：
+Moneta Next
+Indicator-Driven Quantitative Discovery Platform
+Mission
+Build a reusable, indicator-driven quantitative research platform capable of discovering, evaluating and validating diverse CFD trading strategies under realistic leveraged account conditions.
+Non-negotiable principles
+1.	YAML-only Strategy Definition.
+2.	Registry-controlled Indicator Library.
+3.	State / Event / Value / Regime type system.
+4.	Fully decoupled Entry / Exit / Risk.
+5.	Persistent Feature Store and computation reuse.
+6.	Realistic 30x maximum leverage simulation.
+7.	Multi-asset positive expectancy with risk constraints.
+8.	Hypothesis-driven and diversity-controlled discovery.
+9.	Strict causal correctness and no lookahead.
+10.	Reproducible experiments and independent OOS validation.
+Success Criteria
+•	More diverse Alpha Families explored.
+•	Less redundant computation.
+•	Faster candidate evaluation.
+•	Independently configurable Entry and Exit.
+•	Explainable performance across multiple instruments.
+•	No historical or simulated margin close-out in qualifying tests.
+•	Robustness under realistic execution costs.
+我的建议：先不要急着写代码
+我希望新项目正式开始前，先把以下五份设计文件确定下来：
+文件	需要解决的问题
+01_PROJECT_CHARTER.md	项目目标、边界、成功标准
+02_INDICATOR_ARCHITECTURE.md	Indicator 类型、Registry、参数、数据库、计算和缓存
+03_STRATEGY_DSL_SPEC.md	YAML Schema、Entry、Exit、Risk、组合逻辑
+04_EXECUTION_AND_ACCOUNTING.md	30x CFD、Bid/Ask、保证金、爆仓、成本和账户会计
+05_DISCOVERY_AND_VALIDATION.md	12 个研究方向、搜索广度、迭代、统计和晋级机制
+之后才进入：
+•	数据资产迁移。
+•	Indicator Catalogue 迁移。
+•	Indicator Engine。
+•	YAML Compiler。
+•	Backtest Engine。
+•	Discovery Engine。
+这样可以避免先写一堆代码，再根据代码反过来定义架构。
+最后，我有三个设计决定希望和你确认
+这三个会实质影响新项目的架构，我不想替你擅自决定。
+1. 新项目的核心数据库
+我倾向于继续利用你已有的 DuckDB + Parquet 经验，但把 Feature Store 和实验 Registry 正式分开。
+DuckDB + Parquet（推荐，轻量、适合本地研究）
+PostgreSQL + Parquet（更偏向长期服务化）
+DuckDB + PostgreSQL（计算和元数据分离）
+2. 策略应该如何跨标的运行？
+同一 YAML 可以应用于多个标的，逐个评估（推荐）
+每个标的可以有独立策略定义
+通用策略为主，允许受约束的资产专属参数
+3. 30 倍杠杆的定义
+30x 是最大杠杆，仓位由风险预算动态决定（推荐）
+每笔交易固定使用 30x 名义杠杆
+把实际杠杆也作为独立的风险优化维度，但不超过 30x
+确认这三个设计决定
+我的总体判断：这次值得开一个真正的新 Repository。
+旧项目已经帮你完成了数据、指标、实验和回测方面的大量探索。下一代应该把这些经验沉淀为基础设施，而不是继续继承旧项目的设计限制。
+我最希望守住的一句话是：
+Indicator 是系统的语言，YAML 是策略的唯一表达方式，Discovery 是系统的核心价值，真实账户生存能力是最终约束。
+新项目三个架构决定：
+1. 数据库：duckdb
+2. 策略跨标的：universal
+3. 杠杆定义：max30
+请基于这些决定继续制定 Moneta Next 的正式设计蓝图。
+
+这三个决定已经足够把 Moneta Next 的核心架构方向正式定下来。它们之间也有很好的一致性：
+•	DuckDB：以本地研究和批量计算为中心，不提前引入数据库服务化复杂度。
+•	Universal Strategy：一个策略定义适用于多个标的，不能为每个标的单独定制策略来掩盖泛化能力不足。
+•	Max 30x：30 倍是账户允许的最大杠杆上限，不是每笔交易的默认杠杆；仓位由风险预算、止损距离和保证金共同决定。
+我建议把 Moneta Next 正式定位为：
+Moneta Next — Formal Architecture Blueprint
+Version 1.0 · Architecture Baseline · 31 October 2026
+Project Mission
+建立一个以 Indicator 为核心语言、以 YAML 为唯一策略表达方式的量化研究平台。平台能够自动探索不同市场行为假设，独立研究 Entry、Exit 和 Risk，在真实 CFD 交易成本及最大 30x 杠杆账户约束下，发现具备跨标的泛化能力、统计可靠性和账户生存能力的交易策略。
+核心设计原则
+Indicator 是系统的语言；YAML 是策略的唯一表达方式；Discovery 是系统的核心价值；真实账户生存能力是最终约束。
+1. 已确定的架构决策
+这三项作为 Architecture Baseline，后续设计不得在没有正式 ADR（Architecture Decision Record）的情况下随意改变。
+决策	正式选择	设计影响
+数据库	DuckDB + Parquet	本地优先、列式计算、批量分析
+策略跨标的	Universal	一个策略定义，统一应用于资产池
+杠杆	Maximum 30x	动态仓位，真实保证金和强平模拟
+1.1 DuckDB：计算与存储架构
+采用：
+•	DuckDB：研究数据库、元数据、实验结果、特征查询。
+•	Parquet：原始行情、标准化行情、Indicator/Feature 数据。
+•	Python：数据管道、计算调度、搜索和实验编排。
+•	NumPy / Numba：数值和状态型 Indicator 的高性能计算。
+•	YAML：Indicator Definition 和 Strategy Definition 的声明式配置。
+不采用：
+•	PostgreSQL 作为第一代核心数据库。
+•	Redis 作为缓存基础设施。
+•	独立 Feature Store 服务。
+•	微服务架构。
+•	过早引入分布式计算框架。
+DuckDB 负责研究数据的查询和管理，但不应承担所有计算。对于大量重复的指标计算，应使用 Parquet 持久化和计算缓存，避免每轮策略搜索都重新计算。
+建议逻辑分层：
+Research / Discovery Layer
+Hypothesis · Candidate Generation · Search · Diagnostics
+Strategy & Indicator Layer
+YAML DSL · Compiler · Registry · Signal Engine
+Backtesting & Account Layer
+Execution · Accounting · Margin · Portfolio
+Data & Persistence Layer
+DuckDB · Parquet · Market Data · Feature Store · Experiment Ledger
+这只是逻辑架构，不意味着要将每个模块拆成独立服务或独立部署单元。
+1.2 Universal Strategy：跨标的统一策略
+一个 YAML 策略必须能够应用于多个标的。
+例如：
+strategy:
+  id: trend_pullback_001
+  family: trend_continuation
+  version: 1
+
+universe:
+  instruments:
+    - EUR_USD
+    - GBP_USD
+    - AUD_USD
+    - USD_JPY
+    - XAU_USD
+    - NAS100_USD
+
+  timeframe: H1
+
+entry:
+  direction: long
+
+  all:
+    - indicator: close_above_ema
+      parameters:
+        period: 60
+
+    - indicator: ema_bullish_alignment
+      parameters:
+        fast: 12
+        slow: 24
+
+    - indicator: adx
+      operator: greater_than
+      value: 20
+
+exit:
+  rules:
+    - type: fixed_time
+      bars: 24
+
+risk:
+  risk_per_trade_pct: 0.5
+这里有几个重要约束：
+1.	同一份策略 YAML 必须对所有目标标的使用相同的逻辑。
+2.	不能针对某个标的悄悄改变 Entry 条件。
+3.	不能根据历史结果为不同标的自动生成不同参数，然后仍称其为 Universal Strategy。
+4.	每个标的的交易成本、合约规格、保证金、交易时间等允许不同。
+5.	可以研究资产专属的参数，但必须明确标记为 Specialized Strategy，不能混入 Universal 策略成绩。
+Universal 不代表每个标的必须盈利，而是要求策略的核心市场假设具有跨标的解释力。
+建议建立三种评估结果：
+•	Universal Pass：在足够多的标的上有稳定正向证据。
+•	Conditional Pass：只在某些可解释的市场类型或资产类别有效。
+•	Asset Specific：仅在个别标的有效，不允许作为 Universal 策略晋级。
+跨标的结果不能只报告一个平均收益。必须同时报告每个标的的收益、交易数、回撤、成本和风险。
+1.3 Maximum 30x：杠杆与账户模型
+30x 是上限，不是目标。
+账户模型至少需要支持：
+模块	要求
+Equity	账户净值
+Balance	已实现资金余额
+Used Margin	已占用保证金
+Free Margin	可用保证金
+Unrealised PnL	未实现盈亏
+Effective Leverage	实际总名义敞口 / Equity
+Margin Level	Equity / Used Margin
+Margin Close-out	强平触发逻辑
+核心限制：
+\[ \text{Effective Leverage} \leq 30 \]
+仓位不能简单使用固定 30 倍计算，而应由以下约束共同决定：
+\[ PositionSize = \min( RiskLimitedSize,\ MarginLimitedSize,\ LeverageLimitedSize ) \]
+例如：
+•	初始账户：$10,000
+•	每笔风险预算：0.5% = $50
+•	最大杠杆：30x
+•	最大名义敞口：$300,000
+实际下单规模还需要考虑止损距离、合约乘数、货币换算和保证金要求。
+特别需要注意：Stop Loss 不等于保证成交。模拟器必须考虑滑点、跳空、点差扩大，以及强平可能早于止损发生的情况。
+2. 系统核心架构
+我建议把系统分成九个主要模块。模块是清晰的工程边界，但初期可以放在同一个 Python 项目内。
+Moneta Next Architecture
+01 · Market Data Engine
+OANDA ingestion · Normalisation · Data quality · Gap detection · Bid/Ask/Mid
+02 · Indicator Registry & Engine
+Indicator definitions · Type system · Parameter schemas · Computation · Validation
+03 · Feature Store
+Persistent feature results · Dependency tracking · Cache · Versioning
+04 · Strategy DSL & Compiler
+YAML validation · Indicator resolution · Expression compilation · Signal generation
+05 · Discovery Engine
+Hypothesis generation · Family exploration · Search · Diversity · Mutation
+06 · Backtest & Execution Engine
+Order simulation · Bid/Ask execution · Position lifecycle · Slippage
+07 · Accounting & Margin Engine
+CFD PnL · Financing · Margin · Leverage · Forced liquidation
+08 · Validation Engine
+Walk-forward · OOS · Cross-asset · Cost stress · Statistical validation
+09 · Research & Experiment Ledger
+Hypotheses · Fingerprints · Results · Failure reasons · Reproducibility
+2.1 Market Data Engine
+数据来源以 OANDA 为第一阶段主要数据源，保留未来增加其他 CFD 数据源的能力。
+统一行情数据契约：
+字段	说明
+instrument	标的
+timeframe	时间周期
+timestamp	Bar 时间
+is_complete	是否完成
+mid OHLC	中间价
+bid OHLC	买价
+ask OHLC	卖价
+volume	成交量或来源定义的活动量
+source	数据来源
+ingestion_time	数据入库时间
+必须实现：
+•	数据缺口检测。
+•	重复数据处理。
+•	时间戳与时区统一。
+•	Bar 完整性检查。
+•	Bid/Ask/Mid 一致性检查。
+•	数据修复和回填审计。
+•	不同标的的交易日历及交易时段。
+重要：不能将 Mid Price 当作实际成交价。
+Long 开仓通常使用 Ask，平仓使用 Bid；Short 则相反。执行层必须明确处理这个规则。
+2.2 Indicator Registry & Engine
+这是整个系统最重要的基础设施之一。
+Indicator 不是普通 Python 函数的集合，而是系统中经过定义、注册、版本控制、验证的可复用计算资产。
+统一采用四种类型：
+Type	定义	示例
+VALUE	连续数值	RSI、ATR、ADX
+STATE	持续状态	Close Above EMA
+EVENT	一次性事件	EMA Bullish Cross
+REGIME	离散市场环境	Trending、Ranging
+建议再增加一个可选的 BOOLEAN 输出语义，作为表达式层的结果类型，而不是取代四类 Indicator。
+Indicator Registry 示例：
+indicator:
+  id: ema
+  version: 1
+  family: trend
+  type: VALUE
+
+  inputs:
+    - close
+
+  parameters:
+    period:
+      type: integer
+      default: 24
+      min: 2
+      max: 500
+
+  output:
+    datatype: float
+    unit: price
+
+  computation:
+    engine_ref: indicators.trend.ema
+
+  temporal:
+    availability: bar_close
+    lookahead: false
+
+  validation:
+    warmup_bars: 100
+    require_finite: true
+这里的 engine_ref 是受审核的计算引擎引用，不是让 YAML 执行任意 Python。
+Indicator 必须具备的能力
+•	参数定义和参数合法范围。
+•	输入数据依赖。
+•	输出类型和单位。
+•	计算版本。
+•	Warm-up 规则。
+•	时间可用性。
+•	因果性验证。
+•	缺失值行为。
+•	边界条件测试。
+•	计算结果可复现。
+参数搜索原则
+需要明确区分参数类型：
+•	时间窗口参数：可以使用 6、12、24、60、120 等 CFD 常见窗口作为候选。
+•	算法参数：例如 PSAR 的 acceleration factor、maximum factor，SuperTrend 的 ATR multiplier，不受上述窗口列表限制。
+•	阈值参数：例如 ADX 20、25、30，按指标语义定义候选范围。
+•	状态参数：例如趋势确认持续 Bar 数。
+不能让所有参数都使用同一个通用的参数搜索范围。
+Indicator 实现方式
+•	EMA、RSI、ATR 等：向量化计算。
+•	PSAR、SuperTrend 等：状态机或专门的序列计算。
+•	Market Structure：事件确认时间必须严格符合因果性。
+•	Cross-asset：需要统一时间戳和同步规则。
+•	Multi-timeframe：必须按实际 Bar 完成时间控制数据可用性。
+例如 Swing High 在第 100 根 Bar 出现，但直到第 103 根 Bar 才确认，那么它最早只能在第 103 根 Bar 被策略使用。
+缺少 Indicator 时，Strategy Compiler 必须拒绝编译。 随后建立 Indicator Proposal，经过实现、测试、注册后才能重新运行。
+2.3 Feature Store
+Feature Store 主要解决重复计算和研究结果可追溯的问题。
+计算结果需要按以下维度识别：
+instrument
+timeframe
+indicator_id
+indicator_version
+parameter_hash
+input_data_version
+calculation_version
+如果输入行情、Indicator 版本和参数没有变化，则应复用已有计算结果。
+不能只按 Indicator 名称缓存，否则不同参数、不同输入数据版本会造成错误复用。
+3. Strategy DSL：YAML 是唯一策略语言
+这是不可妥协的系统约束。
+策略定义只能使用 YAML。禁止策略端 Python 代码、Python callback、自定义信号函数和动态执行代码。
+3.1 DSL 需要表达什么？
+至少支持：
+•	AND / OR / NOT。
+•	VALUE 比较。
+•	STATE 判断。
+•	EVENT 触发。
+•	REGIME 判断。
+•	Cross Above / Cross Below。
+•	Rising / Falling。
+•	Event Within N Bars。
+•	多时间周期条件。
+•	入场冷却和重复入场限制。
+•	多种退出规则组合。
+•	Position Sizing 和 Risk。
+•	Long / Short / Both。
+建议使用统一表达式结构，避免不同策略家族各自设计一套语法。
+例如：
+entry:
+  direction: long
+
+  all:
+    - state:
+        indicator: close_above_ema
+        parameters:
+          period: 60
+
+    - event:
+        indicator: ema_bullish_cross
+        parameters:
+          fast: 12
+          slow: 24
+
+    - value:
+        indicator: adx
+        parameters:
+          period: 14
+        operator: greater_than
+        value: 20
+这里 all、event、value 等是 DSL 结构，不是策略代码。
+3.2 Compiler 必须完成的工作
+1.	YAML Schema Validation。
+2.	Indicator Registry Lookup。
+3.	参数范围验证。
+4.	类型检查。
+5.	时间周期和数据依赖检查。
+6.	Lookahead 检查。
+7.	表达式编译。
+8.	生成统一 Signal Representation。
+9.	生成 Strategy Fingerprint。
+10.	保存编译版本和运行记录。
+策略文件不能通过编译器就不能进入 Discovery。
+3.3 Entry 与 Exit 完全解耦
+Entry 负责寻找市场机会。
+Exit 负责管理已建立的仓位。
+两者不应绑定为一个不可拆分的策略逻辑。
+建议 Exit Engine 支持：
+Exit Family	示例
+Fixed Time	持仓 6 / 12 / 24 / 60 / 120 Bars
+Fixed Profit	固定收益、R Multiple
+Fixed Loss	固定止损、ATR 止损
+Entry Reversal	原入场条件失效或反向
+Stricter Reversal	更严格的反向确认
+Independent Alpha	RSI Divergence、Momentum Exhaustion
+Trailing Stop	ATR、PSAR、Chandelier
+Structure Exit	Swing Low / High、结构破坏
+Portfolio Exit	Equity DD、Margin、Exposure 限制
+退出条件还必须定义优先级和冲突处理。例如同一根 Bar 同时触及止盈和止损时，不能事后选择对策略有利的成交顺序。
+3.4 Entry、Exit、Risk 三个独立研究对象
+建议将其设计为三个独立组件：
+•	Entry Definition。
+•	Exit Definition。
+•	Risk Definition。
+Strategy 是三者的组合，而不是一个包含所有规则的大型 Python 类。
+这样可以让一个 Entry 与多个 Exit 进行实验，也能让同一个 Exit 被多个 Entry 复用。
+4. Alpha Discovery：系统真正的研究核心
+我认为这里必须避免重蹈旧项目的覆辙。
+旧项目已经证明，简单扩大 Indicator 组合、增加参数和生成更多策略，并不能自动产生更好的 Alpha。
+Moneta Next 的 Discovery Engine 应当围绕不同市场行为假设展开，而不是围绕指标排列组合展开。
+4.1 十二个 Alpha Research Families
+#	Family	研究方向
+1	Trend Continuation	趋势持续与加速
+2	Pullback & Re-entry	趋势中的回撤和重新入场
+3	Volatility Expansion	波动收缩后扩张
+4	Mean Reversion	价格偏离后的均值回归
+5	Range Trading	区间震荡和区间反转
+6	Failed Breakout	假突破与反转
+7	Market Structure	Swing、BOS、CHOCH
+8	Volume & Order Activity	成交活动和量价关系
+9	Session & Temporal Behaviour	时段、日内和星期效应
+10	Relative Strength	相对强弱和跨资产关系
+11	Market Regime Transition	市场状态切换
+12	Momentum & Exhaustion	动量衰竭与背离
+一个策略可以涉及多个 Family，但必须标明：
+•	Primary Alpha Family。
+•	Supporting Families。
+不能因为策略用了 EMA、RSI、ADX，就声称它探索了三个独立 Alpha。
+4.2 Discovery 分成四个阶段
+1.	Alpha Family Exploration
+广泛探索不同市场行为假设，确保研究方向多样化。
+2.	Entry Discovery
+在有意义的假设中寻找统计上具有潜力的入场条件。
+3.	Exit Discovery
+对有一定证据的 Entry 独立测试不同退出机制。
+4.	Robustness & Portfolio Validation
+跨标的、跨时间、不同成本和杠杆压力下验证。
+不应一开始就对所有 Entry × Exit × Risk 做无限制的笛卡尔积搜索。
+4.3 三种 Search 模式
+Structured Search
+在受控的 Indicator、参数和 DSL 组合范围内探索。
+Hypothesis-driven Search
+由研究人员或 AI 提出明确市场假设，再将其转换为已注册 Indicator 能表达的 YAML 策略。
+Evolutionary Search
+根据失败原因定向修改策略，而不是无方向地生成新组合。
+例如：
+失败诊断	下一轮应该怎么改
+No Signal	放宽条件、检查事件频率
+Excessive Trades	增加市场环境过滤、冷却机制
+Gross Positive / Net Negative	优先研究成本、换手和执行
+Direction Reversal	独立验证反向假设
+One Asset Only	检查是否为资产特异性
+High Drawdown	研究 Exit 和 Risk
+Profitable but Sparse	延长验证、增加样本
+Good Entry / Bad Portfolio	研究退出、仓位和组合风险
+4.4 Diversity Control
+必须在候选生成阶段控制策略相似度。
+建议每个候选生成 Fingerprint：
+Primary Alpha Family
+Supporting Families
+Primary Indicator
+Secondary Indicators
+Entry Event
+Context States
+Exit Family
+Risk Model
+Parameter Signature
+例如，EMA 12/24 改成 EMA 10/25，不应该被算作一个全新的 Alpha 方向。
+Discovery 应该能统计：
+•	每个 Family 的候选数量。
+•	每个 Family 的有效信号数量。
+•	每个 Family 的有效策略数量。
+•	每个 Family 的失败原因分布。
+•	每个 Family 的独立资产覆盖度。
+这样才能真正知道系统探索过什么、遗漏了什么。
+5. Backtest、Execution 与 Accounting
+这是另一个不能过度简化的部分。
+建议将其拆成三个边界明确的模块。
+5.1 Signal Engine
+负责：
+•	计算策略信号。
+•	生成 Entry / Exit Intent。
+•	处理多时间周期。
+•	管理冷却和重复入场。
+•	确定信号可用时间。
+它不负责决定实际成交价和账户盈亏。
+5.2 Execution Engine
+负责：
+•	下单模拟。
+•	成交时点。
+•	Bid / Ask 执行。
+•	Spread。
+•	Commission。
+•	Slippage。
+•	Stop / Limit Order。
+•	Gap Handling。
+•	Order Lifecycle。
+必须定义统一执行模型，例如：
+Bar Close Signal
+    ↓
+Signal Available
+    ↓
+Next Bar Open
+    ↓
+Order Execution
+    ↓
+Position Update
+不能用同一根 Bar 的收盘价格生成信号，再假设在同一收盘价成交，除非明确模拟了可实现的执行方式。
+5.3 Accounting Engine
+负责：
+•	Realised PnL。
+•	Unrealised PnL。
+•	Balance。
+•	Equity。
+•	Financing / Swap。
+•	Currency Conversion。
+•	Contract Multiplier。
+•	Margin。
+•	Margin Close-out。
+建议每个标的都有独立的 Instrument Specification：
+instrument:
+  id: EUR_USD
+  asset_class: fx
+
+  contract:
+    size: 100000
+    quote_currency: USD
+
+  margin:
+    leverage_limit: 30
+
+  trading:
+    commission_model: configured
+    spread_model: bid_ask
+    financing_model: configured
+实际规格必须来自可靠的数据源或经过验证的配置，不能把上述示例参数当作所有标的的通用默认值。
+6. Validation：不能只看收益率
+策略的最终目标不是在历史数据中找到一个高收益曲线，而是寻找能够经受真实市场环境和账户约束的策略。
+建议建立两层评估。
+6.1 Strategy Performance
+指标	目的
+Net Return	扣除成本后的收益
+CAGR	年化复合收益
+Sharpe	风险调整收益
+Sortino	下行风险调整收益
+Profit Factor	盈亏质量
+Max Drawdown	最大回撤
+Win Rate	胜率
+Average Trade	单笔期望
+Trade Count	样本数量
+Exposure	市场暴露
+MAE / MFE	交易路径质量
+Long / Short	多空独立表现
+6.2 Leveraged Account Survival
+指标	目的
+Effective Leverage	实际杠杆
+Max Used Margin	最大保证金占用
+Min Free Margin	最低可用保证金
+Min Margin Level	最低保证金水平
+Margin Close-out Count	强平次数
+Gap Stress Loss	跳空压力损失
+Ruin Probability	账户毁损风险估计
+Recovery Time	回撤恢复时间
+必须特别注意：历史模拟没有发生强平，不代表未来不会发生强平。需要通过压力测试、跳空模拟和 Monte Carlo 等方式评估尾部风险。
+6.3 Universal Strategy 晋级规则
+我建议初期使用分级晋级，不要过早设定一个武断的年化收益数字。
+Stage	标准
+Research Candidate	逻辑有效、数据和执行无明显错误
+Entry Evidence	入场有足够交易样本和初步统计证据
+Exit Evidence	退出方案改善收益或风险质量
+Cross-Asset Validation	多个标的具有一致、可解释的表现
+OOS Validation	独立样本中仍有可靠证据
+Leveraged Survival	30x 上限下账户风险可接受
+Portfolio Candidate	与现有策略组合后有实际增量价值
+验证必须包含：
+•	Development。
+•	Validation。
+•	Final Holdout。
+Final Holdout 不能反复指导搜索，否则它就不再是独立验证集。
+还应加入多重检验控制、Walk-forward、Deflated Sharpe 等方法，避免大规模搜索带来的虚假显著性。
+7. 数据库设计
+DuckDB 是唯一的核心研究数据库。
+建议使用以下逻辑实体：
+Domain	核心表 / 数据集	用途
+Market	instruments	标的规格
+Market	market_data_manifest	行情数据版本
+Indicator	indicator_registry	Indicator 定义
+Indicator	indicator_versions	Indicator 版本
+Indicator	indicator_parameters	参数 Schema
+Feature	feature_manifest	Feature 计算结果索引
+Strategy	strategy_definitions	YAML 策略定义
+Strategy	strategy_versions	策略版本
+Discovery	research_hypotheses	研究假设
+Discovery	strategy_fingerprints	策略相似性
+Experiment	experiments	实验记录
+Experiment	experiment_runs	实际运行
+Experiment	experiment_metrics	评估结果
+Execution	trades	交易明细
+Execution	orders	模拟订单
+Accounting	account_snapshots	账户快照
+Validation	validation_results	OOS 和压力测试
+Governance	promotion_ledger	晋级审计
+行情和大型 Feature 数组主要存储在 Parquet。
+DuckDB 中保留数据清单、版本、索引、研究元数据和实验结果。
+需要特别强调：实验记录必须能够追溯到原始行情版本、Indicator 版本、YAML 内容、执行模型版本和代码提交版本。
+否则即使保存了收益率，也无法真正复现实验。
+8. 新 Repo 目录结构
+我不建议一次创建所有可能的目录。应该先建立清晰的逻辑边界，再按开发阶段增加实际文件。
+建议初始结构：
+moneta-next/
+│
+├── config/
+│   ├── instruments/
+│   ├── execution/
+│   ├── account/
+│   └── research/
+│
+├── src/
+│   └── moneta/
+│       ├── data/
+│       ├── indicators/
+│       ├── features/
+│       ├── strategy/
+│       ├── discovery/
+│       ├── execution/
+│       ├── accounting/
+│       ├── portfolio/
+│       ├── validation/
+│       └── experiments/
+│
+├── definitions/
+│   ├── indicators/
+│   ├── strategies/
+│   ├── hypotheses/
+│   └── risk_models/
+│
+├── database/
+│   ├── schema/
+│   └── migrations/
+│
+├── store/
+│   ├── raw/
+│   ├── market/
+│   ├── features/
+│   └── experiments/
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   ├── causality/
+│   ├── accounting/
+│   └── regression/
+│
+├── legacy/
+│   ├── indicator_inventory/
+│   ├── experiment_archive/
+│   ├── research_knowledge/
+│   └── accounting_reference/
+│
+├── docs/
+│   ├── architecture/
+│   ├── specifications/
+│   ├── decisions/
+│   └── migration/
+│
+└── pyproject.toml
+这里有几个刻意的设计：
+•	definitions/ 保存 YAML 定义，不保存策略 Python 代码。
+•	src/moneta/indicators/ 是通用 Indicator 计算引擎。
+•	src/moneta/strategy/ 是 DSL、Compiler 和 Signal Engine，不是策略库。
+•	legacy/ 只存研究资产，不作为运行时依赖。
+•	store/ 是本地数据目录，不应提交大型数据文件到 Git。
+9. 旧 Moneta 的资产迁移
+旧项目不应该被整体复制到新项目。
+正确做法是先建立迁移清单，区分可直接继承、需要验证、只能参考和应该废弃的内容。
+旧项目资产	迁移方式
+OANDA 原始数据	直接继承，重新建立数据契约
+Bid / Ask / Mid	直接继承
+Instrument Metadata	验证后迁移
+Indicator Implementations	逐个验证后迁移
+Indicator Catalogue	转换为 Registry 候选
+305/270 Feature 研究	先核实定义，再归档
+200 Strategy 实验	迁移历史结果和失败原因
+OOS Ledger	继承审计原则，重建格式
+Trade Accounting	作为 Reference Implementation
+Backtest Engine	参考，不直接照搬
+Strategy Python Library	提取规则语义，不迁移策略代码
+Research Documents	转为研究知识和 ADR
+特别重要的一点：
+新项目不能因为旧项目已有某个 Python 函数，就自动认为这个 Indicator 已经符合新系统要求。
+每个 Indicator 都要经过：
+1.	定义审核。
+2.	参数审核。
+3.	数学实现验证。
+4.	因果性测试。
+5.	边界条件测试。
+6.	输出语义确认。
+7.	注册和版本管理。
+10. 实施路线图
+我建议采用六个阶段推进，不要一开始就开发完整的 AI Discovery 平台。
+1.	Phase 0 — Architecture Foundation
+先完成
+o	项目 Charter 和 ADR。
+o	数据契约。
+o	DuckDB Schema。
+o	YAML Schema 初稿。
+o	Indicator Type System。
+o	统一执行时点定义。
+验收：架构边界、核心数据结构和策略表达规则得到确认。
+2.	Phase 1 — Data & Indicator Foundation
+o	行情导入和质量检测。
+o	Indicator Registry。
+o	Indicator Engine。
+o	参数 Schema。
+o	Feature Store。
+o	因果性和计算测试。
+验收：一批基础 Indicator 能够注册、计算、缓存、复现和验证。
+3.	Phase 2 — Strategy DSL & Backtest
+o	YAML Compiler。
+o	Entry / Exit 解耦。
+o	Signal Engine。
+o	Execution Engine。
+o	基础 CFD Accounting。
+验收：一个 YAML 策略能够独立运行，且策略运行不依赖策略专属 Python 代码。
+4.	Phase 3 — Leverage & Account Simulation
+o	动态仓位。
+o	最大 30x 限制。
+o	Margin Engine。
+o	Financing。
+o	Gap 和 Slippage。
+o	Margin Close-out。
+验收：能够对一个完整账户进行逐 Bar 资金、保证金和仓位模拟。
+5.	Phase 4 — Alpha Discovery
+o	十二个 Alpha Families。
+o	Hypothesis Registry。
+o	Structured Search。
+o	Fingerprint 和 Diversity。
+o	Entry Discovery。
+o	Exit Discovery。
+o	失败诊断和定向变异。
+验收：系统能够自动产生、编译、运行、记录和分析策略候选。
+6.	Phase 5 — Robustness & Portfolio
+o	Cross-Asset。
+o	Walk-forward。
+o	Final Holdout。
+o	多重检验控制。
+o	Portfolio Risk。
+o	组合级账户压力测试。
+验收：能够筛选具备统计可靠性和账户生存能力的 Universal Strategy。
+11. 第一版必须明确禁止的过度工程
+为了避免新项目再次失去重心，我建议把以下内容列为明确的 Non-Goals：
+不做	原因
+微服务拆分	研究平台第一阶段不需要
+PostgreSQL / Redis	DuckDB 足够支撑初期
+策略专属 Python 插件	违反 YAML-only 原则
+任意 Python Expression	破坏 DSL 安全性和可审计性
+无限参数组合	加剧过拟合和计算浪费
+一开始就做 AI Agent 群	先建立可靠的研究执行闭环
+实时交易部署	先证明研究和账户模型可靠
+每个标的单独优化后宣称 Universal	破坏跨标的泛化评估
+复杂分布式计算	在单机性能不足得到证据前不引入
+AI 在第一阶段可以帮助提出假设、生成 YAML、解释失败结果，但所有生成内容必须经过 Schema、Registry、Compiler 和 Validation。
+AI 不拥有绕过系统约束的权限。
+12. 第一版 Definition of Done
+这是我认为真正开始大量策略搜索之前，必须达到的最低标准。
+Readiness Checklist
+14/14
+数据契约
+能够导入、检查、修复和追溯 Bid/Ask/Mid 行情
+Indicator Registry
+所有策略引用的 Indicator 都已注册和版本化
+Indicator Causality
+所有 Indicator 通过 lookahead 和时间可用性测试
+Feature Reuse
+相同输入和参数不会重复进行无意义计算
+YAML-only DSL
+策略定义不需要任何策略专属 Python 代码
+Compiler
+非法 Indicator、参数和表达式能够被拒绝
+Entry / Exit
+Entry 与多种 Exit 能独立组合测试
+Execution
+明确 Bar Close、Next Bar、Bid/Ask 和订单成交规则
+Accounting
+PnL、融资成本、保证金和强平计算完整
+Max 30x
+任何交易和组合均不能突破账户杠杆限制
+Universal Evaluation
+一个策略能应用于统一资产池并输出逐资产结果
+Experiment Ledger
+每次实验能够复现并追溯全部依赖版本
+Discovery Diversity
+能统计不同 Alpha Family 的探索覆盖率
+Validation
+具备独立 OOS、Walk-forward 和成本压力测试
+这份清单是开发完成度检查，不是策略已经盈利的证明。平台可以达到工程上的 Definition of Done，但最终是否发现有效 Alpha，仍然需要独立的研究证据。
+13. 正式架构决策记录（ADR）
+建议第一版将以下决策锁定：
+ADR	决策	状态
+ADR-001	DuckDB + Parquet	Accepted
+ADR-002	Universal Strategy	Accepted
+ADR-003	Maximum 30x Leverage	Accepted
+ADR-004	YAML-only Strategy DSL	Accepted
+ADR-005	Registry-controlled Indicators	Accepted
+ADR-006	Entry / Exit / Risk Decoupling	Accepted
+ADR-007	Causal / No-lookahead by design	Accepted
+ADR-008	Discovery Diversity Control	Accepted
+ADR-009	Reproducible Experiment Ledger	Accepted
+14. 还有四个需要在详细规格阶段锁定的技术问题
+这四个问题不改变上述架构方向，但会直接影响数据库 Schema、执行模型和测试设计。
+A. 时间周期体系
+建议第一版支持 M5、M15、M30、H1、H4、D1。是否将 M1 纳入第一版？M1 会显著增加数据量和执行模拟复杂度。
+B. Universal 的晋级门槛
+建议以全部目标标的为评估池，要求一定比例的标的具有正向 OOS 证据，同时检查资产类别集中度，而不是简单要求每个标的都盈利。具体比例应根据每个标的可用交易样本和统计置信度制定。
+C. 组合级仓位管理
+建议同时设置每笔风险上限、组合总风险上限、单一资产类别敞口上限，以及最大有效杠杆。不能只控制每笔交易而忽略多个高度相关标的同时持仓。
+D. 账户基准币种与 CFD 规格
+建议第一版统一采用 USD 账户作为研究基准，但每个 Instrument 必须有独立的合约规格、保证金、融资和货币换算配置。若未来要模拟真实经纪商账户，则还需要支持经纪商特定规则。
+我的最终建议：先完成规格，再开始写引擎
+我不建议现在就让 AI 开始生成大量 Python 文件或创建完整目录树。
+下一步应当把这份 Blueprint 拆成五份相互关联的正式技术规格：
+1.	01_PROJECT_CHARTER.md — 项目目标、边界、成功标准和 Non-Goals。
+2.	02_INDICATOR_ARCHITECTURE.md — Indicator Type、Registry、参数系统、计算引擎和 Feature Store。
+3.	03_STRATEGY_DSL_SPEC.md — YAML Schema、Compiler、Entry、Exit、Risk 和表达式规则。
+4.	04_EXECUTION_AND_ACCOUNTING.md — CFD 执行、Bid/Ask、30x、保证金、强平和账户会计。
+5.	05_DISCOVERY_AND_VALIDATION.md — Alpha Families、搜索机制、Diversity、OOS 和晋级标准。
+这五份规格应该成为新 Repository 的设计合同，而不是普通的说明文档。 后续 AI 编程工具和开发者都应该以它们为约束，不能自行发明另一套实现方式。
+我建议下一步先把 02_INDICATOR_ARCHITECTURE.md 和 03_STRATEGY_DSL_SPEC.md 做到足够详细，因为它们决定了这个系统的语言和边界；这两个部分一旦设计错误，后续的 Discovery、Backtest 和 AI 自动生成策略都会跟着偏离方向。
+
+我这里面有个不确定的问题，我选择duckDB作为数据库，最主要的原因就是快，然后能够处理宽表。所以我希望indicator 的类型能够简单，然后把所有原始的indicator 都做成特征转化进入数据库。比如psar, 转化成为+1 还是-1 的状态，然后距离价格的距离相对距离，+1-1是否转换等等。这样yaml 能够变得非常简单。甚至singal 就是一个sql query，找到entry, 和exit，然后根据一定规则，确定trade.
+但是此时我又想到另外一个问题，比如：如果要是signal 出现后3个bar 都保持一定结构，似乎达到这个程度的话，我怀疑会出现duckDB都处理不了的超级稀松宽表了。
+我认为你现在想到的这个方向，实际上可能比之前设计的四种 Indicator Type（VALUE、STATE、EVENT、REGIME）更适合 Moneta Next。
+而且我会进一步调整之前的架构建议：
+不要把 Indicator Engine 设计成一个供策略调用的指标函数库，而应该把它设计成一个 Feature Generation Engine。
+它的主要任务是把原始行情和原始技术指标，转换成有明确交易意义、可以直接查询的标准化特征，存入 DuckDB。
+策略不再关心 PSAR 是怎么计算的，也不需要理解 EMA、SuperTrend 的算法。策略只关心数据库中已经准备好的特征。
+但是，你担心的宽表问题确实存在。我认为需要区分两件事：
+1.	宽表本身不是问题。
+2.	把所有可能的指标组合、时间窗口和历史结构都预先展开成列，才是真正的问题。
+1. 我建议重新定义 Indicator 和 Feature 的关系
+以 PSAR 为例。
+传统 Indicator Engine 可能只输出：
+timestamp
+psar
+然后策略自己判断：
+if close > psar:    ...
+这不是你希望的架构。
+我建议 PSAR 在 Feature Generation 阶段就生成一组有业务语义的特征。
+PSAR — Feature Generation
+TMGM
+tmgm.com
+Feature	示例	含义
+psar_direction	+1 / -1	当前 PSAR 多空方向
+psar_distance_atr	+0.8	PSAR 与价格的 ATR 标准化距离
+psar_flip_up	0 / 1	当前 Bar 是否发生向上翻转
+psar_flip_down	0 / 1	当前 Bar 是否发生向下翻转
+psar_direction_change	0 / 1	当前方向是否与上一 Bar 不同
+psar_distance_change	-0.2	距离相对上一 Bar 的变化
+这里只是示例。距离的正负方向需要在 Feature Contract 中统一定义。
+这样，策略只需要引用：
+entry:
+  all:
+    - feature: psar_direction
+      operator: equals
+      value: 1
+
+    - feature: psar_distance_atr
+      operator: greater_than
+      value: 0.5
+
+    - feature: psar_flip_up
+      operator: equals
+      value: 1
+这里甚至不需要让 YAML 知道什么是 PSAR。
+它只知道数据库里有三个 Feature。
+我建议把策略语言从 Indicator-oriented 改成 Feature-oriented。
+Indicator 是特征的来源，Feature 才是策略的消费对象。
+2. 但不要把所有 Feature 都理解成独立 Indicator
+这是一个非常重要的设计区别。
+我建议把 Feature 分为三个层次。
+Layer 1 — Primitive Features
+计算基础层
+从原始行情和 Indicator 算法直接生成。
+例如：
+•	EMA 12 / 24 / 60
+•	RSI 12 / 24
+•	ATR 14
+•	PSAR direction
+•	PSAR distance
+•	ADX 14
+•	SuperTrend direction
+•	Bollinger Band width
+Layer 2 — Derived Features
+标准化语义层
+对基础特征进行有意义的转换。
+例如：
+•	EMA alignment
+•	Price distance from EMA / ATR
+•	PSAR direction change
+•	RSI momentum acceleration
+•	ATR volatility percentile
+•	Close position within Bollinger Bands
+•	Trend strength classification
+Layer 3 — Temporal Features / Conditions
+时间结构层
+描述一个特征在过去若干 Bar 的变化和持续情况。
+例如：
+•	PSAR direction unchanged for 3 bars
+•	EMA alignment maintained for 6 bars
+•	RSI above 50 for 4 consecutive bars
+•	SuperTrend flipped within last 3 bars
+•	Price remained above EMA for 12 bars
+这三个层次的区别很重要：
+•	Primitive Features 是基础计算结果。
+•	Derived Features 是可复用的交易语义。
+•	Temporal Features 是对历史序列的时间结构描述。
+不需要把每一个时间结构都预先变成数据库的一列。
+3. 你担心的超级稀疏宽表：我认为不应该这样设计
+假设你有：
+•	21 个标的。
+•	6 个时间周期。
+•	100 个基础 Indicator。
+•	每个 Indicator 产生 5 个 Derived Features。
+•	每个 Feature 再产生 5 种时间窗口变体。
+如果把所有东西展开：
+\[ 100 \times 5 \times 5 = 2500 \]
+已经有 2,500 列。
+如果再把不同的组合条件也物化进去，列数会继续爆炸。
+例如：
+psar_direction
+psar_direction_maintained_3
+psar_direction_maintained_6
+psar_direction_maintained_12
+
+psar_flip_up_within_3
+psar_flip_up_within_6
+psar_flip_up_within_12
+
+ema_alignment_maintained_3
+ema_alignment_maintained_6
+ema_alignment_maintained_12
+
+ema_alignment_and_psar_direction_maintained_3
+ema_alignment_and_rsi_above_50_maintained_3
+...
+这就开始把策略搜索空间直接变成数据库 Schema。
+这是我明确不建议的方向。
+因为数据库应该保存可复用的市场事实，而不是保存所有可能的策略表达式。
+DuckDB 虽然擅长宽表和列式查询，但它不应该替我们承担组合爆炸。
+4. 更合理的方案：宽表保存基础特征，SQL 动态表达时间结构
+我建议采用：
+Wide Base Feature Tables + SQL Temporal Operators + Selective Materialization
+即：
+•	基础 Feature 采用宽表。
+•	时间结构通过 SQL 表达。
+•	只有经常复用、计算成本较高的时间特征才物化。
+•	不同 Alpha Family 可以有自己的 Feature Mart。
+4.1 基础 Feature 宽表
+例如：
+features_h1
+instrument	timestamp	ema_12	ema_24	ema_60	rsi_12	adx_14	psar_dir	psar_dist_atr	psar_flip_up
+EUR_USD	10:00	1.16	1.15	1.14	62	28	1	0.8	0
+EUR_USD	11:00	1.17	1.16	1.15	68	31	1	0.6	0
+EUR_USD	12:00	1.16	1.16	1.15	55	29	1	0.2	0
+EUR_USD	13:00	1.15	1.16	1.15	43	24	-1	-0.3	1
+这是我认为 DuckDB 最值得发挥优势的地方。
+每一行对应一个标的、一个时间点。
+基础特征都已经计算完成，策略可以直接读取。
+我倾向于按 Timeframe 和必要的 Feature Domain 分表，而不是将所有时间周期和所有可能特征塞进一张巨型表。
+例如：
+features_m5
+features_m15
+features_h1
+features_h4
+features_d1
+如果以后单个时间周期的列数确实过多，再按 Domain 拆分：
+features_h1_trend
+features_h1_momentum
+features_h1_volatility
+features_h1_structure
+但不要一开始就过度拆分。
+4.2 时间结构不要全部存成列
+假设你希望表达：
+PSAR 翻转向上之后，接下来的 3 根 Bar，PSAR 方向都保持 +1。
+这完全可以通过 SQL Window Function 实现。
+概念 SQL：
+WITH signals AS (
+    SELECT
+        instrument,
+        timestamp,
+        psar_flip_up,
+        psar_dir,
+
+        LEAD(psar_dir, 1) OVER w AS dir_1,
+        LEAD(psar_dir, 2) OVER w AS dir_2,
+        LEAD(psar_dir, 3) OVER w AS dir_3
+
+    FROM features_h1
+
+    WINDOW w AS (
+        PARTITION BY instrument
+        ORDER BY timestamp
+    )
+)
+
+SELECT *
+FROM signals
+WHERE psar_flip_up = 1
+  AND dir_1 = 1
+  AND dir_2 = 1
+  AND dir_3 = 1;
+但是这里有一个非常重要的交易时间问题：
+这段 SQL 需要观察未来三根 Bar 才知道条件是否成立。
+所以，如果在第三根 Bar 收盘之后才确认结构，最早只能在第四根 Bar 开始执行交易。
+不能在第一根 Bar 就用未来三根 Bar 的结果决定入场。
+这也是为什么 Temporal Feature 必须明确记录它的确认时间和可用时间。
+5. 我更建议：把 Temporal Logic 做成通用 SQL Compiler
+这里我觉得可以进一步简化 YAML。
+不需要为每一种时间结构创建一个 Indicator。
+例如：
+entry:
+  all:
+    - feature: psar_flip_up
+      operator: equals
+      value: 1
+
+    - temporal:
+        feature: psar_direction
+        condition:
+          operator: equals
+          value: 1
+        consecutive_bars: 3
+        evaluation: after_event
+或者：
+entry:
+  all:
+    - feature: ema_alignment
+      operator: equals
+      value: 1
+
+    - temporal:
+        feature: ema_alignment
+        condition:
+          operator: equals
+          value: 1
+        consecutive_bars: 6
+这两种都不需要新建数据库列。
+Compiler 将它们翻译成 SQL Window Functions，或者在必要时翻译成通用的向量化序列运算。
+我建议 Temporal DSL 至少支持：
+Operator	意义
+consecutive_bars	连续满足 N 根 Bar
+within_bars	最近 N 根 Bar 内发生
+maintained_for	状态持续时间
+changed_within	在窗口内发生变化
+rising_for	连续上升
+falling_for	连续下降
+count_in_window	窗口内发生次数
+crossed_then_held	发生穿越后持续保持
+first_occurrence	第一次发生
+这些是统一的时间序列操作符，而不是 Indicator。
+这会让 YAML 非常简洁，同时也避免产生大量稀疏列。
+6. 还有一个更重要的优化：不要把所有时间窗口都预先计算
+例如：
+EMA 6
+EMA 12
+EMA 24
+EMA 60
+EMA 120
+这些是不同的基础参数，应该根据研究计划计算。
+但：
+EMA alignment maintained for 3 bars
+EMA alignment maintained for 6 bars
+EMA alignment maintained for 12 bars
+EMA alignment maintained for 24 bars
+它们不应该全部变成独立的持久化 Feature。
+SQL 可以根据需要计算：
+COUNT(*) FILTER (
+    WHERE ema_alignment = 1
+) OVER (
+    PARTITION BY instrument
+    ORDER BY timestamp
+    ROWS BETWEEN 5 PRECEDING AND CURRENT ROW
+)
+不过，上面的例子是窗口内满足数量，不完全等于连续满足。连续满足需要额外检测中间是否出现过 False，例如利用连续 False 的累计分组，或通过 LAG / 序列运算实现。
+所以 Temporal DSL 应明确区分：
+•	最近 6 根中至少 4 根满足。
+•	最近 6 根全部满足。
+•	连续 6 根满足。
+•	事件发生后连续 6 根满足。
+它们是不同的交易假设，不能混用。
+7. 我建议的最终数据架构
+Moneta Next — Feature-Centric Architecture
+Raw Market Data
+Mid / Bid / Ask / OHLC / Volume
+Feature Generation Engine
+Indicator algorithms + normalisation + derived features
+DuckDB Feature Marts
+Wide tables · Dense reusable features · Versioned Parquet
+YAML Strategy Compiler
+Feature references · Boolean expressions · Temporal operators
+SQL / Vectorised Signal Execution
+Entry signals · Exit signals · Signal timestamps
+Trade & Account Simulation
+Orders · Positions · CFD Accounting · Margin · Portfolio
+这里有一个我认为很值得坚持的原则：
+SQL 可以负责找出 Entry 和 Exit 的候选信号，但不应该独自承担完整的交易生命周期模拟。
+原因是 SQL 非常适合批量条件筛选、窗口分析和事件定位，但实际交易存在状态：
+•	当前是否已有持仓？
+•	当前持仓方向是什么？
+•	是否已经触发止损？
+•	同一 Bar 是否同时触发止盈和止损？
+•	是否有足够的 Free Margin？
+•	是否允许反手？
+•	多个标的同时发出信号时，资金如何分配？
+这些应该由统一的 Trade / Portfolio State Machine 负责。
+我会让 SQL 生成标准化的 Signal Event，例如：
+instrument
+timestamp
+strategy_id
+signal_type
+direction
+signal_priority
+然后交给 Trade Engine 处理。
+这样既利用了 DuckDB 的批量计算优势，又不需要把复杂的交易状态强行写成一条巨大的 SQL。
+8. 一个我建议增加的重要机制：Feature Materialization Policy
+不是每一个 Derived Feature 都应该存入数据库。
+建议建立三种策略：
+类型	处理方式	例子
+Core Feature	永久物化	EMA、RSI、ATR、PSAR Direction
+Reusable Derived Feature	按需或批量物化	EMA Alignment、ATR Normalized Distance
+Temporal Expression	默认动态计算	Maintained 3 Bars、Crossed Within 6 Bars
+什么情况下应该把 Temporal Expression 物化？
+我建议考虑三个因素：
+1.	被多少个策略重复使用。
+2.	每次计算的成本。
+3.	计算结果是否需要跨实验复用。
+如果某个 Temporal Feature 被几百个策略反复引用，而且计算成本较高，那么物化它是合理的。
+否则就不要为了提前准备而增加数据库列。
+还有一个性能细节：DuckDB 是列式数据库，宽表并不意味着查询时必须读取所有列。只要查询能够投影裁剪，读取实际使用的列即可。Parquet 对重复值和空值也有压缩能力。因此，不必因为列数较多就立即转向 EAV（Entity-Attribute-Value）模式。
+但也不能无限制增加列。列式数据库仍然存在 Schema 管理、元数据、查询规划和维护成本。
+9. 我建议正式修改 Moneta Next 的设计原则
+之前的四种 Indicator 类型可以降级为 Feature 的语义描述，而不是架构核心。
+新的核心原则应该是：
+原则	新定义
+Indicator	负责计算原始指标及其基础结果
+Feature	数据库中可复用的标准化市场特征
+Feature Store	以宽表为主的持久化特征层
+Temporal Logic	通用 SQL / 序列运算，不默认物化
+Strategy	只引用 Feature 和 Temporal Operators
+Compiler	YAML 转 SQL / Signal Representation
+Trade Engine	管理 Entry、Exit、Position 和 Account State
+我还会增加一条重要约束：
+策略不能自行定义 Feature，也不能自行定义 SQL。
+AI 只能生成符合 DSL Schema 的 YAML。Compiler 根据注册的 Feature 和 Temporal Operators 生成 SQL。这样既保留灵活性，又避免每个策略变成一段无法审计的 SQL。
+10. 我的最终判断
+我支持你提出的方向，而且认为这应该成为 Moneta Next 的核心架构调整。
+但我不建议采用「把所有可能的 Indicator 和时间窗口全部转换成宽表列」的做法。
+我建议采用：
+•	宽表存基础 Feature：让 DuckDB 发挥列式查询优势。
+•	Derived Feature 适度物化：保存真正可复用的市场语义。
+•	Temporal Logic 动态 SQL 化：避免组合和窗口导致列数爆炸。
+•	SQL 生成 Signal：批量找出入场、退出候选。
+•	Trade Engine 管理状态：保证交易生命周期和账户模拟正确。
+我认为这比原来以四种 Indicator 类型为中心的设计更简单，也更符合你希望利用 DuckDB 进行大规模策略搜索的目标。
+不过，还有一个设计选择值得现在确认，因为它会影响整个 Feature Store 的数据模型：
+Feature Store 的物理存储方式
+A. 单一宽表
+每个 Timeframe 一张表，所有 Feature 都作为列。简单直接，但未来可能出现超宽表。
+B. 按 Feature Domain 分宽表
+例如 Trend、Momentum、Volatility、Structure 各自一张宽表。降低单表复杂度，但 SQL 需要 JOIN。
+C. Hybrid（我的推荐）
+核心 Feature 放入统一宽表；较少使用或计算成本高的 Feature 放在 Domain 宽表。Temporal Logic 动态计算，必要时再物化。
+确认这个设计
+我倾向 C，因为它既不会过早牺牲 DuckDB 的宽表性能，也不会把所有未来的特征组合提前固化到数据库 Schema 里面。
+
+okay，我同意，feature store 只做单个bar 的，剩下的多bar 推到SQL。
+另外就是关于持仓，爆仓等问题。我想简化，简化到最大回撤就到2% ，或者1% （在30倍杠杆，3.33%爆仓的假设下）。这样应该简单非常多。
+
+我同意这两个决定，而且我认为它们能进一步减少 Moneta Next 的复杂度。
+不过，关于持仓和爆仓，我想稍微修正一下数学假设：可以用最大账户回撤作为主要风险控制，但不能直接把 3.33% 当作所有 30x CFD 账户的实际爆仓线。
+我建议把这部分设计成一个简化的 Equity-Based Risk Model，而不是完整模拟每个经纪商的复杂 Margin Close-out 规则。
+1. Feature Store 正式决定
+Accepted
+Single-Bar Feature Store + SQL Temporal Logic
+现在可以正式锁定：
+数据	存储方式
+EMA、RSI、ATR、ADX	单 Bar Feature
+PSAR Direction	单 Bar Feature
+PSAR Distance	单 Bar Feature
+PSAR Flip	单 Bar Feature
+EMA Alignment	单 Bar Derived Feature
+RSI Above 50	单 Bar Derived Feature
+连续 3 Bar 满足条件	SQL 动态计算
+最近 6 Bar 出现过事件	SQL 动态计算
+过去 12 Bar 满足条件的次数	SQL 动态计算
+Event 后持续 N Bar	SQL 动态计算
+物理架构：
+Raw Market Data
+       |
+       v
+Indicator / Feature Engine
+       |
+       v
+Single-Bar Feature Store
+       |
+       v
+YAML Strategy DSL
+       |
+       v
+SQL Compiler
+       |
+       v
+Temporal SQL Evaluation
+       |
+       v
+Entry / Exit Signals
+       |
+       v
+Trade & Account Engine
+我建议把一个原则写入架构规范：
+Feature Store only stores single-bar features. Any multi-bar condition, historical sequence, persistence, event window or temporal relationship must be evaluated dynamically through the SQL/temporal execution layer, unless explicit materialization is justified by measured performance.
+还有一个细节：跨时间周期的特征，例如 H1 EMA 在 M5 策略中的使用，仍然属于单 Bar Feature，但必须遵守 H1 Bar 的实际完成时间，不能提前使用尚未完成的 H1 数据。
+2. 最大回撤控制：确实可以大幅简化
+你的想法是：
+•	最大杠杆 30x。
+•	假设 30x 下，约 3.33% 的账户损失意味着爆仓。
+•	因此将最大账户回撤限制在 1% 或 2%。
+•	只要控制账户回撤，就不必建立复杂的持仓、保证金和强平模型。
+这个方向可以成立，但有一个重要的区别。
+2.1 30x 与 3.33% 的关系
+30x 意味着：
+\[ Initial\ Margin = \frac{1}{30}=3.333\% \]
+但这是名义敞口对应的初始保证金比例，不是通用的强平阈值。
+假设账户资金 $10,000，全部资金对应 30 倍名义敞口：
+\[ Exposure = 10,000 \times 30 = 300,000 \]
+那么：
+市场反向变动	账户损失	账户回撤
+0.0333%	$100	1%
+0.0667%	$200	2%
+0.1000%	$300	3%
+0.3333%	$1,000	10%
+1.0000%	$3,000	30%
+3.3333%	$10,000	100%
+所以，在满仓 30x 的假设下，价格只需要反向移动约 0.0667%，账户就已经损失 2%。
+但实际强平还取决于维持保证金、经纪商强平规则、合约规格、交易成本和持仓组合。
+因此，1% 或 2% 是账户风险预算，而不是保证金计算的替代品。
+3. 我建议采用极简账户风险模型
+不再建设一个复杂的 CFD Margin Simulator。
+只保留以下几个核心概念：
+项目	简化处理
+Initial Equity	初始账户资金
+Current Equity	当前账户资金
+Unrealised PnL	当前持仓浮动盈亏
+Realised PnL	已实现盈亏
+Effective Leverage	实际名义敞口 / Equity
+Maximum Leverage	30x
+Equity Drawdown	当前净值相对历史最高净值的回撤
+Risk Circuit Breaker	达到回撤上限后停止交易
+计算：
+\[ Equity_t = Balance_t + UnrealisedPnL_t \]
+\[ DD_t = 1-\frac{Equity_t}{PeakEquity_t} \]
+\[ PeakEquity_t = \max(Equity_0,\ldots,Equity_t) \]
+风险控制：
+\[ DD_t \geq DD_{max} \Rightarrow CloseAllPositions \]
+然后进入 HALTED 状态，停止新交易，直到人工重置或新的研究周期开始。
+这里有一个重要建议：回撤应使用包含未实现盈亏的 Equity，而不是只看已经平仓的 Balance。
+否则策略可能在持仓期间已经损失 3%，但因为没有平仓，系统仍认为没有触及风险限制。
+4. 我建议的账户状态机
+NORMAL
+正常交易
+DD 低于风险预警线
+WARNING
+风险预警
+DD 达到 1%，限制新增风险
+HALTED
+风险熔断
+DD 达到 2%，平仓并停止新交易
+我的建议是先采用：
+•	1%：Warning，禁止增加总风险敞口。
+•	2%：Hard Stop，关闭所有持仓并停止账户交易。
+注意，Warning 阶段不能只停止新 Entry，还应检查已有仓位是否继续扩大风险。
+而 Hard Stop 需要模拟实际平仓成本。不能假设触发 2% 后所有仓位都恰好在 2% 回撤处成交。跳空和滑点可能使最终损失超过 2%。
+5. 这样会简化多少？
+我认为可以删掉或推迟很多原本计划的模块。
+原设计	新设计
+复杂 Margin Engine	简化的杠杆和风险检查
+多级 Margin Close-out 模拟	账户回撤熔断
+复杂 Free Margin 预测	基础敞口限制
+多种强平优先级	全账户统一风险熔断
+复杂账户毁损模拟	回撤压力测试
+多层账户风险状态	NORMAL / WARNING / HALTED
+但仍然必须保留：
+1.	Bid / Ask 成交。
+2.	Commission、Spread、Slippage。
+3.	Financing / Swap。
+4.	持仓数量和方向。
+5.	名义敞口。
+6.	最大 30x 检查。
+7.	浮动盈亏。
+8.	Equity 和 Drawdown。
+因为这些是正确计算回撤所必需的，不属于可以删除的复杂度。
+6. 一个我认为必须增加的设计：单笔风险和账户回撤是两回事
+例如：
+•	策略 A 持有 EUR/USD。
+•	策略 B 持有 GBP/USD。
+•	策略 C 持有 XAU/USD。
+三个策略分别认为自己的风险很小，但它们可能同时受到美元方向变化的影响。
+因此，不能让每个策略各自拥有 2% 的回撤预算。
+我建议：
+整个账户只有一个 2% 的 Drawdown Limit。
+所有 Universal Strategies 共用这个风险预算。
+在此基础上，保留一个非常简单的单笔风险预算，例如每笔交易风险 0.1%–0.25% Equity，作为初始研究参数，而不是直接给每个策略 1%–2% 的独立风险额度。
+这些比例是实验起点，需要通过回测和压力测试验证。
+这样就不需要一开始建立非常复杂的组合风险引擎，但能够避免多个策略各自消耗完整账户风险额度。
+7. 我建议更新后的正式架构
+Moneta Next — Simplified Core Architecture
+Market Data
+Raw OHLC · Mid · Bid · Ask
+Single-Bar Feature Store
+Primitive + Derived Features · DuckDB / Parquet
+YAML → SQL Compiler
+Entry · Exit · Temporal Logic
+Trade Engine
+Signal · Position · Execution · PnL
+Account Risk Controller
+Max 30x · Equity · 1% Warning · 2% Hard Stop
+Experiment & Validation
+Net Return · Drawdown · Universal Performance · OOS
+8. 还有一个需要你确认的关键问题
+我支持把 2% 作为账户级 Hard Stop，但需要确定它究竟是怎样的回撤约束：
+2% 最大回撤的计算基准
+A. High-Water Mark Drawdown（推荐）
+从账户历史最高 Equity 开始计算回撤。例如账户曾从 $10,000 上升到 $12,000，之后从 $12,000 下跌 2% 就触发熔断。
+B. Initial Capital Drawdown
+永远相对初始资金计算。例如初始 $10,000，跌到 $9,800 就触发，不考虑账户曾经盈利多少。
+C. Daily Drawdown
+每个交易日重新计算，单日最大损失不超过 2%，但允许累计回撤超过 2%。
+确认回撤定义
+我的选择是 A：High-Water Mark Drawdown。
+最后提醒：如果 2% 是真正的硬性上限，系统需要在 Bar 内监控风险，或者明确接受 Bar Close 检查造成的超限风险。只在每根 H1 Bar 收盘时检查一次，无法保证盘中回撤不会先超过 2%。
+这套设计已经足以大幅简化账户模拟，同时保留研究 CFD 策略最重要的风险约束。
+
+Moneta Next Feature Store 物理存储方式，我选择 C. Hybrid：核心宽表 + Domain 宽表 + Temporal Logic 动态计算。请基于这个决定继续完善正式架构。
+
+收到。Moneta Next 的账户级 Drawdown 计算基准正式确定为：
+正式架构决策
+A. High-Water Mark Drawdown（历史最高权益回撤）
+这意味着账户风险控制不再以初始资金或每日开盘权益作为固定基准，而是始终以账户历史最高 Equity 为参照。账户盈利后，风险保护基准也会随之提高。
+1. 正式定义
+账户 Drawdown 使用包含未实现盈亏的 Equity 计算。
+\[ Equity_t = Balance_t + UnrealisedPnL_t \]
+\[ PeakEquity_t = \max(PeakEquity_{t-1}, Equity_t) \]
+\[ Drawdown_t = 1-\frac{Equity_t}{PeakEquity_t} \]
+其中：
+•	Balance：已实现盈亏、已结算成本后的账户余额。
+•	UnrealisedPnL：所有当前持仓的浮动盈亏。
+•	Equity：实时账户权益。
+•	PeakEquity：账户运行以来的最高权益。
+•	Drawdown：相对于历史最高权益的百分比回撤。
+PeakEquity 只能提高，不能因为账户亏损而降低。
+例如：
+阶段	Equity	Peak Equity	Drawdown
+初始	$100,000	$100,000	0%
+盈利	$105,000	$105,000	0%
+回撤	$103,000	$105,000	1.90%
+进一步回撤	$102,900	$105,000	2.00%
+恢复	$104,000	$105,000	0.95%
+创新高	$106,000	$106,000	0%
+注意：账户从 $100,000 增长到 $105,000 后，2% Hard Stop 对应的 Equity 是 $102,900，而不是 $98,000。
+2. 账户级风险控制规则
+建议将账户风险控制分为三个状态：
+NORMAL
+正常
+DD < 1%
+正常允许策略开仓、平仓和调整仓位。
+WARNING
+风险警告
+DD ≥ 1%
+•	禁止增加账户总风险敞口。
+•	允许降低风险、平仓和调整止损。
+•	继续监控账户 Equity。
+HALTED
+Hard Stop
+DD ≥ 2%
+•	触发账户级 Hard Stop。
+•	关闭全部现有持仓。
+•	取消尚未执行的开仓订单。
+•	禁止所有策略继续产生新的开仓交易。
+•	账户进入 HALTED 状态。
+这里建议明确：HALTED 不是普通策略状态，而是账户级状态。
+不能让某个策略在触发 Hard Stop 后，通过重新初始化或者重新启动 Backtest 绕过账户限制。
+3. 账户风险控制与策略风险控制分离
+Moneta Next 必须区分两种风险：
+层次	负责什么
+Strategy Risk	单笔止损、止盈、持仓时间、策略仓位大小
+Account Risk	总账户 Equity、Peak Equity、Drawdown、30x 杠杆上限、Hard Stop
+例如，三个策略同时持仓：
+策略	浮动盈亏
+Strategy A	-$800
+Strategy B	-$600
+Strategy C	-$700
+账户合计	-$2,100
+账户风险控制必须看整个账户的 Equity，而不是每个策略独立计算 2% 回撤。
+这避免了多个策略各自满足风险限制，但合计已经使账户超过风险上限的问题。
+4. 必须保留的基础计算
+虽然我们决定不建设复杂的 Broker Margin / Liquidation Simulator，但以下内容不能删除：
+•	Balance
+•	Unrealised PnL
+•	Equity
+•	Peak Equity
+•	Drawdown
+•	Gross Notional Exposure
+•	Effective Leverage
+•	Bid / Ask
+•	Spread、Commission、Slippage
+•	Financing / Swap（适用时）
+•	Position Quantity
+•	Entry Price
+•	Current Mark Price
+实际杠杆：
+\[ EffectiveLeverage = \frac{GrossNotionalExposure}{Equity} \]
+最大允许杠杆：
+\[ EffectiveLeverage \leq 30 \]
+30x 是系统允许的最大上限，不是默认仓位设置。
+5. 需要在架构中增加的状态管理
+建议新增 Account Risk Controller，而不是把这些规则分散到各个 Strategy 或 Backtest 模块。
+建议状态：
+account_risk:
+  drawdown:
+    method: high_water_mark
+
+    warning_threshold: 0.01
+    hard_stop_threshold: 0.02
+
+  leverage:
+    maximum: 30
+
+  warning_action:
+    block_new_risk: true
+    allow_risk_reduction: true
+
+  hard_stop_action:
+    close_all_positions: true
+    cancel_pending_entry_orders: true
+    block_new_entries: true
+
+  halt:
+    require_manual_reset: true
+这是一份配置表达示例，具体实现仍需通过 Schema 验证。
+状态机
+             DD < 1%
+       ┌─────────────────┐
+       │                 │
+       ▼                 │
+    NORMAL               │
+       │                 │
+       │ DD >= 1%        │
+       ▼                 │
+    WARNING              │
+       │                 │
+       │ DD >= 2%        │
+       ▼                 │
+    HALTED
+       │
+       │ Manual Reset
+       ▼
+    NORMAL
+一个重要细节：WARNING 状态下，如果回撤恢复至 1% 以下，可以返回 NORMAL；但 HALTED 不能自动恢复。
+6. 需要特别处理的三个问题
+第一：Peak Equity 必须持久化。
+不能只在单次策略回测过程中临时计算。账户状态必须能被记录、恢复和复现。
+建议 Account State 至少保存：
+account_id
+initial_capital
+balance
+equity
+peak_equity
+drawdown
+effective_leverage
+risk_state
+halted_at
+halt_reason
+第二：Hard Stop 不保证最终成交回撤恰好是 2%。
+触发时的 Equity 达到 2% Drawdown 后，实际平仓还可能因为滑点、跳空、流动性不足等因素产生额外损失。
+因此，2% 是触发阈值，而不是绝对保证的最大损失。
+第三：必须明确检查频率。
+如果只在 H1 Bar Close 检查，账户可能在两根 H1 Bar 之间已经超过 2%。
+建议：
+•	有 M1 数据时，至少在 M1 级别检查。
+•	对于可获得的更细粒度价格数据，可以进一步检查。
+•	记录触发时间、触发 Equity、执行价格和最终实现回撤。
+•	如果只有 H1 数据，明确标记为 Bar-level Risk Approximation。
+7. 更新后的正式架构决策记录
+ID	决策	状态
+ADR-001	DuckDB + Parquet	已确认
+ADR-002	Universal Strategy	已确认
+ADR-003	Maximum 30x Leverage	已确认
+ADR-004	Hybrid Feature Store	已确认
+ADR-005	Single-Bar Feature Persistence	已确认
+ADR-006	Temporal Logic Dynamic SQL	已确认
+ADR-007	High-Water Mark Drawdown	已确认
+ADR-008	Account-level 1% Warning / 2% Hard Stop	建议方案，待最终确认
+我将 ADR-007 视为已经锁定的正式设计；ADR-008 的 1% 和 2% 仍应作为建议阈值，直到你确认整个风险控制方案。
+对整体架构的影响： 04_EXECUTION_AND_ACCOUNT_RISK.md 应明确采用 High-Water Mark Drawdown，并将 Account Risk Controller 设计为独立于 Strategy Engine 的账户级组件。它将成为所有策略共享的最终风险约束。
+

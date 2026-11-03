@@ -1,0 +1,2612 @@
+{
+  "close": {
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 1,
+    "available_at": "bar_close_time"
+  },
+  "volume": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "warmup_bars": 1,
+    "available_at": "bar_close_time"
+  },
+  "atr_sma_14": {
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 14,
+    "available_at": "bar_close_time"
+  },
+  "sma_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 6,
+    "available_at": "bar_close_time"
+  },
+  "sma_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "warmup_bars": 24,
+    "available_at": "bar_close_time"
+  },
+  "sma_alignment_6_24": {
+    "type": "STATE",
+    "unit": "sign",
+    "warmup_bars": 24,
+    "available_at": "bar_close_time"
+  },
+  "sma_cross_up_6_24": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25,
+    "available_at": "bar_close_time"
+  },
+  "sma_cross_down_6_24": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "warmup_bars": 25,
+    "available_at": "bar_close_time"
+  },
+  "close_sma24_distance_atr": {
+    "type": "VALUE",
+    "unit": "atr",
+    "warmup_bars": 24,
+    "available_at": "bar_close_time"
+  },
+  "ema_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "adx_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "plus_di_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "minus_di_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_up_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_down_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_upper_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_lower_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_mid_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "rsi_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "roc_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mom_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_k_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_d_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cci_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "willr_6": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_mid_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_upper_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_lower_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_width_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_pctb_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_mid_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_upper_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_lower_6": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sqz_on_6": {
+    "type": "STATE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hv_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "er_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "chop_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_sma_6": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_rel_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mfi_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cmf_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_pct_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_dist_6": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_pos_6": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_high_6": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_low_6": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sma_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "adx_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "plus_di_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "minus_di_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_up_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_down_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_upper_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_lower_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_mid_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "rsi_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "roc_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mom_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_k_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_d_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cci_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "willr_12": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_mid_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_upper_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_lower_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_width_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_pctb_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_mid_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_upper_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_lower_12": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sqz_on_12": {
+    "type": "STATE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hv_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "er_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "chop_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_sma_12": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_rel_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mfi_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cmf_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_pct_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_dist_12": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_pos_12": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_high_12": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_low_12": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "adx_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "plus_di_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "minus_di_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_up_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_down_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_upper_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_lower_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_mid_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "rsi_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "roc_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mom_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_k_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_d_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cci_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "willr_24": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_mid_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_upper_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_lower_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_width_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_pctb_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_mid_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_upper_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_lower_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sqz_on_24": {
+    "type": "STATE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hv_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "er_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "chop_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_sma_24": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_rel_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mfi_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cmf_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_pct_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_dist_24": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_pos_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_high_24": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_low_24": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sma_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "adx_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "plus_di_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "minus_di_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_up_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_down_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_upper_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_lower_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_mid_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "rsi_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "roc_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mom_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_k_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_d_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cci_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "willr_60": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_mid_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_upper_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_lower_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_width_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_pctb_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_mid_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_upper_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_lower_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sqz_on_60": {
+    "type": "STATE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hv_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "er_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "chop_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_sma_60": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_rel_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mfi_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cmf_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_pct_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_dist_60": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_pos_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_high_60": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_low_60": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sma_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "adx_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "plus_di_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "minus_di_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_up_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "aroon_down_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_upper_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_lower_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_mid_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "rsi_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "roc_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mom_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_k_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "stoch_d_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cci_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "willr_120": {
+    "type": "VALUE",
+    "unit": "index",
+    "domain": "momentum",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_mid_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_upper_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_lower_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_width_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bb_pctb_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_mid_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_upper_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "kc_lower_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "sqz_on_120": {
+    "type": "STATE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_algorithm_with_return_order_repair",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hv_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "er_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "chop_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "regime",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_sma_120": {
+    "type": "VALUE",
+    "unit": "source_activity",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_rel_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "mfi_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "cmf_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "atr_pct_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_dist_120": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dc_pos_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_high_120": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dist_low_120": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_6_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_signal_6_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_6_24": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_spread_6_24": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_atr_6_24": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_ratio_6_24": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_12_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_signal_12_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_12_60": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_spread_12_60": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_atr_12_60": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_ratio_12_60": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_24_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_signal_24_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_24_120": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "ema_spread_24_120": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "macd_hist_atr_24_120": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vol_ratio_24_120": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_0p02_0p2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_dir_0p02_0p2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_dist_0p02_0p2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_0p01_0p1": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_dir_0p01_0p1": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_dist_0p01_0p1": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_6_2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_6_2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_6_2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_6_3": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_6_3": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_6_3": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_12_2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_12_2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_12_2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_12_3": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_12_3": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_12_3": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_24_2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_24_2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_24_2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_24_3": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_24_3": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_24_3": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_60_2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_60_2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_60_2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_60_3": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_60_3": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_60_3": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_120_2": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_120_2": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_120_2": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_120_3": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dir_120_3": {
+    "type": "STATE",
+    "unit": "sign",
+    "domain": "trend",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_dist_120_3": {
+    "type": "VALUE",
+    "unit": "atr",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bar_body_ratio": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "candle",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bar_upper_wick_ratio": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "candle",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bar_lower_wick_ratio": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "candle",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "bar_clv": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "candle",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hour_sin": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "hour_cos": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dow_sin": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "dow_cos": {
+    "type": "VALUE",
+    "unit": "ratio",
+    "domain": "derived",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "is_gap_bar": {
+    "type": "STATE",
+    "unit": "flag",
+    "domain": "quality",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "is_partial": {
+    "type": "STATE",
+    "unit": "flag",
+    "domain": "quality",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "is_near_market_close": {
+    "type": "STATE",
+    "unit": "flag",
+    "domain": "quality",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "tr": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volatility",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "vwap": {
+    "type": "VALUE",
+    "unit": "price",
+    "domain": "volume",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "legacy_default",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_flip_up_0p02_0p2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_flip_down_0p02_0p2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_60_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_60_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_12_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_12_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_24_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_24_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_12_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_12_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_60_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_60_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_flip_up_0p01_0p1": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "psar_flip_down_0p01_0p1": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_6_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_6_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_6_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_6_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_24_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_24_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_120_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_120_2": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_up_120_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  },
+  "st_flip_down_120_3": {
+    "type": "EVENT",
+    "unit": "boolean",
+    "domain": "events",
+    "available_at": "bar_close_time",
+    "warmup_bars": 360,
+    "origin": "new_transform_of_legacy_direction",
+    "source_commit": "67896d60bc6ecf73fc6aec42aee469a24cce3564"
+  }
+}

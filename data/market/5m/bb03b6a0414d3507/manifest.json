@@ -1,0 +1,205 @@
+{
+  "data_version": "nova-market-v1",
+  "files": [
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "AUD_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/AUD_USD.parquet",
+      "quoted_bars": 462826,
+      "rows": 462826,
+      "sha256": "8a2ce6407511fb783175fa831d66eb36723d66123e37a0fed5c7b757ffc68e51",
+      "start": "2020-01-01T22:20:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BCO_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/BCO_USD.parquet",
+      "quoted_bars": 426204,
+      "rows": 426204,
+      "sha256": "50777679a5f7024a3961b0a85cb94a99de42b4e8bce7276a97b3a8b9d79300e0",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "BTC_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/BTC_USD.parquet",
+      "quoted_bars": 498785,
+      "rows": 498785,
+      "sha256": "a68ac96e6ce614e3a3583b6a9096e45d2d8844b3cfa80def6060231ce1203598",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:45:00+00:00",
+      "instrument": "CN50_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/CN50_USD.parquet",
+      "quoted_bars": 351345,
+      "rows": 351345,
+      "sha256": "81caf6d42371af62c29c85d7f700a50209b9726d4606f4a2aad2e31753123d20",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "DE30_EUR",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/DE30_EUR.parquet",
+      "quoted_bars": 398063,
+      "rows": 398063,
+      "sha256": "fd3acc56d2b4d64fb0ae7ee0056b5c54f76ab27ffd41eea17a5a8922d5a9d0d6",
+      "start": "2020-01-02T00:15:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "ETH_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/ETH_USD.parquet",
+      "quoted_bars": 492001,
+      "rows": 492001,
+      "sha256": "27635bbba522f5673cb2a1004e034eefed6e8ff637143b8c225f69f44e4f20ff",
+      "start": "2020-01-02T05:05:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "EUR_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/EUR_USD.parquet",
+      "quoted_bars": 488709,
+      "rows": 488709,
+      "sha256": "f26c498dfa15d6bcbbffc62ff7879871fc7604f8fed27d81df4448e147d2de6a",
+      "start": "2020-01-01T22:45:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "GBP_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/GBP_USD.parquet",
+      "quoted_bars": 481568,
+      "rows": 481568,
+      "sha256": "5cd8055657dd7dc608e6cb31f099aa535c0f200c01fc8ca345993c73dc5519f6",
+      "start": "2020-01-01T22:40:00+00:00"
+    },
+    {
+      "end": "2026-10-23T19:00:00+00:00",
+      "instrument": "HK33_HKD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/HK33_HKD.parquet",
+      "quoted_bars": 317420,
+      "rows": 317420,
+      "sha256": "86b5c28294a0cd5ceb05d519b83796994947dcff5635760c173ae97e7852263b",
+      "start": "2020-01-02T01:15:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "JP225_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/JP225_USD.parquet",
+      "quoted_bars": 418331,
+      "rows": 418331,
+      "sha256": "6c3de77114bc05a760722e5bf8ebf6ddb8ef95b796d0ed35e3d15bd130f52d14",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "NAS100_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/NAS100_USD.parquet",
+      "quoted_bars": 468990,
+      "rows": 468990,
+      "sha256": "41e94cac422ecb6ed466cd5fd12533768aab47f1779636472fdd67b44c5cfff8",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "NZD_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/NZD_USD.parquet",
+      "quoted_bars": 466909,
+      "rows": 466909,
+      "sha256": "140b206d3f29a77e3ab13069847e3740fde2190de22650e971071828c00a72f6",
+      "start": "2020-01-01T22:30:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "SPX500_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/SPX500_USD.parquet",
+      "quoted_bars": 434572,
+      "rows": 434572,
+      "sha256": "a720276fea482a41c9c31adad8030783abe57236d6fbbdd557e0a35eedbe395c",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:00:00+00:00",
+      "instrument": "UK100_GBP",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/UK100_GBP.parquet",
+      "quoted_bars": 364375,
+      "rows": 364375,
+      "sha256": "0b921036dfb58cd98cf5348c194373d1fd83171c30e37b9ad59791c0095c7ea6",
+      "start": "2020-01-02T01:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T20:55:00+00:00",
+      "instrument": "US30_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/US30_USD.parquet",
+      "quoted_bars": 461065,
+      "rows": 461065,
+      "sha256": "4cf0884f491386ca806dda4bd4df1f9cd0811ff4cb11bcb5fc47da189e3eb763",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CAD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/USD_CAD.parquet",
+      "quoted_bars": 479448,
+      "rows": 479448,
+      "sha256": "9ff38af5562d15760aa066137da7b93551bb1c030c39ee9be2b6d67abea5cfd1",
+      "start": "2020-01-01T23:55:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_CHF",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/USD_CHF.parquet",
+      "quoted_bars": 432224,
+      "rows": 432224,
+      "sha256": "606a00ec2deb919e1274471036b3b2e714b3452434e87c02fd53d76a07059528",
+      "start": "2020-01-02T01:25:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "USD_JPY",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/USD_JPY.parquet",
+      "quoted_bars": 490940,
+      "rows": 490940,
+      "sha256": "7df97c0b1305d5b22ec225558f03751b23fb92b4b5f10ca9d94419a7e816ab4a",
+      "start": "2020-01-01T22:10:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "WTICO_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/WTICO_USD.parquet",
+      "quoted_bars": 447669,
+      "rows": 447669,
+      "sha256": "0df1988d901efb88bfdb10ba9c8628a87031997ce2d2419b341f0200862b1e32",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAG_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/XAG_USD.parquet",
+      "quoted_bars": 441590,
+      "rows": 441590,
+      "sha256": "fa9267dcbcd61a1f6088918f84e286728de94414a0bbf5cf24fb6d3816591985",
+      "start": "2020-01-01T23:00:00+00:00"
+    },
+    {
+      "end": "2026-10-23T21:00:00+00:00",
+      "instrument": "XAU_USD",
+      "path": "/home/ubuntu/work/nova/data/market/5m/bb03b6a0414d3507/XAU_USD.parquet",
+      "quoted_bars": 476486,
+      "rows": 476486,
+      "sha256": "cbffe25efa8a866d8ac377331c5cca90af0e6a90dcf8ec09eb25c2c42a726102",
+      "start": "2020-01-01T23:00:00+00:00"
+    }
+  ],
+  "kind": "market",
+  "parent_snapshot_id": "041914943d0ac7eb2514edaca216f73f27fc105a622e70282ca42b5db8f00d02",
+  "quality": {
+    "gap_filling": false,
+    "partial_buckets_dropped": 634703,
+    "quote_policy": "all minutes quoted, otherwise configured mid-price spread"
+  },
+  "snapshot_id": "bb03b6a0414d350705e2394ceb5149a62979666a6897261d2e33681c935f99b9",
+  "source_kind": "oanda",
+  "timeframe_minutes": 5,
+  "volume_semantics": "OANDA quote/tick activity; used as market-volume proxy"
+}

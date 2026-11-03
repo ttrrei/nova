@@ -1,0 +1,873 @@
+{
+  "attempt_record": "/home/ubuntu/work/nova/runs/research_campaign/volatility_expansion/phase_1/round_06.attempt_01.json",
+  "audit": {
+    "artifact_hashes_checked": 7,
+    "exit_reasons": {
+      "end_of_data": 2,
+      "indicator_exit": 14911,
+      "stop_gap": 41,
+      "stop_loss": 720,
+      "take_profit": 657,
+      "time_exit": 844
+    },
+    "status": "passed",
+    "trades_checked": 17175
+  },
+  "automatic_diagnosis": "6/21 pass; 0 additional positive-score instruments fail monthly frequency; 15/21 have nonpositive scores; 0 instruments have no trades. Yearly concentration is descriptive, not another acceptance gate.",
+  "change": "Tighten rolling-range indicator exit frommidpoint toouter-quarter.",
+  "completed_at": "2026-10-31T22:32:30.341223+00:00",
+  "directory": "/home/ubuntu/work/nova/runs/research_campaign/volatility_expansion/experiments/492643705ef84dec6426",
+  "effective_strategy_hash": "5d95186a548c7e820dddadd38de7cc07bfa58f8822c4ca8df6eec9872fd4f5bf",
+  "elapsed_seconds": 12.534,
+  "engine_hash": "1135b043ad9fe3f30714c06a49140d7ff31869d7449455415123bfa81bda3ad2",
+  "family": "volatility_expansion",
+  "feature_snapshot": "70ef7eab32db8047fc35ec2f263b4ff67e798bb29deb31186fdba8fee9680335",
+  "guidance": null,
+  "hypothesis": "A true expansion should hold the outer quarter; loss of that position may identify failure before midpoint loss.",
+  "instruments": [
+    "AUD_USD",
+    "BCO_USD",
+    "BTC_USD",
+    "CN50_USD",
+    "DE30_EUR",
+    "ETH_USD",
+    "EUR_USD",
+    "GBP_USD",
+    "HK33_HKD",
+    "JP225_USD",
+    "NAS100_USD",
+    "NZD_USD",
+    "SPX500_USD",
+    "UK100_GBP",
+    "US30_USD",
+    "USD_CAD",
+    "USD_CHF",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAG_USD",
+    "XAU_USD"
+  ],
+  "is_duplicate": false,
+  "lesson": "Test whether faster failure exits improve failing score instruments without a frequency penalty.",
+  "no_trade_instruments": [],
+  "parent_run_id": "28058ff4a71199da3aad",
+  "passing_instruments": [
+    "DE30_EUR",
+    "NAS100_USD",
+    "US30_USD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAU_USD"
+  ],
+  "per_instrument": {
+    "AUD_USD": {
+      "annualized_trade_return_score": -0.06317049711803607,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.000578725706800024,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.4027444103386592,
+      "net_trade_return_sum": -0.4299932001524178,
+      "passes_initial_screen": false,
+      "positive_years": [],
+      "reported_years": 7,
+      "trade_count": 743,
+      "win_rate": 0.29071332436069985,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T15:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.07257143597704616,
+        "2021": -0.027248789813758587,
+        "2022": -0.08127049021595557,
+        "2023": -0.06486707726749574,
+        "2024": -0.0733053873848906,
+        "2025": -0.02838113867379066,
+        "2026": -0.08234888081948046
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "BCO_USD": {
+      "annualized_trade_return_score": -0.022163225576943845,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0002072455771735682,
+      "negative_years": [
+        "2021",
+        "2023",
+        "2024"
+      ],
+      "net_sum_excluding_best_reported_year": -0.2551539415356775,
+      "net_trade_return_sum": -0.15087478018235764,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2020",
+        "2022",
+        "2025",
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 728,
+      "win_rate": 0.3434065934065934,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T11:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.10427916135331987,
+        "2021": -0.07078010009655611,
+        "2022": 0.05199090828259794,
+        "2023": -0.10904119051425228,
+        "2024": -0.19328531377221386,
+        "2025": 0.0018585610035053478,
+        "2026": 0.06410319356124135
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "BTC_USD": {
+      "annualized_trade_return_score": -0.040188655504816324,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00023486955810480726,
+      "negative_years": [
+        "2021",
+        "2022",
+        "2023",
+        "2025"
+      ],
+      "net_sum_excluding_best_reported_year": -0.5093619847196044,
+      "net_trade_return_sum": -0.27362303519210046,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2020",
+        "2024",
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 1165,
+      "win_rate": 0.3321888412017167,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T02:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.06416087255668067,
+        "2021": -0.09291950506079098,
+        "2022": -0.48478603408657506,
+        "2023": -0.03373840014342008,
+        "2024": 0.23573894952750393,
+        "2025": -0.029189212152252467,
+        "2026": 0.06711029416675354
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "CN50_USD": {
+      "annualized_trade_return_score": -0.06706738692556155,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0007400744318753077,
+      "negative_years": [
+        "2020",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.46708045299945616,
+      "net_trade_return_sum": -0.45662592446706485,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2021"
+      ],
+      "reported_years": 7,
+      "trade_count": 617,
+      "win_rate": 0.3273905996758509,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.10879696903725544,
+        "2021": 0.010454528532391295,
+        "2022": -0.07628312894915035,
+        "2023": -0.05483419939323154,
+        "2024": -0.06569394434645173,
+        "2025": -0.03827148095972768,
+        "2026": -0.12320073031363946
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "DE30_EUR": {
+      "annualized_trade_return_score": 0.008534207616875242,
+      "complete_months": 80,
+      "mean_net_trade_return": 8.470094720557047e-05,
+      "negative_years": [
+        "2022",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": 0.0032346124478605034,
+      "net_trade_return_sum": 0.05810484978302135,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2020",
+        "2021",
+        "2023"
+      ],
+      "reported_years": 7,
+      "trade_count": 686,
+      "win_rate": 0.35276967930029157,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.03474301712279995,
+        "2021": 0.054870237335160846,
+        "2022": -0.007825265590790081,
+        "2023": 0.019871460744164886,
+        "2024": -0.007852881035961101,
+        "2025": -0.00047654318768359594,
+        "2026": -0.03522517560466953
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "ETH_USD": {
+      "annualized_trade_return_score": -0.16347887004280412,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0009282447789772057,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -1.2252499240495225,
+      "net_trade_return_sum": -1.1129654899936696,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2024"
+      ],
+      "reported_years": 7,
+      "trade_count": 1199,
+      "win_rate": 0.3194328607172644,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.38900365573144596,
+        "2021": -0.04839290210320531,
+        "2022": -0.23707355001854205,
+        "2023": -0.4381005980760174,
+        "2024": 0.11228443405585294,
+        "2025": -0.05536394730406586,
+        "2026": -0.05731527081624567
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "EUR_USD": {
+      "annualized_trade_return_score": -0.038968390404241014,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00026796341993555066,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.24892925010213562,
+      "net_trade_return_sum": -0.26528378573619515,
+      "passes_initial_screen": false,
+      "positive_years": [],
+      "reported_years": 7,
+      "trade_count": 990,
+      "win_rate": 0.30404040404040406,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T09:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.030087768247169314,
+        "2021": -0.028503386777310853,
+        "2022": -0.017049288559903265,
+        "2023": -0.04638893978623388,
+        "2024": -0.09479386627456697,
+        "2025": -0.016354535634059517,
+        "2026": -0.03210600045695135
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "GBP_USD": {
+      "annualized_trade_return_score": -0.04388236141709792,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00032508866477792744,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.3197643737570539,
+      "net_trade_return_sum": -0.29875648293091533,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2022"
+      ],
+      "reported_years": 7,
+      "trade_count": 919,
+      "win_rate": 0.3068552774755169,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T05:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.07996270641674572,
+        "2021": -0.04786843151291781,
+        "2022": 0.02100789082613859,
+        "2023": -0.04151683806680487,
+        "2024": -0.06845494469370972,
+        "2025": -0.017166602429945492,
+        "2026": -0.06479485063693038
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "HK33_HKD": {
+      "annualized_trade_return_score": -0.02459114232030425,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0002749134802470656,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.30876544898255576,
+      "net_trade_return_sum": -0.16742230947046294,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2022",
+        "2023"
+      ],
+      "reported_years": 7,
+      "trade_count": 609,
+      "win_rate": 0.32019704433497537,
+      "window": {
+        "end_exclusive": "2026-10-23T19:00:00+00:00",
+        "start": "2020-01-02T02:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.044653427102383125,
+        "2021": -0.046802899458506825,
+        "2022": 0.14134313951209282,
+        "2023": 0.07386329817366107,
+        "2024": -0.07806809241725138,
+        "2025": -0.09635496540943707,
+        "2026": -0.11674936276863827
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "JP225_USD": {
+      "annualized_trade_return_score": -0.03403107088376011,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00038029931789440255,
+      "negative_years": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "net_sum_excluding_best_reported_year": -0.26021852854288,
+      "net_trade_return_sum": -0.23160228459769117,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2020",
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 609,
+      "win_rate": 0.31527093596059114,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-03T02:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.028616243945188836,
+        "2021": -0.03164359881301794,
+        "2022": -0.11464657954892936,
+        "2023": -0.014383794782954769,
+        "2024": -7.31323635221816e-05,
+        "2025": -0.116185192519139,
+        "2026": 0.016713769484683224
+      },
+      "zero_entry_complete_months": 2,
+      "zero_entry_months": [
+        "2020-05",
+        "2020-07"
+      ]
+    },
+    "NAS100_USD": {
+      "annualized_trade_return_score": 0.051750497052221324,
+      "complete_months": 80,
+      "mean_net_trade_return": 0.00036438379919252766,
+      "negative_years": [
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": 0.15892869524002945,
+      "net_trade_return_sum": 0.3523591338191743,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "reported_years": 7,
+      "trade_count": 967,
+      "win_rate": 0.375387797311272,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-01T23:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.10046729295081024,
+        "2021": 0.19343043857914483,
+        "2022": 0.05618037692097817,
+        "2023": 0.02178280970427935,
+        "2024": 0.07802547818414465,
+        "2025": -0.09318966169543257,
+        "2026": -0.004337600824750395
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "NZD_USD": {
+      "annualized_trade_return_score": -0.07242847008637933,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0006944864180452237,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.46232888173764236,
+      "net_trade_return_sum": -0.4930853568121088,
+      "passes_initial_screen": false,
+      "positive_years": [],
+      "reported_years": 7,
+      "trade_count": 710,
+      "win_rate": 0.29295774647887324,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.05464062280842255,
+        "2021": -0.05238598368979359,
+        "2022": -0.1503061258359386,
+        "2023": -0.04604679501221712,
+        "2024": -0.09898613984981151,
+        "2025": -0.030756475074466428,
+        "2026": -0.059963214541458934
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "SPX500_USD": {
+      "annualized_trade_return_score": -0.012979111092095267,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00012036388109531323,
+      "negative_years": [
+        "2021",
+        "2022",
+        "2023",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.16394727137257464,
+      "net_trade_return_sum": -0.08834708872395991,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2020",
+        "2024"
+      ],
+      "reported_years": 7,
+      "trade_count": 734,
+      "win_rate": 0.3569482288828338,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T15:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.07560018264861475,
+        "2021": -0.004680109129799957,
+        "2022": -0.038914330240362956,
+        "2023": -0.020197865125489597,
+        "2024": 0.00923837175327809,
+        "2025": -0.07102877277423475,
+        "2026": -0.03836456585596553
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "UK100_GBP": {
+      "annualized_trade_return_score": -0.006472384342991959,
+      "complete_months": 80,
+      "mean_net_trade_return": -9.27648577208771e-05,
+      "negative_years": [
+        "2021",
+        "2022",
+        "2023",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.13785115114472235,
+      "net_trade_return_sum": -0.044063307417416625,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2020",
+        "2024",
+        "2025"
+      ],
+      "reported_years": 7,
+      "trade_count": 475,
+      "win_rate": 0.31157894736842107,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-02T06:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.09378784372730571,
+        "2021": -0.0074851276256617735,
+        "2022": -0.0073295449699875385,
+        "2023": -0.07774619755596436,
+        "2024": 0.016160498211064103,
+        "2025": 0.030768572078927206,
+        "2026": -0.09221935128310006
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "US30_USD": {
+      "annualized_trade_return_score": 0.00205523088798699,
+      "complete_months": 80,
+      "mean_net_trade_return": 1.4870813491007483e-05,
+      "negative_years": [
+        "2022",
+        "2023",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.14832511645695684,
+      "net_trade_return_sum": 0.013993435495038042,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2020",
+        "2021",
+        "2024"
+      ],
+      "reported_years": 7,
+      "trade_count": 941,
+      "win_rate": 0.3602550478214665,
+      "window": {
+        "end_exclusive": "2026-10-23T20:00:00+00:00",
+        "start": "2020-01-01T23:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.16231855195199488,
+        "2021": 0.06585000420658797,
+        "2022": -0.09674611585083263,
+        "2023": -0.032948280524032446,
+        "2024": 0.05779964501192452,
+        "2025": -0.03416601139567692,
+        "2026": -0.10811435790492745
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "USD_CAD": {
+      "annualized_trade_return_score": -0.030499368825671277,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00025104667292993573,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.19254203866982716,
+      "net_trade_return_sum": -0.20761559851305686,
+      "passes_initial_screen": false,
+      "positive_years": [],
+      "reported_years": 7,
+      "trade_count": 827,
+      "win_rate": 0.31197097944377267,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T13:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.021303030430259048,
+        "2021": -0.028186934333303205,
+        "2022": -0.05129985259435243,
+        "2023": -0.02128755765363891,
+        "2024": -0.036618447313711236,
+        "2025": -0.033846216344562315,
+        "2026": -0.015073559843229705
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "USD_CHF": {
+      "annualized_trade_return_score": -0.020096067703164917,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.00019626377901242178,
+      "negative_years": [
+        "2020",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "net_sum_excluding_best_reported_year": -0.14998876114156756,
+      "net_trade_return_sum": -0.13679585397165797,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2021",
+        "2025",
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 697,
+      "win_rate": 0.3127690100430416,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T14:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.005258661215574257,
+        "2021": 0.013192907169909583,
+        "2022": -0.04499850812794354,
+        "2023": -0.04583370009139928,
+        "2024": -0.06169218848948958,
+        "2025": 0.004710981098792106,
+        "2026": 0.003083315684047066
+      },
+      "zero_entry_complete_months": 5,
+      "zero_entry_months": [
+        "2020-10",
+        "2021-05",
+        "2021-08",
+        "2021-10",
+        "2021-12"
+      ]
+    },
+    "USD_JPY": {
+      "annualized_trade_return_score": 0.01776985372342863,
+      "complete_months": 80,
+      "mean_net_trade_return": 0.00012666083040145705,
+      "negative_years": [
+        "2021",
+        "2023",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": 0.023723659877927405,
+      "net_trade_return_sum": 0.12096109303339149,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2020",
+        "2022",
+        "2024",
+        "2025"
+      ],
+      "reported_years": 7,
+      "trade_count": 955,
+      "win_rate": 0.3643979057591623,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T14:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.025927126864748348,
+        "2021": -0.017645436279327596,
+        "2022": 0.09723743315546408,
+        "2023": -0.024441828761245725,
+        "2024": 0.02221333490571188,
+        "2025": 0.018134520559520542,
+        "2026": -0.0004640574114800132
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "WTICO_USD": {
+      "annualized_trade_return_score": 0.03367999639507402,
+      "complete_months": 80,
+      "mean_net_trade_return": 0.0002823719308575834,
+      "negative_years": [
+        "2023",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "net_sum_excluding_best_reported_year": -0.04112020712989414,
+      "net_trade_return_sum": 0.22928600785635775,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2020",
+        "2021",
+        "2022"
+      ],
+      "reported_years": 7,
+      "trade_count": 812,
+      "win_rate": 0.37438423645320196,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T08:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": 0.2704062149862519,
+        "2021": 0.20070469638220603,
+        "2022": 0.0461697416621949,
+        "2023": -0.0005332866941121818,
+        "2024": -0.13300798750627585,
+        "2025": -0.08182514273736347,
+        "2026": -0.0726282282365434
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "XAG_USD": {
+      "annualized_trade_return_score": -0.11727509906572268,
+      "complete_months": 80,
+      "mean_net_trade_return": -0.0010003962266277437,
+      "negative_years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "net_sum_excluding_best_reported_year": -0.9750734003896433,
+      "net_trade_return_sum": -0.7983161888489395,
+      "passes_initial_screen": false,
+      "positive_years": [
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 798,
+      "win_rate": 0.30451127819548873,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T13:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.12070593253580149,
+        "2021": -0.2710567924887545,
+        "2022": -0.278170681372509,
+        "2023": -0.005514594738542666,
+        "2024": -0.24332972615284254,
+        "2025": -0.05629567310119301,
+        "2026": 0.17675721154070373
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    },
+    "XAU_USD": {
+      "annualized_trade_return_score": 0.00674982464213921,
+      "complete_months": 80,
+      "mean_net_trade_return": 4.623411630419485e-05,
+      "negative_years": [
+        "2020",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "net_sum_excluding_best_reported_year": -0.11418643941416184,
+      "net_trade_return_sum": 0.04595671160636968,
+      "passes_initial_screen": true,
+      "positive_years": [
+        "2021",
+        "2025",
+        "2026"
+      ],
+      "reported_years": 7,
+      "trade_count": 994,
+      "win_rate": 0.34004024144869216,
+      "window": {
+        "end_exclusive": "2026-10-23T21:00:00+00:00",
+        "start": "2020-01-02T01:00:00+00:00"
+      },
+      "yearly_net_trade_return_sum": {
+        "2020": -0.023730861813358466,
+        "2021": 0.014541172831295714,
+        "2022": -0.052114526711510734,
+        "2023": -0.018318389950818602,
+        "2024": -0.03787488383174546,
+        "2025": 0.16014315102053153,
+        "2026": 0.003311050061975695
+      },
+      "zero_entry_complete_months": 0,
+      "zero_entry_months": []
+    }
+  },
+  "phase": 1,
+  "positive_score_but_fails_monthly": [],
+  "positive_score_instruments": [
+    "DE30_EUR",
+    "NAS100_USD",
+    "US30_USD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAU_USD"
+  ],
+  "post_run_learning": "Agent must interpret these observed results in its phase notes before choosing the next round; submitted lesson records the pre-run expectation.",
+  "protocol_version": 1,
+  "ranking_definition": "Lexicographic passing-instrument count, median passing-instrument score (zero if none), median score over all 21 instruments; instrument returns are never summed into a portfolio",
+  "ranking_key": [
+    6,
+    0.013152030670151936,
+    -0.02459114232030425
+  ],
+  "request_hash": "0b4bfe9bebf7db66b07f194083dc07575efd6a7b8fd9b9a8650681ac95e7ca34",
+  "round": 6,
+  "run_id": "492643705ef84dec6426",
+  "run_is_new": true,
+  "seconds": 12.534,
+  "status": "passed",
+  "strategy_hash": "001c0e5fca6809c6207f96756e77d0b60a86b016ceb9640d99a411205b73ee1b",
+  "strategy_path": "/home/ubuntu/work/nova/runs/research_campaign/volatility_expansion/strategies/p1_r06.yaml",
+  "total_trades": 17175
+}

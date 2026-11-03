@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moneta-next"
+version = "0.2.0"
+description = "YAML and DuckDB based trade discovery starter"
+requires-python = ">=3.11"
+dependencies = ["duckdb>=1.4,<2", "PyYAML>=6,<7", "numpy>=1.26,<3"]
+
+[project.optional-dependencies]
+legacy = ["pandas>=2.2,<4", "TA-Lib", "pandas-ta-classic"]
+ingestion = ["requests>=2.31,<3"]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+moneta-next = "moneta_next.cli:main"
+moneta-data = "moneta_next.data_io:main"
+moneta-download = "moneta_next.download:main"
+moneta-doctor = "moneta_next.doctor:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

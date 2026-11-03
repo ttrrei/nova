@@ -1,0 +1,65 @@
+{
+  "status": "complete",
+  "family": "trend_continuation",
+  "phase": 1,
+  "rounds_completed": 20,
+  "distinct_effective_strategies": 20,
+  "audited_trades_across_rounds": 420076,
+  "winner_round": 16,
+  "winner_run_id": "ee98dd2b05da3dac5864",
+  "winner_strategy_path": "/home/ubuntu/work/nova/runs/research_campaign/trend_continuation/strategies/p1_r16.yaml",
+  "winner_ranking_key": [
+    11,
+    0.0390031492016076,
+    0.012279812957367816
+  ],
+  "baseline_ranking_key": [
+    8,
+    0.026287682494103407,
+    -0.04209056335085772
+  ],
+  "winner_passing_instruments": [
+    "BTC_USD",
+    "DE30_EUR",
+    "HK33_HKD",
+    "JP225_USD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "US30_USD",
+    "USD_JPY",
+    "WTICO_USD",
+    "XAG_USD",
+    "XAU_USD"
+  ],
+  "winner_passes_relying_on_best_reported_year": [
+    "BTC_USD",
+    "NAS100_USD",
+    "SPX500_USD",
+    "XAG_USD"
+  ],
+  "local_confirmation_neighbors": {
+    "two_bars": [
+      10,
+      0.02440012068435625,
+      -0.009814024155921156
+    ],
+    "three_bars": [
+      11,
+      0.0390031492016076,
+      0.012279812957367816
+    ],
+    "four_bars": [
+      9,
+      0.019822903472586157,
+      -0.008146003632423753
+    ]
+  },
+  "guidance_for_next_phase": [
+    "Retain no fixed target and PSAR event framing; verify useful filters with nearby upper-efficiency and shock thresholds rather than stacking new filters.",
+    "Keep all21 instruments and compare individual score/year/month changes. Strong FX and ETH losses persist.",
+    "Revisit long-only frequency with broader entry opportunity timing as a diagnostic branch, while preserving unconditional2%stop and next-open execution.",
+    "Study holding horizons and return-tail concentration; local confirmation2/3/4breadth10/11/9signals selection sensitivity.",
+    "Cost stress should be reported separately from baseline candidate ranking; do not decrease execution costs."
+  ],
+  "limitation": "Adaptive historical research on reused full history; yearly endpoints including2026can bepartial; no independent validation claim."
+}

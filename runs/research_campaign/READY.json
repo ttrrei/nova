@@ -1,0 +1,7 @@
+{
+  "status": "ready",
+  "engine_hash": "1135b043ad9fe3f30714c06a49140d7ff31869d7449455415123bfa81bda3ad2",
+  "tests_passed": 88,
+  "full_data_parity": "byte-identical decompressed trades and signals plus identical21-instrument summary",
+  "feature_version": "nova-features-v2"
+}

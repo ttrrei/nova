@@ -13,5 +13,6 @@ The final user decisions in background/sol6.1design and background/moneta-next/S
 - Feature computation changes require a FEATURE_VERSION bump. Snapshot identity includes inputs, timeframe, feature settings and versions.
 - Test causality, temporal confirmation, long/short fills/stops/gaps/costs, zero-trade months, data contracts and reproducibility.
 - Integrate and inspect real trades before expanding features or adding AI search. No distributed infrastructure or speculative platform modules.
-- Never modify background/ or legacy/. Runtime code must not import from either. Large data and generated runs stay ignored.
+- Never modify background/ or legacy/. Runtime code must not import from either.
+- Repo visibility policy (user directive, supersedes earlier notes): every folder in the project stays visible in the code repository. No directory is ignored wholesale; large data files and generated run artifacts are excluded by file type (`*.parquet`, `*.csv`, `*.duckdb`, `*.npy`, `*.zip`, `*.gz`, `*.so`, `*.log`, `*.pyc`/`__pycache__`), and each folder keeps a tracked `README.md` placeholder so the directory remains visible while its heavy contents stay out of the repository.
 
